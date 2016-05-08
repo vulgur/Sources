@@ -12,7 +12,23 @@
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
 		D23EE4121CDF56B100D6143D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4101CDF56B100D6143D /* LaunchScreen.storyboard */; };
+		D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4191CDF62A500D6143D /* ZipArchive.framework */; };
+		D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4191CDF62A500D6143D /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D23EE41C1CDF62A500D6143D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +38,7 @@
 		D23EE40E1CDF56B100D6143D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23EE4111CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23EE4131CDF56B100D6143D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D23EE4191CDF62A500D6143D /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +56,7 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
+				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
 			);
@@ -64,6 +83,14 @@
 			path = CodeReader;
 			sourceTree = "<group>";
 		};
+		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D23EE4191CDF62A500D6143D /* ZipArchive.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +101,7 @@
 				D23EE4001CDF56B100D6143D /* Sources */,
 				D23EE4011CDF56B100D6143D /* Frameworks */,
 				D23EE4021CDF56B100D6143D /* Resources */,
+				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +124,7 @@
 				TargetAttributes = {
 					D23EE4031CDF56B100D6143D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 683SQXQW65;
 					};
 				};
 			};
@@ -249,6 +278,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CodeReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -262,6 +296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CodeReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
