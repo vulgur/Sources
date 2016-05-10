@@ -14,6 +14,10 @@
 		D23EE4121CDF56B100D6143D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4101CDF56B100D6143D /* LaunchScreen.storyboard */; };
 		D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4191CDF62A500D6143D /* ZipArchive.framework */; };
 		D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4191CDF62A500D6143D /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */; };
+		D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */; };
+		D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +27,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */,
 				D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */,
+				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +45,8 @@
 		D23EE4111CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23EE4131CDF56B100D6143D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D23EE4191CDF62A500D6143D /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
 				D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */,
+				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +96,8 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */,
+				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
 				D23EE4191CDF62A500D6143D /* ZipArchive.framework */,
 			);
 			name = Frameworks;
