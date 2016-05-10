@@ -25,6 +25,8 @@
 		D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */; };
 		D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4311CE2266300D6143D /* SearchRepoCell.swift */; };
 		D23EE4341CE2266300D6143D /* SearchRepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4321CE2266300D6143D /* SearchRepoCell.xib */; };
+		D23EE4361CE2387C00D6143D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; };
+		D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */,
 				D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */,
 				D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */,
 				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
@@ -61,6 +64,7 @@
 		D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoResponse.swift; sourceTree = "<group>"; };
 		D23EE4311CE2266300D6143D /* SearchRepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoCell.swift; sourceTree = "<group>"; };
 		D23EE4321CE2266300D6143D /* SearchRepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRepoCell.xib; sourceTree = "<group>"; };
+		D23EE4351CE2387C00D6143D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23EE4361CE2387C00D6143D /* Kingfisher.framework in Frameworks */,
 				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
 				D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
@@ -112,6 +117,7 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D23EE4351CE2387C00D6143D /* Kingfisher.framework */,
 				D23EE4291CE1CB7900D6143D /* AlamofireObjectMapper.framework */,
 				D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */,
 				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,

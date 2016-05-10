@@ -1,4 +1,5 @@
 github "Alamofire/Alamofire" "3.4.0"
+github "onevcat/Kingfisher" "2.4.1"
 github "Hearst-DD/ObjectMapper" "1.2.0"
 github "ZipArchive/ZipArchive" "v1.1"
 github "tristanhimmelman/AlamofireObjectMapper" "3.0.0"

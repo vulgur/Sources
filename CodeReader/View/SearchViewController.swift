@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
@@ -26,12 +27,15 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(UINib.init(nibName: "SearchRepoCell", bundle: nil), forCellReuseIdentifier: "repo")
-//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "repo")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 75.0
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
-    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        
+//    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -47,7 +51,7 @@ extension SearchViewController: UITableViewDataSource {
         cell.ownerNameLabel.text = repo.owner?.name
         cell.repoStarsLabel.text = "\(repo.starsCount!)"
         cell.repoForksLabel.text = "\(repo.forksCount!)"
-        
+        cell.ownerAvatarImageView.kf_setImageWithURL(NSURL(string: repo.owner!.avatarURLString!)!)
         return cell
     }
 }
@@ -69,6 +73,7 @@ extension SearchViewController: UISearchBarDelegate {
                 if let items = value?.items {
                     self.repos = items
                     self.tableView.reloadData()
+                    print("Search successfully")
                 }
         }
 //        .responseJSON { (response) in
