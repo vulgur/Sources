@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
-		D23EE40A1CDF56B100D6143D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4091CDF56B100D6143D /* ViewController.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
 		D23EE4121CDF56B100D6143D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4101CDF56B100D6143D /* LaunchScreen.storyboard */; };
@@ -20,6 +19,12 @@
 		D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4251CE1C1A300D6143D /* Repo.swift */; };
 		D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4271CE1C2B200D6143D /* Owner.swift */; };
+		D23EE42A1CE1CB7900D6143D /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4291CE1CB7900D6143D /* AlamofireObjectMapper.framework */; };
+		D23EE42B1CE1CB7900D6143D /* AlamofireObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4291CE1CB7900D6143D /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */; };
+		D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */; };
+		D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4311CE2266300D6143D /* SearchRepoCell.swift */; };
+		D23EE4341CE2266300D6143D /* SearchRepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4321CE2266300D6143D /* SearchRepoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +37,7 @@
 				D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */,
 				D23EE41B1CDF62A500D6143D /* ZipArchive.framework in Embed Frameworks */,
 				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
+				D23EE42B1CE1CB7900D6143D /* AlamofireObjectMapper.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,7 +47,6 @@
 /* Begin PBXFileReference section */
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D23EE4091CDF56B100D6143D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23EE40E1CDF56B100D6143D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23EE4111CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +56,11 @@
 		D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		D23EE4251CE1C1A300D6143D /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D23EE4271CE1C2B200D6143D /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		D23EE4291CE1CB7900D6143D /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoResponse.swift; sourceTree = "<group>"; };
+		D23EE4311CE2266300D6143D /* SearchRepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoCell.swift; sourceTree = "<group>"; };
+		D23EE4321CE2266300D6143D /* SearchRepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRepoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,7 @@
 				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
 				D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
+				D23EE42A1CE1CB7900D6143D /* AlamofireObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,9 +98,9 @@
 		D23EE4061CDF56B100D6143D /* CodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				D23EE42C1CE1CC6200D6143D /* View */,
 				D23EE4241CE1C19500D6143D /* Model */,
 				D23EE4071CDF56B100D6143D /* AppDelegate.swift */,
-				D23EE4091CDF56B100D6143D /* ViewController.swift */,
 				D23EE40B1CDF56B100D6143D /* Main.storyboard */,
 				D23EE40E1CDF56B100D6143D /* Assets.xcassets */,
 				D23EE4101CDF56B100D6143D /* LaunchScreen.storyboard */,
@@ -101,6 +112,7 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D23EE4291CE1CB7900D6143D /* AlamofireObjectMapper.framework */,
 				D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */,
 				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
 				D23EE4191CDF62A500D6143D /* ZipArchive.framework */,
@@ -113,8 +125,19 @@
 			children = (
 				D23EE4251CE1C1A300D6143D /* Repo.swift */,
 				D23EE4271CE1C2B200D6143D /* Owner.swift */,
+				D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D23EE42C1CE1CC6200D6143D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */,
+				D23EE4311CE2266300D6143D /* SearchRepoCell.swift */,
+				D23EE4321CE2266300D6143D /* SearchRepoCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +203,7 @@
 				D23EE4121CDF56B100D6143D /* LaunchScreen.storyboard in Resources */,
 				D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */,
 				D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */,
+				D23EE4341CE2266300D6143D /* SearchRepoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,8 +216,10 @@
 			files = (
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,
-				D23EE40A1CDF56B100D6143D /* ViewController.swift in Sources */,
+				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
+				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
+				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

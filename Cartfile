@@ -1,3 +1,4 @@
 github "ZipArchive/ZipArchive"
 github "Alamofire/Alamofire" ~> 3.4
 github "Hearst-DD/ObjectMapper" ~> 1.2
+github "tristanhimmelman/AlamofireObjectMapper" ~> 3.0
