@@ -27,6 +27,7 @@
 		D23EE4341CE2266300D6143D /* SearchRepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EE4321CE2266300D6143D /* SearchRepoCell.xib */; };
 		D23EE4361CE2387C00D6143D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; };
 		D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4391CE3653E00D6143D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		D23EE4311CE2266300D6143D /* SearchRepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoCell.swift; sourceTree = "<group>"; };
 		D23EE4321CE2266300D6143D /* SearchRepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRepoCell.xib; sourceTree = "<group>"; };
 		D23EE4351CE2387C00D6143D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		D23EE4391CE3653E00D6143D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		D23EE4061CDF56B100D6143D /* CodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				D23EE4381CE3650C00D6143D /* Helper */,
 				D23EE42C1CE1CC6200D6143D /* View */,
 				D23EE4241CE1C19500D6143D /* Model */,
 				D23EE4071CDF56B100D6143D /* AppDelegate.swift */,
@@ -144,6 +147,14 @@
 				D23EE4321CE2266300D6143D /* SearchRepoCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D23EE4381CE3650C00D6143D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D23EE4391CE3653E00D6143D /* Extensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
+				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

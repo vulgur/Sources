@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     
     private var repos = [Repo]()
+    private var currentPage = 1
+    private var totalPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +35,34 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDelegate {
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        
-//    }
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == repos.count - 3 {
+            currentPage += 1
+            let urlParams = [
+                "q": searchBar.text!,
+                "sort":"stars",
+                "order":"desc",
+                "page": "\(currentPage)"
+                ]
+            
+            // Fetch Request
+            Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
+                .responseObject { (response: Response<SearchRepoResponse, NSError>) in
+                    let headerLink = response.response?.allHeaderFields["Link"] as! String
+                    if !headerLink.containsString("rel=\"next\"") {
+                        print("No more data")
+                        return
+                    }
+                    let value = response.result.value
+                    if let items = value?.items {
+                        self.repos.appendContentsOf(items)
+                        self.tableView.reloadData()
+                        print("Load more successfully")
+                    }
+            }
+ 
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -59,11 +86,10 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("Search for: ", searchBar.text)
+        searchBar.endEditing(true)
         
         let urlParams = [
             "q": searchBar.text!,
-            "sort":"stars",
-            "order":"desc",
             ]
         
         // Fetch Request
@@ -72,18 +98,9 @@ extension SearchViewController: UISearchBarDelegate {
                 let value = response.result.value
                 if let items = value?.items {
                     self.repos = items
-                    self.tableView.reloadData()
+                    self.tableView.reloadDataWithAutoSizingCells()
                     print("Search successfully")
                 }
         }
-//        .responseJSON { (response) in
-//            if let JSON = response.result.value, items = JSON["items"] {
-//                print("items:", JSON["items"])
-//                let results = Mapper<Repo>().mapArray(items)
-//                print(results!.count)
-//                print(results!.first)
-//            }
-//        }
-
     }
 }
