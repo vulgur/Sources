@@ -26,8 +26,8 @@
                         <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="42X-J1-8X4">
-                        <rect key="frame" x="58" y="54" width="144" height="12"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="42X-J1-8X4">
+                        <rect key="frame" x="58" y="54" width="91" height="12"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBF-5W-Yjv">
                                 <rect key="frame" x="0.0" y="0.0" width="38" height="12"/>
@@ -37,12 +37,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCG-1W-uNU">
                                 <rect key="frame" x="53" y="0.0" width="38" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YD-t8-Qnq">
-                                <rect key="frame" x="106" y="0.0" width="38" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -81,7 +75,6 @@
             </variation>
             <connections>
                 <outlet property="ownerAvatarImageView" destination="8y3-qd-Un3" id="E72-UK-I58"/>
-                <outlet property="ownerNameLabel" destination="4YD-t8-Qnq" id="cXx-gU-Dj9"/>
                 <outlet property="repoDescriptionLabel" destination="day-BD-de8" id="Thp-Pb-yet"/>
                 <outlet property="repoForksLabel" destination="vCG-1W-uNU" id="8fd-uV-HFT"/>
                 <outlet property="repoNameLabel" destination="vpB-im-zrO" id="2lW-3f-Mjf"/>

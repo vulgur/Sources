@@ -15,7 +15,6 @@ class SearchRepoCell: UITableViewCell {
     @IBOutlet var repoDescriptionLabel: UILabel!
     @IBOutlet var repoStarsLabel: UILabel!
     @IBOutlet var repoForksLabel: UILabel!
-    @IBOutlet var ownerNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

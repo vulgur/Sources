@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F3Z-BB-8Rv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Explore-->
@@ -23,15 +24,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icA-Df-Sc5">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="repo" id="DEB-wT-Yk9" customClass="SearchRepoCell" customModule="CodeReader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DEB-wT-Yk9" id="QYb-ed-aQv">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="search repos or owners" translatesAutoresizingMaskIntoConstraints="NO" id="ywB-kz-JDk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -118,6 +110,7 @@
                         <outlet property="searchDisplayController" destination="7YM-TZ-hKZ" id="a8S-AD-Vh7"/>
                         <outlet property="segmentedControl" destination="7Hr-hX-fcS" id="Jco-BA-ZyO"/>
                         <outlet property="tableView" destination="icA-Df-Sc5" id="BDO-Jg-jwh"/>
+                        <segue destination="2OW-Ks-H06" kind="show" identifier="ShowRepoDetail" id="fod-L3-jNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -195,24 +188,65 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fOT-Ih-qhh">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eR9-xO-rvA">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eR9-xO-rvA" id="osL-zR-qlo">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="GIs-ot-a5H" id="edg-qm-yzV"/>
                             <outlet property="delegate" destination="GIs-ot-a5H" id="hI2-mC-egT"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Downloads" id="JBA-9y-SDc"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3k-aB-nS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1839.75" y="-253.5"/>
+        </scene>
+        <!--Repo View Controller-->
+        <scene sceneID="CXQ-Ut-oVe">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="2OW-Ks-H06" customClass="RepoViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UZ2-vP-j0g"/>
+                        <viewControllerLayoutGuide type="bottom" id="u2a-8y-hmX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L9b-nV-KVS">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhD-Ha-5ZK">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="2OW-Ks-H06" eventType="touchUpInside" id="SYU-5Y-jcJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GhD-Ha-5ZK" firstAttribute="top" secondItem="UZ2-vP-j0g" secondAttribute="bottom" id="U3u-ix-teU"/>
+                            <constraint firstItem="GhD-Ha-5ZK" firstAttribute="leading" secondItem="L9b-nV-KVS" secondAttribute="leadingMargin" constant="6" id="nj5-jY-uj7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="GhD-Ha-5ZK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="U3u-ix-teU"/>
+                                <exclude reference="nj5-jY-uj7"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="GhD-Ha-5ZK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="U3u-ix-teU"/>
+                                <include reference="nj5-jY-uj7"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pU-zc-hBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2765.25" y="468"/>
         </scene>
     </scenes>
 </document>
