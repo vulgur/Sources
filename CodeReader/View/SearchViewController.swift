@@ -19,6 +19,9 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     
     var viewModel = SearchRepoViewModel()
+    var errorHandler: (String) -> () = {_ in}
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,12 @@ class SearchViewController: UIViewController {
         tableView.estimatedRowHeight = 75.0
         
         segmentedControl.addTarget(self, action: #selector(self.searchSortChanged(_:)), forControlEvents: .ValueChanged)
+        errorHandler =  { [unowned self] msg in
+            let alertController = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
+            let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            alertController.addAction(action)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: Actions
@@ -48,9 +57,9 @@ class SearchViewController: UIViewController {
             viewModel.sortType = .Best
         }
         
-        viewModel.searchRepos {
+        viewModel.searchRepos(completion: { 
             self.tableView.reloadDataWithAutoSizingCells()
-        }
+        }, errorHandler: self.errorHandler)
     }
     
     // MARK: Private methods
@@ -62,15 +71,11 @@ extension SearchViewController: UITableViewDelegate {
         performSegueWithIdentifier("ShowRepoDetail", sender: nil)
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == viewModel.repos.count - 3 {
-            viewModel.currentPage += 1
-            
-            viewModel.searchRepos {
-                self.tableView.reloadDataWithAutoSizingCells()
-            }
-        }
-    }
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if indexPath.row == viewModel.repos.count - 3 {
+//            print("load more")
+//        }
+//    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -90,6 +95,17 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+extension SearchViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
+        if (offset >= 0 && offset < 10) {
+            viewModel.loadMore(completion:{
+                self.tableView.reloadDataWithAutoSizingCells()
+                }, errorHandler: self.errorHandler)
+        }
+    }
+}
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("Search for: ", searchBar.text!)
@@ -97,10 +113,11 @@ extension SearchViewController: UISearchBarDelegate {
         
         viewModel.keyword = searchBar.text!
         
-        viewModel.searchRepos{
+        EZLoadingActivity.show("Searching...", disableUI: true)
+        
+        viewModel.searchRepos(completion: {
             self.tableView.reloadDataWithAutoSizingCells()
-            let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.tableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        }
+            EZLoadingActivity.hide()
+            }, errorHandler: self.errorHandler)
     }
 }

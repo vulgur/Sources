@@ -3,3 +3,4 @@ github "Alamofire/Alamofire" ~> 3.4
 github "Hearst-DD/ObjectMapper" ~> 1.2
 github "tristanhimmelman/AlamofireObjectMapper" ~> 3.0
 github "onevcat/Kingfisher" ~> 2.4
+github "SwiftBond/Bond" ~> 4.0

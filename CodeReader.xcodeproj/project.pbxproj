@@ -27,6 +27,7 @@
 		D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4391CE3653E00D6143D /* Extensions.swift */; };
 		D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
+		D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */; };
 		D2537C881CE7542D00848FD2 /* SearchRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2537C871CE7542D00848FD2 /* SearchRepoViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		D23EE4351CE2387C00D6143D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		D23EE4391CE3653E00D6143D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D23EE43B1CE479B700D6143D /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		D2537C871CE7542D00848FD2 /* SearchRepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 		D23EE4061CDF56B100D6143D /* CodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				D2451F921CEA0CEB003CE49B /* Vender */,
 				D23EE4381CE3650C00D6143D /* Helper */,
 				D2537C861CE7541800848FD2 /* ViewModel */,
 				D23EE42C1CE1CC6200D6143D /* View */,
@@ -155,6 +158,14 @@
 				D23EE4391CE3653E00D6143D /* Extensions.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		D2451F921CEA0CEB003CE49B /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */,
+			);
+			path = Vender;
 			sourceTree = "<group>";
 		};
 		D2537C861CE7541800848FD2 /* ViewModel */ = {
@@ -242,6 +253,7 @@
 			files = (
 				D2537C881CE7542D00848FD2 /* SearchRepoViewModel.swift in Sources */,
 				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
+				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
