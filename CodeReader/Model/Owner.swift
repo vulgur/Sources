@@ -16,7 +16,10 @@ class Owner: Mappable {
     required init?(_ map: Map) {
         
     }
-    
+   
+    init() {
+        
+    }
     // Mappable
     func mapping(map: Map) {
         name            <- map["login"]

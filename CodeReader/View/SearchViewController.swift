@@ -63,20 +63,25 @@ class SearchViewController: UIViewController {
         }, errorHandler: self.errorHandler)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowRepoDetail" {
+            if let repoViewModel = sender {
+                let destVC = segue.destinationViewController as! RepoViewController
+                destVC.viewModel = repoViewModel as! RepoViewModel
+            }
+        }
+    }
     // MARK: Private methods
 
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ShowRepoDetail", sender: nil)
+        let repo = viewModel.repos[indexPath.row]
+        let repoViewModel = RepoViewModel(repo: repo)
+        performSegueWithIdentifier("ShowRepoDetail", sender: repoViewModel)
     }
     
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if indexPath.row == viewModel.repos.count - 3 {
-//            print("load more")
-//        }
-//    }
 }
 
 extension SearchViewController: UITableViewDataSource {

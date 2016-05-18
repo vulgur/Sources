@@ -36,7 +36,6 @@ class Repo: Mappable {
         description     <- map["description"]
         size            <- map["size"]
         starsCount      <- map["stargazers_count"]
-        watchersCount   <- map["watchers_count"]
         language        <- map["language"]
         forksCount      <- map["forks"]
         createdDate     <- map["created_at"]
