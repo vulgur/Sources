@@ -27,7 +27,7 @@ class SearchRepoViewModel {
     
     var repos = [Repo]()
     var keyword = ""
-    var currentPage = 11
+    var currentPage = 1
     var totalPage = 0
     var sortType: SortType = .Best
     
@@ -56,9 +56,13 @@ class SearchRepoViewModel {
                                 errorHandler(message as! String)
                             }
                         }
+                        
                     }
                 case .Failure(let error):
                     print(error)
+                    if let errorHandler = errorHandler {
+                        errorHandler(error.localizedDescription)
+                    }
                 }
             }
     }
@@ -76,7 +80,6 @@ class SearchRepoViewModel {
         // Fetch Request
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
             .responseJSON { (response) in
-                print("Status Code:", response.response?.statusCode)
                 switch response.result {
                 case .Success:
                     if let statusCode = response.response?.statusCode{
@@ -92,10 +95,13 @@ class SearchRepoViewModel {
                                 errorHandler(message as! String)
                             }
                         }
+                        
                     }
                 case .Failure(let error):
                     self.currentPage -= 1
-                    print(error)
+                    if let errorHandler = errorHandler {
+                        errorHandler(error.localizedDescription)
+                    }
                 }
             }
     }

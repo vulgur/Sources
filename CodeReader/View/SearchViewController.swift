@@ -35,6 +35,7 @@ class SearchViewController: UIViewController {
         
         segmentedControl.addTarget(self, action: #selector(self.searchSortChanged(_:)), forControlEvents: .ValueChanged)
         errorHandler =  { [unowned self] msg in
+            EZLoadingActivity.hide()
             let alertController = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
             let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
             alertController.addAction(action)
@@ -99,8 +100,10 @@ extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
         if (offset >= 0 && offset < 10) {
+            EZLoadingActivity.show("Loading more...", disableUI: true)
             viewModel.loadMore(completion:{
                 self.tableView.reloadDataWithAutoSizingCells()
+                EZLoadingActivity.hide()
                 }, errorHandler: self.errorHandler)
         }
     }
