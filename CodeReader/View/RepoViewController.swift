@@ -22,6 +22,8 @@ class RepoViewController: UIViewController {
     @IBOutlet var starsLabel: UILabel!
     @IBOutlet var watchersLabel: UILabel!
     @IBOutlet var forksLabel: UILabel!
+    @IBOutlet var createdDateLabel: UILabel!
+    @IBOutlet var updatedDateLabel: UILabel!
     
     var viewModel: RepoViewModel!
 
@@ -44,7 +46,7 @@ class RepoViewController: UIViewController {
         // Set the text aligment of description label based on string length
         let contraintSize = CGSize(width: CGFloat.max, height: descriptionLabelHeight)
         let fontAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(descriptionFontSize)]
-        let stringRect = (viewModel.repoDescription.value as NSString).boundingRectWithSize(contraintSize,
+        let stringRect = (viewModel.description.value as NSString).boundingRectWithSize(contraintSize,
                                                                                             options: NSStringDrawingOptions.UsesLineFragmentOrigin,
                                                                                             attributes: fontAttribute,
                                                                                             context: nil)
@@ -57,12 +59,14 @@ class RepoViewController: UIViewController {
     
     private func bindViewModel() {
         
-        viewModel.repoName.bindTo(repoNameLabel.bnd_text)
-        viewModel.repoName.bindTo(navigationItem.bnd_title)
-        viewModel.repoDescription.bindTo(repoDescriptionLabel.bnd_text)
-        viewModel.repoStars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
-        viewModel.repoForks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
-        viewModel.repoWatchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
+        viewModel.name.bindTo(repoNameLabel.bnd_text)
+        viewModel.name.bindTo(navigationItem.bnd_title)
+        viewModel.description.bindTo(repoDescriptionLabel.bnd_text)
+        viewModel.stars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
+        viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
+        viewModel.watchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
+        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
+        viewModel.updatedDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(updatedDateLabel.bnd_text)
         
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }

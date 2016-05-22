@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
     
     var viewModel = SearchRepoViewModel()
     var errorHandler: (String) -> () = {_ in}
-    
+    var isLoading = false
     
     
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ class SearchViewController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(self.searchSortChanged(_:)), forControlEvents: .ValueChanged)
         errorHandler =  { [unowned self] msg in
             EZLoadingActivity.hide()
+            self.isLoading = false
             let alertController = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
             let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
             alertController.addAction(action)
@@ -58,8 +59,12 @@ class SearchViewController: UIViewController {
             viewModel.sortType = .Best
         }
         
+        EZLoadingActivity.show("Loading", disableUI: true)
         viewModel.searchRepos(completion: { 
             self.tableView.reloadDataWithAutoSizingCells()
+            let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.tableView .scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            EZLoadingActivity.hide()
         }, errorHandler: self.errorHandler)
     }
     
@@ -104,11 +109,11 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
-        if (offset >= 0 && offset < 10) {
-            EZLoadingActivity.show("Loading more...", disableUI: true)
+        if (offset >= 0 && offset < 10 && isLoading == false) {
+            isLoading = true
             viewModel.loadMore(completion:{
                 self.tableView.reloadDataWithAutoSizingCells()
-                EZLoadingActivity.hide()
+                self.isLoading = false
                 }, errorHandler: self.errorHandler)
         }
     }

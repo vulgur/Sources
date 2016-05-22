@@ -20,8 +20,8 @@ class Repo: Mappable {
     var watchersCount: Int?
     var language: String?
     var forksCount: Int?
-    var createdDate: NSDate?
-    var pushedDate: NSDate?
+    var createdDate: String?
+    var pushedDate: String?
     
     required init?(_ map: Map) {
     

@@ -12,31 +12,38 @@ import Alamofire
 
 class RepoViewModel {
     let avatarImageURLString = Observable("")
-    let repoName = Observable("")
-    let repoDescription = Observable("")
-    let repoStars = Observable(0)
-    let repoWatchers = Observable(0)
-    let repoForks = Observable(0)
-    let repoOwner = Observable(Owner())
+    let name = Observable("")
+    let description = Observable("")
+    let stars = Observable(0)
+    let watchers = Observable(0)
+    let forks = Observable(0)
+    let owner = Observable(Owner())
+    let createdDate = Observable("")
+    let updatedDate = Observable("")
+    let language = Observable("")
     
     init(repo: Repo) {
         avatarImageURLString.value = (repo.owner?.avatarURLString)!
-        repoName.value = repo.name ?? ""
-        repoDescription.value = repo.description ?? ""
-        repoStars.value = repo.starsCount ?? 0
-        repoWatchers.value = repo.watchersCount ?? 0
-        repoForks.value = repo.forksCount ?? 0
-        repoOwner.value = repo.owner!
+        name.value = repo.name ?? ""
+        description.value = repo.description ?? ""
+        stars.value = repo.starsCount ?? 0
+        watchers.value = repo.watchersCount ?? 0
+        forks.value = repo.forksCount ?? 0
+        owner.value = repo.owner!
+        createdDate.value = repo.createdDate ?? ""
+        updatedDate.value = repo.pushedDate ?? ""
+        language.value = repo.language ?? ""
     }
     
     
     func fetchWatchers() {
-        let url = String(format: "https://api.github.com/repos/%@/%@/subscribers", repoOwner.value.name!, repoName.value)
+        let url = String(format: "https://api.github.com/repos/%@/%@/subscribers",
+                         owner.value.name!, name.value)
         print(url)
         Alamofire.request(.GET, url)
         .responseJSON { (response) in
             if let watchers = response.result.value as? NSArray {
-                self.repoWatchers.value = watchers.count
+                self.watchers.value = watchers.count
             }
         }
     }
