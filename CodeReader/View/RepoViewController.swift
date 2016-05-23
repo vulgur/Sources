@@ -9,6 +9,7 @@
 import UIKit
 import Bond
 import Kingfisher
+import WebKit
 
 class RepoViewController: UIViewController {
     
@@ -24,17 +25,35 @@ class RepoViewController: UIViewController {
     @IBOutlet var forksLabel: UILabel!
     @IBOutlet var createdDateLabel: UILabel!
     @IBOutlet var updatedDateLabel: UILabel!
+    @IBOutlet var downloadButton: UIBarButtonItem!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var contentView: UIView!
     
     var viewModel: RepoViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.edgesForExtendedLayout = .None
+//        self.automaticallyAdjustsScrollViewInsets = true
 
+        scrollView.delegate = self
         setupUI()
         bindViewModel()
         viewModel.fetchWatchers()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        resizeScrollViewContentSize()
+        print(self.contentView)
+        print(self.scrollView.contentSize)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,6 +61,16 @@ class RepoViewController: UIViewController {
     
 
     // MARK: Private methods
+    private func resizeScrollViewContentSize() {
+        var contentRect = CGRectZero
+        for subview in self.contentView.subviews {
+            contentRect = CGRectUnion(subview.frame, contentRect)
+        }
+        print(contentRect)
+//        self.scrollView.contentSize = contentRect.size
+        self.contentView.frame = contentRect
+    }
+    
     private func setupUI() {
         // Set the text aligment of description label based on string length
         let contraintSize = CGSize(width: CGFloat.max, height: descriptionLabelHeight)
@@ -55,12 +84,13 @@ class RepoViewController: UIViewController {
         } else {
             repoDescriptionLabel.textAlignment = .Center
         }
+        
     }
     
     private func bindViewModel() {
         
         viewModel.name.bindTo(repoNameLabel.bnd_text)
-        viewModel.name.bindTo(navigationItem.bnd_title)
+        viewModel.fullName.bindTo(navigationItem.bnd_title)
         viewModel.description.bindTo(repoDescriptionLabel.bnd_text)
         viewModel.stars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
         viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
@@ -71,4 +101,10 @@ class RepoViewController: UIViewController {
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }
     
+}
+
+extension RepoViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        print(self.contentView)
+//    }
 }

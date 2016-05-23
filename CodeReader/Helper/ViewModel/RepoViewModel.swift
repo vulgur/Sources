@@ -21,6 +21,7 @@ class RepoViewModel {
     let createdDate = Observable("")
     let updatedDate = Observable("")
     let language = Observable("")
+    let fullName = Observable("")
     
     init(repo: Repo) {
         avatarImageURLString.value = (repo.owner?.avatarURLString)!
@@ -33,6 +34,7 @@ class RepoViewModel {
         createdDate.value = repo.createdDate ?? ""
         updatedDate.value = repo.pushedDate ?? ""
         language.value = repo.language ?? ""
+        fullName.value = repo.fullName ?? ""
     }
     
     

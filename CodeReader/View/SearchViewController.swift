@@ -69,10 +69,13 @@ class SearchViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowRepoDetail" {
+        if segue.identifier == "ShowRepo" {
             if let repoViewModel = sender {
                 let destVC = segue.destinationViewController as! RepoViewController
                 destVC.viewModel = repoViewModel as! RepoViewModel
+//                if let repoVC = destVC.viewControllers.first as? RepoViewController {
+//                    repoVC.viewModel = repoViewModel as! RepoViewModel
+//                }
             }
         }
     }
@@ -84,7 +87,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let repo = viewModel.repos[indexPath.row]
         let repoViewModel = RepoViewModel(repo: repo)
-        performSegueWithIdentifier("ShowRepoDetail", sender: repoViewModel)
+        performSegueWithIdentifier("ShowRepo", sender: repoViewModel)
     }
     
 }

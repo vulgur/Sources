@@ -16,3 +16,14 @@ extension UITableView {
         self.reloadData()
     }
 }
+
+extension UIScrollView {
+    func resizeContentSize() {
+        let contentWidth = self.frame.width
+        var contentHeight: CGFloat = 0
+        for subview in subviews {
+            contentHeight += CGRectGetHeight(subview.frame)
+        }
+        self.contentSize = CGSize(width: contentWidth, height: contentHeight)
+    }
+}
