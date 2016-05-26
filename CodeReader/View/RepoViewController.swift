@@ -20,6 +20,8 @@ class RepoViewController: UIViewController {
     @IBOutlet var repoNameLabel: UILabel!
     @IBOutlet var repoDescriptionLabel: UILabel!
     
+    @IBOutlet var languageLabel: UILabel!
+    @IBOutlet var sizeLabel: UILabel!
     @IBOutlet var starsLabel: UILabel!
     @IBOutlet var watchersLabel: UILabel!
     @IBOutlet var forksLabel: UILabel!
@@ -42,18 +44,6 @@ class RepoViewController: UIViewController {
         viewModel.fetchWatchers()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        resizeScrollViewContentSize()
-        print(self.contentView)
-        print(self.scrollView.contentSize)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,15 +51,6 @@ class RepoViewController: UIViewController {
     
 
     // MARK: Private methods
-    private func resizeScrollViewContentSize() {
-        var contentRect = CGRectZero
-        for subview in self.contentView.subviews {
-            contentRect = CGRectUnion(subview.frame, contentRect)
-        }
-        print(contentRect)
-//        self.scrollView.contentSize = contentRect.size
-        self.contentView.frame = contentRect
-    }
     
     private func setupUI() {
         // Set the text aligment of description label based on string length
@@ -97,6 +78,8 @@ class RepoViewController: UIViewController {
         viewModel.watchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
         viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
         viewModel.updatedDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(updatedDateLabel.bnd_text)
+        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
+        viewModel.language.bindTo(languageLabel.bnd_text)
         
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }
