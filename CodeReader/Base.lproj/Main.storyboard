@@ -334,9 +334,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4v-Jg-Hv4">
                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="50"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brP-ep-cBh">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="brP-ep-cBh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <color key="backgroundColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="eMD-3A-3ku"/>
                                                                     <constraint firstAttribute="height" constant="50" id="wyw-rw-6rs"/>
@@ -356,8 +355,7 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIq-6Y-jkL">
                                                                 <rect key="frame" x="50" y="0.0" width="42" height="50"/>
-                                                                <color key="backgroundColor" red="0.87058428960000001" green="0.86823694309999999" blue="0.85162520009999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -366,9 +364,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cL-sE-xct">
                                                         <rect key="frame" x="102" y="0.0" width="92" height="50"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5p-Ek-ffi">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="watch" translatesAutoresizingMaskIntoConstraints="NO" id="U5p-Ek-ffi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="nie-1Y-jVx"/>
                                                                     <constraint firstAttribute="width" constant="50" id="v1C-d5-R1f"/>
@@ -388,8 +385,7 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgD-YF-iMY">
                                                                 <rect key="frame" x="50" y="0.0" width="42" height="50"/>
-                                                                <color key="backgroundColor" red="0.87058428960000001" green="0.86823694309999999" blue="0.85162520009999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -398,9 +394,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44n-C0-RIq">
                                                         <rect key="frame" x="204" y="0.0" width="92" height="50"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-pQ-UCY">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="fork" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-pQ-UCY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <color key="backgroundColor" red="0.1529411765" green="0.29803921570000003" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="75M-tL-j3k"/>
                                                                     <constraint firstAttribute="width" constant="50" id="v7M-gL-3Pi"/>
@@ -420,8 +415,7 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly3-Em-6JQ">
                                                                 <rect key="frame" x="50" y="0.0" width="42" height="50"/>
-                                                                <color key="backgroundColor" red="0.87058428960000001" green="0.86823694309999999" blue="0.85162520009999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -548,10 +542,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCE-rl-hXm">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
-                                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                                    <rect key="frame" x="20" y="568" width="46" height="30"/>
-                                                </variation>
+                                                <state key="normal" title="View Source"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -564,6 +555,9 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                             </constraint>
                                             <constraint firstItem="JLY-kT-9eO" firstAttribute="leading" secondItem="3bS-TL-De8" secondAttribute="leadingMargin" id="9Zz-jj-cse"/>
+                                            <constraint firstItem="aCE-rl-hXm" firstAttribute="top" secondItem="JLY-kT-9eO" secondAttribute="bottom" constant="82" id="EmF-GK-6Hl">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                                            </constraint>
                                             <constraint firstAttribute="trailing" secondItem="7wR-7k-Jsx" secondAttribute="trailing" constant="326" id="Ink-gq-Oah">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                             </constraint>
@@ -595,10 +589,12 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="JLY-kT-9eO" secondAttribute="trailing" id="l1d-t2-K0f">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                             </constraint>
+                                            <constraint firstAttribute="trailing" secondItem="aCE-rl-hXm" secondAttribute="trailing" constant="20" id="rVb-vo-Vqe"/>
                                             <constraint firstItem="6ef-zk-4SD" firstAttribute="leading" secondItem="3bS-TL-De8" secondAttribute="leading" id="sXq-X8-OQ1"/>
                                             <constraint firstItem="6ef-zk-4SD" firstAttribute="leading" secondItem="2xs-Vw-Oc3" secondAttribute="trailing" constant="-316" id="saT-jo-7ng"/>
                                             <constraint firstItem="2xs-Vw-Oc3" firstAttribute="leading" secondItem="3bS-TL-De8" secondAttribute="leading" constant="20" id="tG0-ou-E1a"/>
                                             <constraint firstAttribute="height" constant="1800" id="tpl-EQ-Gud"/>
+                                            <constraint firstItem="aCE-rl-hXm" firstAttribute="leading" secondItem="3bS-TL-De8" secondAttribute="leading" constant="20" id="vnx-gi-lIC"/>
                                             <constraint firstItem="2xs-Vw-Oc3" firstAttribute="top" secondItem="6ef-zk-4SD" secondAttribute="bottom" constant="-39" id="x51-KW-jG5">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                             </constraint>
@@ -634,6 +630,9 @@
                                                 <exclude reference="Uhi-Ua-2mF"/>
                                                 <exclude reference="exG-jB-j3S"/>
                                                 <exclude reference="l1d-t2-K0f"/>
+                                                <exclude reference="EmF-GK-6Hl"/>
+                                                <exclude reference="rVb-vo-Vqe"/>
+                                                <exclude reference="vnx-gi-lIC"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -667,6 +666,9 @@
                                                 <exclude reference="Uhi-Ua-2mF"/>
                                                 <exclude reference="exG-jB-j3S"/>
                                                 <exclude reference="l1d-t2-K0f"/>
+                                                <include reference="EmF-GK-6Hl"/>
+                                                <include reference="rVb-vo-Vqe"/>
+                                                <include reference="vnx-gi-lIC"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -761,6 +763,7 @@
                         <outlet property="repoNameLabel" destination="nIT-SG-fOP" id="blr-MN-KIs"/>
                         <outlet property="scrollView" destination="71X-uJ-MDL" id="abe-D9-A7a"/>
                         <outlet property="sizeLabel" destination="zD6-VW-0lg" id="VpT-bx-KeD"/>
+                        <outlet property="sourceButton" destination="aCE-rl-hXm" id="pnF-Ky-jad"/>
                         <outlet property="starsLabel" destination="VIq-6Y-jkL" id="zVY-te-xvo"/>
                         <outlet property="updatedDateLabel" destination="LgJ-uD-oiw" id="6St-mc-nBa"/>
                         <outlet property="watchersLabel" destination="dgD-YF-iMY" id="f6v-7k-WZ3"/>
@@ -771,4 +774,9 @@
             <point key="canvasLocation" x="2581.5" y="468"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fork" width="50" height="50"/>
+        <image name="star" width="50" height="50"/>
+        <image name="watch" width="50" height="50"/>
+    </resources>
 </document>

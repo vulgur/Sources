@@ -88,6 +88,7 @@ extension SearchViewController: UITableViewDelegate {
         let repo = viewModel.repos[indexPath.row]
         let repoViewModel = RepoViewModel(repo: repo)
         performSegueWithIdentifier("ShowRepo", sender: repoViewModel)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

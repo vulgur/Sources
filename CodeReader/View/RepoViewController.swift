@@ -30,6 +30,7 @@ class RepoViewController: UIViewController {
     @IBOutlet var downloadButton: UIBarButtonItem!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet var sourceButton: UIButton!
     
     var viewModel: RepoViewModel!
 
@@ -66,6 +67,8 @@ class RepoViewController: UIViewController {
             repoDescriptionLabel.textAlignment = .Center
         }
         
+        sourceButton.backgroundColor = UIColor.blueColor()
+        sourceButton.tintColor = UIColor.whiteColor()
     }
     
     private func bindViewModel() {
