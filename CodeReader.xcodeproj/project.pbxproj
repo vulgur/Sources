@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10D81CF823F600244357 /* FileListViewController.swift */; };
+		D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DA1CF8245A00244357 /* FileCell.swift */; };
+		D20A10DD1CF8245A00244357 /* FileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D20A10DB1CF8245A00244357 /* FileCell.xib */; };
+		D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DE1CF8278900244357 /* RepoFile.swift */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -54,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		D20A10D61CF3324C00244357 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		D20A10D81CF823F600244357 /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
+		D20A10DA1CF8245A00244357 /* FileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
+		D20A10DB1CF8245A00244357 /* FileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCell.xib; sourceTree = "<group>"; };
+		D20A10DE1CF8278900244357 /* RepoFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoFile.swift; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +155,7 @@
 				D23EE4251CE1C1A300D6143D /* Repo.swift */,
 				D23EE4271CE1C2B200D6143D /* Owner.swift */,
 				D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */,
+				D20A10DE1CF8278900244357 /* RepoFile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +167,9 @@
 				D23EE4311CE2266300D6143D /* SearchRepoCell.swift */,
 				D23EE4321CE2266300D6143D /* SearchRepoCell.xib */,
 				D23EE43B1CE479B700D6143D /* RepoViewController.swift */,
+				D20A10D81CF823F600244357 /* FileListViewController.swift */,
+				D20A10DA1CF8245A00244357 /* FileCell.swift */,
+				D20A10DB1CF8245A00244357 /* FileCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +263,7 @@
 				D23EE4121CDF56B100D6143D /* LaunchScreen.storyboard in Resources */,
 				D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */,
 				D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */,
+				D20A10DD1CF8245A00244357 /* FileCell.xib in Resources */,
 				D23EE4341CE2266300D6143D /* SearchRepoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +277,8 @@
 			files = (
 				D2537C881CE7542D00848FD2 /* SearchRepoViewModel.swift in Sources */,
 				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
+				D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */,
+				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D2451F961CEC2BB9003CE49B /* RepoViewModel.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
@@ -271,6 +286,7 @@
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
+				D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
 				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);

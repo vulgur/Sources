@@ -31,15 +31,13 @@ class RepoViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var sourceButton: UIButton!
+    @IBOutlet var commitsButton: UIButton!
     
     var viewModel: RepoViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.edgesForExtendedLayout = .None
-//        self.automaticallyAdjustsScrollViewInsets = true
 
-        scrollView.delegate = self
         setupUI()
         bindViewModel()
         viewModel.fetchWatchers()
@@ -67,8 +65,15 @@ class RepoViewController: UIViewController {
             repoDescriptionLabel.textAlignment = .Center
         }
         
-        sourceButton.backgroundColor = UIColor.blueColor()
+        sourceButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
         sourceButton.tintColor = UIColor.whiteColor()
+        commitsButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
+        commitsButton.tintColor = UIColor.whiteColor()
+        
+        avatarImageView.layer.cornerRadius = 10
+        avatarImageView.layer.masksToBounds = true
+        avatarImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        avatarImageView.layer.borderWidth = 2
     }
     
     private func bindViewModel() {
@@ -87,10 +92,15 @@ class RepoViewController: UIViewController {
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }
     
+    @IBAction func showFileList(sender: UIButton) {
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowFileList" {
+            let fileListVC = segue.destinationViewController as! FileListViewController
+            fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
+        }
+    }
 }
 
-extension RepoViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        print(self.contentView)
-//    }
-}

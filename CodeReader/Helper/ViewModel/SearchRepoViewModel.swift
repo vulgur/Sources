@@ -41,7 +41,6 @@ class SearchRepoViewModel {
         // Fetch Request
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
             .responseJSON { (response) in
-                print("Status Code:", response.response?.statusCode)
                 switch response.result {
                 case .Success:
                     if let statusCode = response.response?.statusCode{
