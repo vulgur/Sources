@@ -540,7 +540,6 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="showFileList:" destination="2OW-Ks-H06" eventType="touchUpInside" id="qvm-vY-o1T"/>
                                                     <segue destination="A7g-Ac-kjx" kind="show" identifier="ShowFileList" id="uFt-sE-aF6"/>
                                                 </connections>
                                             </button>

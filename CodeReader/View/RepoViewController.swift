@@ -92,14 +92,11 @@ class RepoViewController: UIViewController {
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }
     
-    @IBAction func showFileList(sender: UIButton) {
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowFileList" {
             let fileListVC = segue.destinationViewController as! FileListViewController
             fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
+            fileListVC.pathTitle = "/"
         }
     }
 }
