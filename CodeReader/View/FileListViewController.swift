@@ -96,6 +96,12 @@ class FileListViewController: UITableViewController {
                 nextFileListVC.pathTitle = self.pathTitle + "/" + file.name!
             }
             navigationController?.pushViewController(nextFileListVC, animated: true)
+        } else if file.type == "file" {
+            let codeVC = CodeViewController()
+            codeVC.filename = file.name
+            codeVC.downloadAPI = file.downloadURLString
+            
+            navigationController?.pushViewController(codeVC, animated: true)
         }
     }
 }
