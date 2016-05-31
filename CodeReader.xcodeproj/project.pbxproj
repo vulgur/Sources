@@ -90,6 +90,8 @@
 		D20A117B1CFD417C00244357 /* zenburn.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A112F1CFD417C00244357 /* zenburn.css */; };
 		D20A117E1CFD41C000244357 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A117D1CFD41C000244357 /* template.html */; };
 		D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A117F1CFD427A00244357 /* CodeViewController.swift */; };
+		D20A11821CFDF1AD00244357 /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A11811CFDF1AD00244357 /* github-markdown.css */; };
+		D20A11841CFDF31500244357 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A11831CFDF31500244357 /* readme.html */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -220,6 +222,8 @@
 		D20A112F1CFD417C00244357 /* zenburn.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zenburn.css; sourceTree = "<group>"; };
 		D20A117D1CFD41C000244357 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		D20A117F1CFD427A00244357 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		D20A11811CFDF1AD00244357 /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown.css"; sourceTree = "<group>"; };
+		D20A11831CFDF31500244357 /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -354,7 +358,9 @@
 		D20A117C1CFD41A500244357 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				D20A11831CFDF31500244357 /* readme.html */,
 				D20A117D1CFD41C000244357 /* template.html */,
+				D20A11811CFDF1AD00244357 /* github-markdown.css */,
 			);
 			path = HTML;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				D20A113B1CFD417C00244357 /* atelier-forest-dark.css in Resources */,
 				D20A115E1CFD417C00244357 /* kimbie.dark.css in Resources */,
 				D20A11351CFD417C00244357 /* atelier-cave-dark.css in Resources */,
+				D20A11821CFDF1AD00244357 /* github-markdown.css in Resources */,
 				D20A11611CFD417C00244357 /* mono-blue.css in Resources */,
 				D20A115C1CFD417C00244357 /* idea.css in Resources */,
 				D20A116F1CFD417C00244357 /* school-book.png in Resources */,
@@ -570,6 +577,7 @@
 				D20A11701CFD417C00244357 /* solarized-dark.css in Resources */,
 				D20A11741CFD417C00244357 /* tomorrow-night-bright.css in Resources */,
 				D20A117A1CFD417C00244357 /* xt256.css in Resources */,
+				D20A11841CFDF31500244357 /* readme.html in Resources */,
 				D20A11671CFD417C00244357 /* pojoaque.css in Resources */,
 				D20A11721CFD417C00244357 /* sunburst.css in Resources */,
 				D20A113F1CFD417C00244357 /* atelier-lakeside-dark.css in Resources */,

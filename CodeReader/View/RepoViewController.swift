@@ -9,7 +9,7 @@
 import UIKit
 import Bond
 import Kingfisher
-import WebKit
+import Alamofire
 
 class RepoViewController: UIViewController {
     
@@ -32,6 +32,7 @@ class RepoViewController: UIViewController {
     @IBOutlet var contentView: UIView!
     @IBOutlet var sourceButton: UIButton!
     @IBOutlet var commitsButton: UIButton!
+    @IBOutlet var webView: UIWebView!
     
     var viewModel: RepoViewModel!
 
@@ -41,6 +42,7 @@ class RepoViewController: UIViewController {
         setupUI()
         bindViewModel()
         viewModel.fetchWatchers()
+        setupWebView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +52,26 @@ class RepoViewController: UIViewController {
     
 
     // MARK: Private methods
+    private func setupWebView() {
+        webView.delegate = self
+//        webView.scalesPageToFit = true
+//        webView.contentMode = .ScaleToFill
+        
+        let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.name!, viewModel.name.value))!
+        let request = NSMutableURLRequest(URL: url)
+        request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
+        
+        Alamofire.request(request).responseString { (response) in
+            if let readmeStr = response.result.value {
+                if let readmeTemplate = self.readmeTemplateString() {
+                    let htmlStr = readmeTemplate.stringByReplacingOccurrencesOfString("#code#", withString: readmeStr)
+                    self.webView.loadHTMLString(htmlStr, baseURL: NSBundle.mainBundle().bundleURL)
+                    self.webView.scalesPageToFit = true
+                }
+            }
+        }
+        
+    }
     
     private func setupUI() {
         // Set the text aligment of description label based on string length
@@ -92,6 +114,17 @@ class RepoViewController: UIViewController {
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
     }
     
+    private func readmeTemplateString() -> String? {
+        let path = NSBundle.mainBundle().URLForResource("readme", withExtension: "html")!
+        let str: String?
+        do {
+            str = try String(contentsOfURL: path)
+        } catch {
+            str = nil
+        }
+        return str
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowFileList" {
             let fileListVC = segue.destinationViewController as! FileListViewController
@@ -101,3 +134,20 @@ class RepoViewController: UIViewController {
     }
 }
 
+extension RepoViewController: UIWebViewDelegate {
+    func webViewDidFinishLoad(webView: UIWebView) {
+        let contentSize = webView.scrollView.contentSize
+        let webViewSize = webView.bounds.size
+        let ratio = webViewSize.width / contentSize.width
+        print("Scale", ratio)
+//
+//        webView.scrollView.minimumZoomScale = ratio
+//        webView.scrollView.maximumZoomScale = ratio
+//        webView.scrollView.zoomScale = ratio
+        
+        
+        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")! as NSString).floatValue
+        let contentViewHeight = CGFloat(webViewHeight) + self.commitsButton.frame.origin.y + self.commitsButton.frame.size.height + 20
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
+    }
+}
