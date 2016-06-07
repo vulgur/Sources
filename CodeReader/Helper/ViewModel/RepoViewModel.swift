@@ -21,6 +21,7 @@ class RepoViewModel {
     let createdDate = Observable("")
     let updatedDate = Observable("")
     let language = Observable("")
+    let ownerName = Observable("")
     let fullName = Observable("")
     let size = Observable(0)
     
@@ -35,8 +36,9 @@ class RepoViewModel {
         createdDate.value = repo.createdDate ?? ""
         updatedDate.value = repo.pushedDate ?? ""
         language.value = repo.language ?? "Unknown"
-        fullName.value = repo.fullName ?? ""
+        ownerName.value = repo.owner!.name ?? ""
         size.value = repo.size ?? 0
+        fullName.value = repo.fullName ?? ""
     }
     
     

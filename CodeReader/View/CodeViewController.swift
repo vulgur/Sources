@@ -16,7 +16,7 @@ class CodeViewController: UIViewController {
     var downloadAPI: String!
     var filename: String!
     var fontSize = 3
-    var theme = "monokai"
+    var theme = "googlecode"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +48,25 @@ class CodeViewController: UIViewController {
             Alamofire.request(.GET, url)
                 .responseData(completionHandler: { (response) in
                     if let htmlData = response.data {
-                        let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding)!
-                        let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: dataString)
-                            .stringByReplacingOccurrencesOfString("#title#", withString: self.filename)
-                            .stringByReplacingOccurrencesOfString("#theme#", withString: self.theme)
-                            .stringByReplacingOccurrencesOfString("#font_size#", withString: "\(self.fontSize)")
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
-                        })
+                        if let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding) {
+                            let escapeString = dataString.stringByReplacingOccurrencesOfString("<", withString: "&lt;")
+                                .stringByReplacingOccurrencesOfString(">", withString: "&gt;")
+                            let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: escapeString)
+                                .stringByReplacingOccurrencesOfString("#title#", withString: self.filename)
+                                .stringByReplacingOccurrencesOfString("#theme#", withString: self.theme)
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
+                            })
+                        } else {
+                            // not a text file, show alert and then pop back
+                            
+                            let alertController = UIAlertController(title: "", message: "This file is not a source code file", preferredStyle: .Alert)
+                            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (_) in
+                                self.navigationController?.popViewControllerAnimated(true)
+                            })
+                            alertController.addAction(alertAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
                     }
                 })
         }

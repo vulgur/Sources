@@ -136,6 +136,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         viewModel.searchRepos(completion: {
             self.tableView.reloadDataWithAutoSizingCells()
+//            self.tableView.reloadData()
             EZLoadingActivity.hide()
             }, errorHandler: self.errorHandler)
     }

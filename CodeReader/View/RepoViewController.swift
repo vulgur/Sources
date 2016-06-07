@@ -54,21 +54,20 @@ class RepoViewController: UIViewController {
     // MARK: Private methods
     private func setupWebView() {
         webView.delegate = self
-//        webView.scalesPageToFit = true
-//        webView.contentMode = .ScaleToFill
-        
+        webView.scalesPageToFit = true
         let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.name!, viewModel.name.value))!
         let request = NSMutableURLRequest(URL: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         
+        EZLoadingActivity.show("Loading README", disableUI: true)
         Alamofire.request(request).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
                     let htmlStr = readmeTemplate.stringByReplacingOccurrencesOfString("#code#", withString: readmeStr)
                     self.webView.loadHTMLString(htmlStr, baseURL: NSBundle.mainBundle().bundleURL)
-                    self.webView.scalesPageToFit = true
                 }
             }
+            EZLoadingActivity.hide()
         }
         
     }
@@ -99,9 +98,16 @@ class RepoViewController: UIViewController {
     }
     
     private func bindViewModel() {
+//        navigationItem.bnd_title.observe { (event) in
+//            if event?.characters.count > 15 {
+//                self.navigationController?.navigationBar.titleTextAttributes =
+//                    [
+//                        NSFontAttributeName: UIFont.systemFontOfSize(12)]
+//            }
+//        }
         
         viewModel.name.bindTo(repoNameLabel.bnd_text)
-        viewModel.fullName.bindTo(navigationItem.bnd_title)
+        viewModel.ownerName.bindTo(navigationItem.bnd_title)
         viewModel.description.bindTo(repoDescriptionLabel.bnd_text)
         viewModel.stars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
         viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
@@ -136,18 +142,32 @@ class RepoViewController: UIViewController {
 
 extension RepoViewController: UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
-        let contentSize = webView.scrollView.contentSize
-        let webViewSize = webView.bounds.size
-        let ratio = webViewSize.width / contentSize.width
-        print("Scale", ratio)
+//        let contentSize = webView.scrollView.contentSize
+//        let webViewSize = webView.bounds.size
+//        let ratio = webViewSize.width / contentSize.width
 //
 //        webView.scrollView.minimumZoomScale = ratio
 //        webView.scrollView.maximumZoomScale = ratio
 //        webView.scrollView.zoomScale = ratio
         
         
-        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")! as NSString).floatValue
-        let contentViewHeight = CGFloat(webViewHeight) + self.commitsButton.frame.origin.y + self.commitsButton.frame.size.height + 20
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
+        webView.scrollView.scrollEnabled = false
+        var frame = webView.frame
+        frame.size.height = 1
+        webView.frame = frame
+        let fitSize = webView.sizeThatFits(CGSizeZero)
+        print("Fit size:", fitSize)
+        frame.size = fitSize
+        webView.frame = frame
+        self.view.layoutIfNeeded()
+        
+        let webViewHeight = frame.size.height
+//        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.offsetHeight;")! as NSString).floatValue
+//        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")! as NSString).floatValue
+//        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.height")! as NSString).floatValue
+        let contentViewHeight = CGFloat(webViewHeight) + webView.frame.origin.y
+        print("Content height:", contentViewHeight)
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
+        self.view.layoutIfNeeded()
     }
 }

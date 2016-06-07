@@ -19,12 +19,6 @@ class SearchRepoViewModel {
         case Updated = "updated"
     }
     
-    enum SearchType {
-        case Refresh
-        case LoadMore
-    }
-    
-    
     var repos = [Repo]()
     var keyword = ""
     var currentPage = 1
@@ -74,8 +68,6 @@ class SearchRepoViewModel {
             "sort" : sortType.rawValue,
             "page" : "\(currentPage)"
         ]
-        print("Load More:", urlParams)
-        
         // Fetch Request
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
             .responseJSON { (response) in
