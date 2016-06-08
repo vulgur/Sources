@@ -83,5 +83,10 @@ class CodeViewController: UIViewController {
         }
         return str
     }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.webView?.frame = self.view.bounds
+    }
 }
 

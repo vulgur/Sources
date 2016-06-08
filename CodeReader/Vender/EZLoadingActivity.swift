@@ -14,7 +14,8 @@ public struct EZLoadingActivity {
     // Feel free to edit these variables
     //==========================================================================================================
     public struct Settings {
-        public static var BackgroundColor = UIColor(red: 227/255, green: 232/255, blue: 235/255, alpha: 1.0)
+//        public static var BackgroundColor = UIColor(red: 227/255, green: 232/255, blue: 235/255, alpha: 1.0)
+        public static var BackgroundColor = UIColor.whiteColor()
         public static var ActivityColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
         public static var TextColor = UIColor(red: 80/255, green: 80/255, blue: 80/255, alpha: 1.0)
         public static var FontName = "HelveticaNeue-Light"
@@ -76,6 +77,19 @@ public struct EZLoadingActivity {
         instance = LoadingActivity(text: text, disableUI: disableUI)
         dispatch_async(dispatch_get_main_queue()) {
             instance?.showLoadingWithController(controller);
+        }
+        
+        return true;
+    }
+    
+    public static func showOnView(text: String, disableUI: Bool, view: UIView) -> Bool {
+        guard instance == nil else {
+            print("EZLoadingActivity: You still have an active activity, please stop that before creating a new one")
+            return false
+        }
+        instance = LoadingActivity(text: text, disableUI: disableUI)
+        dispatch_async(dispatch_get_main_queue()) {
+            instance?.showLoadingOnView(view)
         }
         
         return true;
@@ -158,6 +172,15 @@ public struct EZLoadingActivity {
             addSubview(textLabel)
             
             controller.view.addSubview(self);
+        }
+        
+        func showLoadingOnView(view: UIView) {
+            addSubview(activityView)
+            addSubview(textLabel)
+            
+            let centerPoint = CGPoint(x: view.frame.size.width/2, y: 30)
+            center = centerPoint
+            view.addSubview(self)
         }
         
         func createShadow() {

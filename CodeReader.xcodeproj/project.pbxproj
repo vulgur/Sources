@@ -117,6 +117,7 @@
 		D2451F981CEC2C2D003CE49B /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; };
 		D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2537C881CE7542D00848FD2 /* SearchRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2537C871CE7542D00848FD2 /* SearchRepoViewModel.swift */; };
+		D28CC9721D080865008496B3 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28CC9711D080865008496B3 /* JHProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -246,6 +247,7 @@
 		D2451F951CEC2BB9003CE49B /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		D2451F971CEC2C2D003CE49B /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
 		D2537C871CE7542D00848FD2 /* SearchRepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoViewModel.swift; sourceTree = "<group>"; };
+		D28CC9711D080865008496B3 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */,
+				D28CC9711D080865008496B3 /* JHProgressHUD.swift */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D2451F961CEC2BB9003CE49B /* RepoViewModel.swift in Sources */,
+				D28CC9721D080865008496B3 /* JHProgressHUD.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,

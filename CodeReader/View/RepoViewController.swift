@@ -59,7 +59,7 @@ class RepoViewController: UIViewController {
         let request = NSMutableURLRequest(URL: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         
-        EZLoadingActivity.show("Loading README", disableUI: true)
+        EZLoadingActivity.showOnView("Loading README", disableUI: false, view: webView)
         Alamofire.request(request).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
@@ -67,7 +67,6 @@ class RepoViewController: UIViewController {
                     self.webView.loadHTMLString(htmlStr, baseURL: NSBundle.mainBundle().bundleURL)
                 }
             }
-            EZLoadingActivity.hide()
         }
         
     }
@@ -88,8 +87,8 @@ class RepoViewController: UIViewController {
         
         sourceButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
         sourceButton.tintColor = UIColor.whiteColor()
-        commitsButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
-        commitsButton.tintColor = UIColor.whiteColor()
+//        commitsButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
+//        commitsButton.tintColor = UIColor.whiteColor()
         
         avatarImageView.layer.cornerRadius = 10
         avatarImageView.layer.masksToBounds = true
@@ -169,5 +168,6 @@ extension RepoViewController: UIWebViewDelegate {
         print("Content height:", contentViewHeight)
         self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
         self.view.layoutIfNeeded()
+        EZLoadingActivity.hide()
     }
 }
