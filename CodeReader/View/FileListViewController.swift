@@ -88,7 +88,7 @@ class FileListViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let file = fileList[indexPath.row]
         if file.type == "dir" {
-            let nextFileListVC = FileListViewController()
+            let nextFileListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FileListViewController") as! FileListViewController
             nextFileListVC.apiURLString = file.apiURLString
             if pathTitle == "/" {
                 nextFileListVC.pathTitle = self.pathTitle + file.name!
@@ -97,11 +97,21 @@ class FileListViewController: UITableViewController {
             }
             navigationController?.pushViewController(nextFileListVC, animated: true)
         } else if file.type == "file" {
-            let codeVC = CodeViewController()
+            
+            performSegueWithIdentifier("ShowCode", sender: file)
+//            let codeVC = CodeViewController()
+//            codeVC.filename = file.name
+//            codeVC.downloadAPI = file.downloadURLString
+//            navigationController?.pushViewController(codeVC, animated: true)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowCode" {
+            let codeVC = segue.destinationViewController as! CodeViewController
+            let file = sender as! RepoFile
             codeVC.filename = file.name
             codeVC.downloadAPI = file.downloadURLString
-            
-            navigationController?.pushViewController(codeVC, animated: true)
         }
     }
 }
