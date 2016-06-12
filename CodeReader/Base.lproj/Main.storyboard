@@ -1196,6 +1196,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="QrU-sj-HG7" kind="unwind" identifier="ChangeTheme" unwindAction="changeTheme:" id="EnS-fD-Mcr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1205,6 +1208,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOi-N2-CIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QrU-sj-HG7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4753.5" y="468"/>
         </scene>

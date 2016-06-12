@@ -17,6 +17,7 @@ class CodeViewController: UIViewController {
     var filename: String!
     var fontSize = 3
     var theme = "googlecode"
+    var contentString = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class CodeViewController: UIViewController {
                         if let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding) {
                             let escapeString = dataString.stringByReplacingOccurrencesOfString("<", withString: "&lt;")
                                 .stringByReplacingOccurrencesOfString(">", withString: "&gt;")
+                            self.contentString = escapeString
                             let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: escapeString)
                                 .stringByReplacingOccurrencesOfString("#title#", withString: self.filename)
                                 .stringByReplacingOccurrencesOfString("#theme#", withString: self.theme)
@@ -74,7 +76,6 @@ class CodeViewController: UIViewController {
     
     private func htmlTemplateString() -> String? {
         let path = NSBundle.mainBundle().URLForResource("template", withExtension: "html")!
-        print("HTML path:", path)
         let str: String?
         do {
             str = try String(contentsOfURL: path)
@@ -84,9 +85,32 @@ class CodeViewController: UIViewController {
         return str
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.webView?.frame = self.view.bounds
+    private func reloadWebView(contentString: String, theme: String) {
+        self.theme = theme
+        if let template = htmlTemplateString() {
+            let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: contentString)
+                .stringByReplacingOccurrencesOfString("#title#", withString: self.filename)
+                .stringByReplacingOccurrencesOfString("#theme#", withString: theme)
+            dispatch_async(dispatch_get_main_queue(), {
+//                self.webView.loadHTMLString("", baseURL: nil)
+                self.webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
+            })
+ 
+        }
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        self.webView.frame = CGRect(origin: CGPointZero, size: size)
+    }
+    
+    @IBAction func changeTheme(segue: UIStoryboardSegue) {
+        if let themeListVC = segue.sourceViewController as? ThemeListViewController {
+//            print(themeListVC.selectedTheme)
+            if let selectedTheme = themeListVC.selectedTheme?.name {
+                reloadWebView(contentString, theme: selectedTheme)
+            }
+        }
     }
 }
 
