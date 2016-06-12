@@ -1,6 +1,12 @@
 # Xcode
 #
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## Build generated
 build/
+DerivedData/
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,6 +15,7 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+
 xcuserdata
 *.xccheckout
 *.moved-aside
@@ -16,6 +23,27 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xcuserstate
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+.build/
 
 # CocoaPods
 #
@@ -27,3 +55,6 @@ DerivedData
 
 # Carthage
 Carthage/
+
+# Reveal
+Reveal.framework
