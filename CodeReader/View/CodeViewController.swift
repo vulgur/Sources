@@ -46,8 +46,11 @@ class CodeViewController: UIViewController {
         if let template = htmlTemplateString() {
             let url = NSURL(string: downloadAPI)!
             
+            EZLoadingActivity.show("Loading Source", disableUI: true)
+            
             Alamofire.request(.GET, url)
                 .responseData(completionHandler: { (response) in
+                    EZLoadingActivity.hide()
                     if let htmlData = response.data {
                         if let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding) {
                             let escapeString = dataString.stringByReplacingOccurrencesOfString("<", withString: "&lt;")

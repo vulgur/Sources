@@ -49,7 +49,7 @@ class FileListViewController: UITableViewController {
     }
     
     func fetchFileList(path: String) {
-        print("File list:", path)
+        EZLoadingActivity.show("Loading files", disableUI: true)
         Alamofire.request(.GET, path)
             .responseJSON { (response) in
                 switch response.result{
@@ -61,6 +61,7 @@ class FileListViewController: UITableViewController {
                 case .Failure(let error):
                     print(error)
                 }
+                EZLoadingActivity.hide()
         }
     }
     
