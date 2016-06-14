@@ -28,11 +28,11 @@ class CodeViewController: UIViewController {
         config.preferences.javaScriptEnabled = true
         webView = WKWebView(frame: view.bounds, configuration: config)
         view.addSubview(webView)
+        downloadSourceCode()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        downloadSourceCode()
     }
 
     override func didReceiveMemoryWarning() {

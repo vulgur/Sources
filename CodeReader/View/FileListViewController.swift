@@ -36,8 +36,6 @@ class FileListViewController: UITableViewController {
         let pathComponents = self.pathTitle.componentsSeparatedByString("/")
         let currentPath = pathComponents[pathComponents.count-1]
         let parentPath = pathComponents[pathComponents.count-2]
-        print("curr" ,currentPath)
-        print("parent",parentPath)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: currentPath == "" ? "/" : currentPath, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
@@ -49,7 +47,7 @@ class FileListViewController: UITableViewController {
     }
     
     func fetchFileList(path: String) {
-        EZLoadingActivity.show("Loading files", disableUI: true)
+        EZLoadingActivity.show("Loading Files", disableUI: true)
         Alamofire.request(.GET, path)
             .responseJSON { (response) in
                 switch response.result{
@@ -113,6 +111,14 @@ class FileListViewController: UITableViewController {
             let file = sender as! RepoFile
             codeVC.filename = file.name
             codeVC.downloadAPI = file.downloadURLString
+        }
+    }
+    
+    @IBAction func backToRoot(sender: UIBarButtonItem) {
+        if let repoVC = navigationController?.viewControllers[1] {
+            navigationController?.popToViewController(repoVC, animated: true)
+        } else {
+            navigationController?.popToRootViewControllerAnimated(true)
         }
     }
 }

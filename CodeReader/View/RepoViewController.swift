@@ -155,7 +155,6 @@ extension RepoViewController: UIWebViewDelegate {
         frame.size.height = 1
         webView.frame = frame
         let fitSize = webView.sizeThatFits(CGSizeZero)
-        print("Fit size:", fitSize)
         frame.size = fitSize
         webView.frame = frame
         self.view.layoutIfNeeded()
@@ -165,7 +164,6 @@ extension RepoViewController: UIWebViewDelegate {
 //        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")! as NSString).floatValue
 //        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.height")! as NSString).floatValue
         let contentViewHeight = CGFloat(webViewHeight) + webView.frame.origin.y
-        print("Content height:", contentViewHeight)
         self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
         self.view.layoutIfNeeded()
         EZLoadingActivity.hide()
