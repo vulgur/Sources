@@ -1240,28 +1240,185 @@
         <!--About-->
         <scene sceneID="8LA-oi-feZ">
             <objects>
-                <viewController id="7g5-CA-7j6" sceneMemberID="viewController">
+                <viewController id="7g5-CA-7j6" customClass="AboutViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zSZ-9u-1LU"/>
                         <viewControllerLayoutGuide type="bottom" id="uol-C1-9ds"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ft6-go-ij3">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-hv-Z3T">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy me a coffee so you could:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-BE-11X">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8iS-BW-Epb">
+                                        <rect key="frame" x="-20" y="59" width="360" height="236"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="support" translatesAutoresizingMaskIntoConstraints="NO" id="HE8-WD-vSc">
+                                                <rect key="frame" x="20" y="116" width="320" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="qHe-fH-qqc"/>
+                                                    <constraint firstAttribute="width" constant="40" id="rxX-QT-O95"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="qHe-fH-qqc"/>
+                                                        <exclude reference="rxX-QT-O95"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="qHe-fH-qqc"/>
+                                                        <include reference="rxX-QT-O95"/>
+                                                    </mask>
+                                                </variation>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support me make Code Reader better" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-Ud-r6S">
+                                                <rect key="frame" x="20" y="20" width="320" height="101"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Cnp-Wl-igb"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cnp-Wl-igb"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" axis="horizontal">
+                                            <mask key="constraints">
+                                                <include reference="Cnp-Wl-igb"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v6G-lv-1gr">
+                                        <rect key="frame" x="-20" y="149" width="360" height="230"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unlock" translatesAutoresizingMaskIntoConstraints="NO" id="iH5-4r-5Ml">
+                                                <rect key="frame" x="20" y="113" width="320" height="97"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="2zl-5J-pSQ"/>
+                                                    <constraint firstAttribute="width" constant="40" id="PUY-0e-iNH"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="2zl-5J-pSQ"/>
+                                                        <exclude reference="PUY-0e-iNH"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="2zl-5J-pSQ"/>
+                                                        <include reference="PUY-0e-iNH"/>
+                                                    </mask>
+                                                </variation>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock all the features in next versions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrD-Kc-LOs">
+                                                <rect key="frame" x="20" y="20" width="320" height="98"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="zo7-ap-nN4"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="zo7-ap-nN4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" axis="horizontal">
+                                            <mask key="constraints">
+                                                <include reference="zo7-ap-nN4"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buy_coffee" translatesAutoresizingMaskIntoConstraints="NO" id="m70-v2-3Ge">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="V5B-Ec-CNp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="V5B-Ec-CNp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="V5B-Ec-CNp"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m70-v2-3Ge" firstAttribute="top" secondItem="zSZ-9u-1LU" secondAttribute="bottom" constant="72" id="Ami-9z-4P4">
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="uol-C1-9ds" firstAttribute="top" secondItem="8Io-hv-Z3T" secondAttribute="bottom" constant="8" id="RhW-bq-a5u">
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Io-hv-Z3T" secondAttribute="trailing" constant="20" id="UfO-0C-FnT"/>
+                            <constraint firstItem="m70-v2-3Ge" firstAttribute="centerX" secondItem="Ft6-go-ij3" secondAttribute="centerX" id="Znu-xn-XFl">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="8Io-hv-Z3T" firstAttribute="leading" secondItem="Ft6-go-ij3" secondAttribute="leadingMargin" constant="20" id="oYg-bd-FUS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8Io-hv-Z3T"/>
+                                <exclude reference="m70-v2-3Ge"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Ami-9z-4P4"/>
+                                <exclude reference="Znu-xn-XFl"/>
+                                <exclude reference="UfO-0C-FnT"/>
+                                <exclude reference="oYg-bd-FUS"/>
+                                <exclude reference="RhW-bq-a5u"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8Io-hv-Z3T"/>
+                                <include reference="m70-v2-3Ge"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Ami-9z-4P4"/>
+                                <include reference="Znu-xn-XFl"/>
+                                <include reference="UfO-0C-FnT"/>
+                                <include reference="oYg-bd-FUS"/>
+                                <include reference="RhW-bq-a5u"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="coffee_highlight" selectedImage="coffee_highlight" id="pMI-W7-lWh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YN3-pW-DEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="2162.25"/>
+            <point key="canvasLocation" x="1839" y="2198.25"/>
         </scene>
     </scenes>
     <resources>
+        <image name="buy_coffee" width="256" height="364"/>
         <image name="coffee_highlight" width="25" height="25"/>
         <image name="explore_highlight" width="25" height="25"/>
         <image name="fork" width="50" height="50"/>
         <image name="star" width="50" height="50"/>
+        <image name="support" width="40" height="40"/>
         <image name="themes" width="22" height="22"/>
+        <image name="unlock" width="40" height="40"/>
         <image name="watch" width="50" height="50"/>
     </resources>
 </document>

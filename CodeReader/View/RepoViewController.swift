@@ -85,7 +85,7 @@ class RepoViewController: UIViewController {
             repoDescriptionLabel.textAlignment = .Center
         }
         
-        sourceButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
+        sourceButton.backgroundColor = UIColor(red: 51/255, green: 98/255, blue: 178/255, alpha: 1)
         sourceButton.tintColor = UIColor.whiteColor()
 //        commitsButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
 //        commitsButton.tintColor = UIColor.whiteColor()
