@@ -1263,8 +1263,12 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="support" translatesAutoresizingMaskIntoConstraints="NO" id="HE8-WD-vSc">
                                                 <rect key="frame" x="20" y="116" width="320" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="qHe-fH-qqc"/>
-                                                    <constraint firstAttribute="width" constant="40" id="rxX-QT-O95"/>
+                                                    <constraint firstAttribute="height" constant="40" id="qHe-fH-qqc">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="40" id="rxX-QT-O95">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -1287,7 +1291,9 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Cnp-Wl-igb"/>
+                                            <constraint firstAttribute="height" constant="40" id="Cnp-Wl-igb">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -1306,8 +1312,12 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unlock" translatesAutoresizingMaskIntoConstraints="NO" id="iH5-4r-5Ml">
                                                 <rect key="frame" x="20" y="113" width="320" height="97"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="2zl-5J-pSQ"/>
-                                                    <constraint firstAttribute="width" constant="40" id="PUY-0e-iNH"/>
+                                                    <constraint firstAttribute="height" constant="40" id="2zl-5J-pSQ">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="40" id="PUY-0e-iNH">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -1330,7 +1340,9 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="zo7-ap-nN4"/>
+                                            <constraint firstAttribute="height" constant="40" id="zo7-ap-nN4">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
