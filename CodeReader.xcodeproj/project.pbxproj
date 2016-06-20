@@ -115,6 +115,8 @@
 		D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */; };
 		D2451F981CEC2C2D003CE49B /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; };
 		D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
+		D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
 		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
 		D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */; };
 		D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29202DC1D15B78E002F1FE7 /* StoreKit.framework */; };
@@ -255,6 +257,8 @@
 		D23EE43B1CE479B700D6143D /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		D2451F971CEC2C2D003CE49B /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
+		D26CA5981D17C0E70073FB53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationProduct.swift; sourceTree = "<group>"; };
 		D28D50781D0C07E300779D30 /* ThemeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
 		D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D29202DC1D15B78E002F1FE7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -407,6 +411,7 @@
 		D23EE4061CDF56B100D6143D /* CodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				D26CA5971D17C0D70073FB53 /* IAP */,
 				D23EE4071CDF56B100D6143D /* AppDelegate.swift */,
 				D23EE40E1CDF56B100D6143D /* Assets.xcassets */,
 				D23EE4381CE3650C00D6143D /* Helper */,
@@ -485,6 +490,15 @@
 				D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */,
 			);
 			path = Vender;
+			sourceTree = "<group>";
+		};
+		D26CA5971D17C0D70073FB53 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				D26CA5981D17C0E70073FB53 /* IAPHelper.swift */,
+				D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		D294434D1D0BEC4E00D4AA2C /* ViewModel */ = {
@@ -658,10 +672,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */,
 				D29443531D0BEC4E00D4AA2C /* ThemeViewModel.swift in Sources */,
 				D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */,
 				D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */,
 				D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */,
+				D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */,
 				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
 				D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */,
 				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
