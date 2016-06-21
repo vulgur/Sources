@@ -24,7 +24,7 @@ class AboutViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        EZLoadingActivity.show("Loading...", disableUI: true)
+        EZLoadingActivity.show("loading...", disableUI: true)
         DonationProduct.store.requestProducts { (success, products) in
             if success {
                 EZLoadingActivity.hide()
