@@ -53,7 +53,8 @@ class ThemeListViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ChangeTheme" {
             if let indexPath = sender as? NSIndexPath{
-                    selectedTheme = viewModel.themes[indexPath.section]
+                selectedTheme = viewModel.themes[indexPath.section]
+                NSUserDefaults.standardUserDefaults().setObject(selectedTheme?.name, forKey: "default_theme")
             }
         }
     }

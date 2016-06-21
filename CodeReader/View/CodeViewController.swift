@@ -16,7 +16,7 @@ class CodeViewController: UIViewController {
     var downloadAPI: String!
     var filename: String!
     var fontSize = 3
-    var theme = "googlecode"
+    var theme = "default"
     var contentString = ""
 
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class CodeViewController: UIViewController {
         config.preferences.javaScriptEnabled = true
         webView = WKWebView(frame: view.bounds, configuration: config)
         view.addSubview(webView)
+        self.theme = NSUserDefaults.standardUserDefaults().stringForKey("default_theme") ?? "default"
         downloadSourceCode()
     }
     
@@ -46,7 +47,7 @@ class CodeViewController: UIViewController {
         if let template = htmlTemplateString() {
             let url = NSURL(string: downloadAPI)!
             
-            EZLoadingActivity.show("Loading Source", disableUI: true)
+            EZLoadingActivity.show("loading source", disableUI: true)
             
             Alamofire.request(.GET, url)
                 .responseData(completionHandler: { (response) in

@@ -59,7 +59,7 @@ class RepoViewController: UIViewController {
         let request = NSMutableURLRequest(URL: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         
-        EZLoadingActivity.showOnView("Loading README", disableUI: false, view: webView)
+        EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
         Alamofire.request(request).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
