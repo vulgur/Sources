@@ -54,7 +54,7 @@ class RepoViewController: UIViewController {
     // MARK: Private methods
     private func setupWebView() {
         webView.delegate = self
-        webView.scalesPageToFit = true
+//        webView.scalesPageToFit = true
         let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.name!, viewModel.name.value))!
         let request = NSMutableURLRequest(URL: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
@@ -137,6 +137,8 @@ class RepoViewController: UIViewController {
             fileListVC.pathTitle = "/"
         }
     }
+    
+
 }
 
 extension RepoViewController: UIWebViewDelegate {
@@ -150,7 +152,7 @@ extension RepoViewController: UIWebViewDelegate {
 //        webView.scrollView.zoomScale = ratio
         
         
-        webView.scrollView.scrollEnabled = false
+//        webView.scrollView.scrollEnabled = false
         var frame = webView.frame
         frame.size.height = 1
         webView.frame = frame

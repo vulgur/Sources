@@ -59,13 +59,18 @@ class SearchViewController: UIViewController {
             viewModel.sortType = .Best
         }
         
-        EZLoadingActivity.show("Loading", disableUI: true)
-        viewModel.searchRepos(completion: { 
-            self.tableView.reloadDataWithAutoSizingCells()
-            let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.tableView .scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-            EZLoadingActivity.hide()
-        }, errorHandler: self.errorHandler)
+        if let keyword = searchBar.text {
+            if keyword.characters.count > 0 {
+                viewModel.keyword = keyword
+                EZLoadingActivity.show("searching...", disableUI: true)
+                viewModel.searchRepos(completion: { 
+                    self.tableView.reloadDataWithAutoSizingCells()
+                    let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                    self.tableView .scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                    EZLoadingActivity.hide()
+                }, errorHandler: self.errorHandler)
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -132,7 +137,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         viewModel.keyword = searchBar.text!
         
-        EZLoadingActivity.show("Searching...", disableUI: true)
+        EZLoadingActivity.show("searching...", disableUI: true)
         
         viewModel.searchRepos(completion: {
             self.tableView.reloadDataWithAutoSizingCells()
