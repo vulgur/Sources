@@ -111,7 +111,7 @@ extension SearchViewController: UITableViewDataSource {
         cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
         cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
         cell.ownerAvatarImageView.kf_setImageWithURL(NSURL(string: repo.owner!.avatarURLString!)!,
-                                                     placeholderImage: nil,
+                                                     placeholderImage: UIImage(named: "user_avatar"),
                                                      optionsInfo: [.Transition(ImageTransition.Fade(1))])
         return cell
     }

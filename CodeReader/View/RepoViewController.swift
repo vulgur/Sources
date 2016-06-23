@@ -116,7 +116,10 @@ class RepoViewController: UIViewController {
         viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
         viewModel.language.bindTo(languageLabel.bnd_text)
         
-        avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!)
+        avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!, placeholderImage: UIImage(named: "user_avatar"))
+        
+        RecentsManager.sharedManager.currentRepoName = viewModel.name.value
+        RecentsManager.sharedManager.currentOwnerName = viewModel.ownerName.value
     }
     
     private func readmeTemplateString() -> String? {

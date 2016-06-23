@@ -117,6 +117,11 @@
 		D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
 		D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
+		D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
+		D26CA59F1D1B33A10073FB53 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59E1D1B33A10073FB53 /* Recent.swift */; };
+		D26CA5A11D1C20110073FB53 /* RecentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A01D1C20110073FB53 /* RecentListViewController.swift */; };
+		D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */; };
+		D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */; };
 		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
 		D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */; };
 		D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29202DC1D15B78E002F1FE7 /* StoreKit.framework */; };
@@ -259,6 +264,11 @@
 		D2451F971CEC2C2D003CE49B /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
 		D26CA5981D17C0E70073FB53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationProduct.swift; sourceTree = "<group>"; };
+		D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsManager.swift; sourceTree = "<group>"; };
+		D26CA59E1D1B33A10073FB53 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		D26CA5A01D1C20110073FB53 /* RecentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentListViewController.swift; sourceTree = "<group>"; };
+		D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentFileCell.swift; sourceTree = "<group>"; };
+		D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentFileCell.xib; sourceTree = "<group>"; };
 		D28D50781D0C07E300779D30 /* ThemeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
 		D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D29202DC1D15B78E002F1FE7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -452,6 +462,8 @@
 				D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */,
 				D20A10DE1CF8278900244357 /* RepoFile.swift */,
 				D29443431D0BE2FD00D4AA2C /* Theme.swift */,
+				D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */,
+				D26CA59E1D1B33A10073FB53 /* Recent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +483,9 @@
 				D29443481D0BE80F00D4AA2C /* ThemeCell.xib */,
 				D28D50781D0C07E300779D30 /* ThemeListViewController.swift */,
 				D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */,
+				D26CA5A01D1C20110073FB53 /* RecentListViewController.swift */,
+				D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */,
+				D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -612,6 +627,7 @@
 				D20A11631CFD417C00244357 /* monokai.css in Resources */,
 				D20A114B1CFD417C00244357 /* codepen-embed.css in Resources */,
 				D20A11421CFD417C00244357 /* atelier-plateau-light.css in Resources */,
+				D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */,
 				D20A11771CFD417C00244357 /* tomorrow.css in Resources */,
 				D20A11321CFD417C00244357 /* arduino-light.css in Resources */,
 				D20A11601CFD417C00244357 /* magula.css in Resources */,
@@ -683,17 +699,21 @@
 				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
 				D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */,
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
+				D26CA5A11D1C20110073FB53 /* RecentListViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,
+				D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */,
 				D29443441D0BE2FD00D4AA2C /* Theme.swift in Sources */,
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
+				D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
 				D29443511D0BEC4E00D4AA2C /* RepoViewModel.swift in Sources */,
 				D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */,
 				D294434C1D0BEC2F00D4AA2C /* ThemeFactory.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
+				D26CA59F1D1B33A10073FB53 /* Recent.swift in Sources */,
 				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

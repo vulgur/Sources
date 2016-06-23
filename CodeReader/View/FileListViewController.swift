@@ -39,7 +39,7 @@ class FileListViewController: UITableViewController {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: currentPath == "" ? "/" : currentPath, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
-        if pathTitle.characters.count > 45 {
+        if pathTitle.characters.count > 30 {
             navigationItem.title = ".../" + parentPath + "/" + currentPath
         } else {
             navigationItem.title = pathTitle
@@ -109,6 +109,7 @@ class FileListViewController: UITableViewController {
         if segue.identifier == "ShowCode" {
             let codeVC = segue.destinationViewController as! CodeViewController
             let file = sender as! RepoFile
+            RecentsManager.sharedManager.addRecentFile(file)
             codeVC.filename = file.name
             codeVC.downloadAPI = file.downloadURLString
         }

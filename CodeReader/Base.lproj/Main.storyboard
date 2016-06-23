@@ -171,12 +171,12 @@
         <!--Recents-->
         <scene sceneID="llp-nK-Zag">
             <objects>
-                <tableViewController title="Recents" id="UvD-Xm-uVY" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkP-jg-Yu5">
+                <tableViewController title="Recents" id="UvD-Xm-uVY" customClass="RecentListViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkP-jg-Yu5">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Cv9-m9-3PK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentFileCell" rowHeight="80" id="Cv9-m9-3PK">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cv9-m9-3PK" id="kCM-hu-DNB">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1329,8 +1329,7 @@
                                                         <include reference="rxX-QT-O95"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
                                                     <mask key="constraints">
                                                         <include reference="qHe-fH-qqc"/>
                                                         <include reference="rxX-QT-O95"/>
@@ -1342,9 +1341,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                                    <rect key="frame" x="50" y="0.0" width="249" height="40"/>
-                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -1362,8 +1358,7 @@
                                                 <include reference="Cnp-Wl-igb"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="299" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="constraints">
                                                 <include reference="Cnp-Wl-igb"/>
                                             </mask>
@@ -1394,8 +1389,7 @@
                                                         <include reference="PUY-0e-iNH"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
                                                     <mask key="constraints">
                                                         <include reference="2zl-5J-pSQ"/>
                                                         <include reference="PUY-0e-iNH"/>
@@ -1407,9 +1401,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                                    <rect key="frame" x="50" y="0.0" width="249" height="40"/>
-                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -1427,8 +1418,7 @@
                                                 <include reference="zo7-ap-nN4"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="41" width="299" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="constraints">
                                                 <include reference="zo7-ap-nN4"/>
                                             </mask>
