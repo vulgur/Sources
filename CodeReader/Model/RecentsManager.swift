@@ -13,7 +13,13 @@ class RecentsManager {
     var recents = [Recent]()
     var currentRepoName: String?
     var currentOwnerName: String?
-    private let MaxCapacity = 10
+    private var maxCapacity: Int {
+        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            return 50
+        } else {
+            return 5
+        }
+    }
     
     func saveRecents() {
         
@@ -24,7 +30,7 @@ class RecentsManager {
         let repoName = currentRepoName ?? "Unknown"
         let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
         recents.insert(recent, atIndex: 0)
-        if recents.count < MaxCapacity {
+        if recents.count <= maxCapacity {
             return true
         } else {
             recents.removeLast()

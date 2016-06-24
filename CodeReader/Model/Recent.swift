@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct Recent {
+let RecentRepoFileKey = "recent_repo_file"
+let RecentOwnerNameKey = "recent_owner_name"
+let RecentRepoNameKey = "recent_repo_name"
+
+class Recent: NSObject, NSCoding{
+    
     var file: RepoFile
     var ownerName: String
     var repoName: String
@@ -17,5 +22,22 @@ struct Recent {
         self.file = file
         self.ownerName = ownerName
         self.repoName = repoName
+    }
+    
+    // MARK: NSCoding
+    convenience required init?(coder aDecoder: NSCoder) {
+        guard let file = aDecoder.decodeObjectForKey(RecentRepoFileKey) as? RepoFile,
+            let ownerName = aDecoder.decodeObjectForKey(RecentOwnerNameKey) as? String,
+            let repoName = aDecoder.decodeObjectForKey(RecentRepoNameKey) as? String
+            else {
+                return nil
+            }
+        self.init(file: file, ownerName: ownerName, repoName: repoName)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.file, forKey: RecentRepoFileKey)
+        aCoder.encodeObject(self.ownerName, forKey: RecentOwnerNameKey)
+        aCoder.encodeObject(self.repoName, forKey: RecentRepoNameKey)
     }
 }

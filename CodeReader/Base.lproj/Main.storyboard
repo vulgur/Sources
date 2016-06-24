@@ -172,13 +172,16 @@
         <scene sceneID="llp-nK-Zag">
             <objects>
                 <tableViewController title="Recents" id="UvD-Xm-uVY" customClass="RecentListViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkP-jg-Yu5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="QkP-jg-Yu5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentFileCell" rowHeight="80" id="Cv9-m9-3PK">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cv9-m9-3PK" id="kCM-hu-DNB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1295,7 +1298,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="260" y="92" width="280" height="364"/>
+                                    <rect key="frame" x="260" y="92" width="280" height="351"/>
                                     <mask key="constraints">
                                         <include reference="V5B-Ec-CNp"/>
                                     </mask>
@@ -1336,7 +1339,7 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support me make Sources better" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-Ud-r6S">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support me make Sources better" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-Ud-r6S">
                                                 <rect key="frame" x="20" y="20" width="320" height="101"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1396,7 +1399,7 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock all the features in next versions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrD-Kc-LOs">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock all the features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrD-Kc-LOs">
                                                 <rect key="frame" x="20" y="20" width="320" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1428,13 +1431,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="U5Z-aj-8bm">
                                         <variation key="heightClass=regular-widthClass=compact" constant="300"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
                                     </constraint>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="U5Z-aj-8bm"/>
-                                    </mask>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="U5Z-aj-8bm"/>
@@ -1442,97 +1441,16 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="K7I-ey-Sq6">
-                                <rect key="frame" x="1" y="0.0" width="219" height="162"/>
+                                <rect key="frame" x="1" y="0.0" width="223" height="129"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2by-79-pH3">
-                                        <rect key="frame" x="0.0" y="0.0" width="219" height="30"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="unlock_download" translatesAutoresizingMaskIntoConstraints="NO" id="oey-tY-wOT">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="download repos or single files" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk8-VL-P2Y">
-                                                <rect key="frame" x="38" y="0.0" width="181" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="XnF-kf-xG4"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="XnF-kf-xG4"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal">
-                                            <mask key="constraints">
-                                                <include reference="XnF-kf-xG4"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u7g-Gy-bEi">
-                                        <rect key="frame" x="0.0" y="33" width="219" height="30"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="unlock_commits" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-IO-WtZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="view commits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R87-jZ-6rK">
-                                                <rect key="frame" x="38" y="0.0" width="181" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="t8L-IO-04Y"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="t8L-IO-04Y"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal">
-                                            <mask key="constraints">
-                                                <include reference="t8L-IO-04Y"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ur0-KN-0DN">
-                                        <rect key="frame" x="0.0" y="66" width="219" height="30"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="unlock_font" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-pb-ddA">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="change fonts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-Xf-nES">
-                                                <rect key="frame" x="38" y="0.0" width="181" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="YgZ-XA-jXf"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="YgZ-XA-jXf"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal">
-                                            <mask key="constraints">
-                                                <include reference="YgZ-XA-jXf"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2PZ-Fm-1eS">
-                                        <rect key="frame" x="0.0" y="99" width="219" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="unlock_theme" translatesAutoresizingMaskIntoConstraints="NO" id="Aas-jd-vjx">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="unlock_theme" translatesAutoresizingMaskIntoConstraints="NO" id="Aas-jd-vjx">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="more code themes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-Z8-axr">
-                                                <rect key="frame" x="38" y="0.0" width="181" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="more syntax highlight themes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-Z8-axr">
+                                                <rect key="frame" x="38" y="0.0" width="185" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1552,14 +1470,74 @@
                                             </mask>
                                         </variation>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DDE-oR-t2d">
-                                        <rect key="frame" x="0.0" y="132" width="219" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u7g-Gy-bEi">
+                                        <rect key="frame" x="0.0" y="33" width="223" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="unlock_more" translatesAutoresizingMaskIntoConstraints="NO" id="Knv-zR-q9K">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="unlock_commits" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-IO-WtZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="and more features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brp-Gh-w25">
-                                                <rect key="frame" x="38" y="0.0" width="181" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="more recent items (5 up to 50)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R87-jZ-6rK">
+                                                <rect key="frame" x="38" y="0.0" width="185" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="t8L-IO-04Y"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="t8L-IO-04Y"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal">
+                                            <mask key="constraints">
+                                                <include reference="t8L-IO-04Y"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2by-79-pH3">
+                                        <rect key="frame" x="0.0" y="66" width="223" height="30"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="unlock_download" translatesAutoresizingMaskIntoConstraints="NO" id="oey-tY-wOT">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                </variation>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="save recent items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk8-VL-P2Y">
+                                                <rect key="frame" x="38" y="0.0" width="185" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                    <rect key="frame" x="38" y="0.0" width="185" height="30"/>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XnF-kf-xG4"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="XnF-kf-xG4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal">
+                                            <mask key="constraints">
+                                                <include reference="XnF-kf-xG4"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DDE-oR-t2d">
+                                        <rect key="frame" x="0.0" y="99" width="223" height="30"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="unlock_more" translatesAutoresizingMaskIntoConstraints="NO" id="Knv-zR-q9K">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="and more features in future" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brp-Gh-w25">
+                                                <rect key="frame" x="38" y="0.0" width="185" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1645,14 +1623,14 @@
                                 <exclude reference="8Io-hv-Z3T"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ami-9z-4P4"/>
-                                <exclude reference="Znu-xn-XFl"/>
                                 <exclude reference="GjY-is-mvl"/>
                                 <exclude reference="UfO-0C-FnT"/>
                                 <exclude reference="WLq-H4-7AG"/>
                                 <exclude reference="gTq-ak-h5J"/>
                                 <exclude reference="oYg-bd-FUS"/>
                                 <exclude reference="t1k-1V-2kY"/>
+                                <exclude reference="Ami-9z-4P4"/>
+                                <exclude reference="Znu-xn-XFl"/>
                                 <exclude reference="389-9Y-mgP"/>
                                 <exclude reference="Ad7-k6-oEA"/>
                                 <exclude reference="Vho-3v-GJ0"/>
@@ -1674,12 +1652,12 @@
                                 <include reference="XUY-YN-K2g"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Ami-9z-4P4"/>
-                                <include reference="Znu-xn-XFl"/>
                                 <exclude reference="UfO-0C-FnT"/>
                                 <include reference="WLq-H4-7AG"/>
                                 <include reference="gTq-ak-h5J"/>
                                 <exclude reference="oYg-bd-FUS"/>
+                                <include reference="Ami-9z-4P4"/>
+                                <include reference="Znu-xn-XFl"/>
                                 <include reference="Vho-3v-GJ0"/>
                                 <include reference="yZG-vq-Ed4"/>
                                 <exclude reference="yd2-c7-g9M"/>
@@ -1695,12 +1673,12 @@
                                 <include reference="8Io-hv-Z3T"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Ami-9z-4P4"/>
-                                <include reference="Znu-xn-XFl"/>
                                 <include reference="GjY-is-mvl"/>
                                 <exclude reference="UfO-0C-FnT"/>
                                 <exclude reference="oYg-bd-FUS"/>
                                 <include reference="t1k-1V-2kY"/>
+                                <include reference="Ami-9z-4P4"/>
+                                <include reference="Znu-xn-XFl"/>
                                 <include reference="389-9Y-mgP"/>
                                 <include reference="Ad7-k6-oEA"/>
                                 <include reference="6gC-Ca-cr7"/>
@@ -1720,7 +1698,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YN3-pW-DEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781" y="2207"/>
+            <point key="canvasLocation" x="1890" y="2206.5"/>
         </scene>
         <!--Recents-->
         <scene sceneID="ucC-vm-9c4">
@@ -1754,7 +1732,6 @@
         <image name="unlock" width="40" height="40"/>
         <image name="unlock_commits" width="30" height="30"/>
         <image name="unlock_download" width="30" height="30"/>
-        <image name="unlock_font" width="30" height="30"/>
         <image name="unlock_more" width="30" height="30"/>
         <image name="unlock_theme" width="30" height="30"/>
         <image name="watch" width="50" height="50"/>

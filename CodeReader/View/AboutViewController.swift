@@ -18,24 +18,27 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AboutViewController.handlePurchasedNotification(_:)), name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        EZLoadingActivity.show("loading...", disableUI: true)
-        DonationProduct.store.requestProducts { (success, products) in
-            if success {
-                EZLoadingActivity.hide()
-                self.products = products!
-                if let buyMeACoffee = self.products.first {
-                    if DonationProduct.store.isProductPurchased(buyMeACoffee.productIdentifier) {
-                        self.changeStateToPurchased()
-                    } else {
-                        let tap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.tapToDonate))
-                        self.donateImageView.userInteractionEnabled = true
-                        self.donateImageView.addGestureRecognizer(tap)
+        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            changeStateToPurchased()
+        } else {
+            EZLoadingActivity.show("loading...", disableUI: true)
+            DonationProduct.store.requestProducts { (success, products) in
+                if success {
+                    EZLoadingActivity.hide()
+                    self.products = products!
+                    if let buyMeACoffee = self.products.first {
+                        if DonationProduct.store.isProductPurchased(buyMeACoffee.productIdentifier) {
+                            self.changeStateToPurchased()
+                        } else {
+                            let tap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.tapToDonate))
+                            self.donateImageView.userInteractionEnabled = true
+                            self.donateImageView.addGestureRecognizer(tap)
+                        }
                     }
                 }
             }
