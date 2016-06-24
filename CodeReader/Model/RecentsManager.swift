@@ -29,6 +29,11 @@ class RecentsManager {
         let ownerName = currentOwnerName ?? "Unknown"
         let repoName = currentRepoName ?? "Unknown"
         let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
+        if recents.contains(recent) {
+            if let index = recents.indexOf(recent) {
+                recents.removeAtIndex(index)
+            }
+        }
         recents.insert(recent, atIndex: 0)
         if recents.count <= maxCapacity {
             return true

@@ -50,6 +50,16 @@ class RecentListViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let recent = RecentsManager.sharedManager.recents[indexPath.row]
+        let file = recent.file
+        
+        let codeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CodeViewController") as! CodeViewController
+        codeVC.filename = file.name
+        codeVC.downloadAPI = file.downloadURLString
+        navigationController?.pushViewController(codeVC, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

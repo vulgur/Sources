@@ -40,4 +40,13 @@ class Recent: NSObject, NSCoding{
         aCoder.encodeObject(self.ownerName, forKey: RecentOwnerNameKey)
         aCoder.encodeObject(self.repoName, forKey: RecentRepoNameKey)
     }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let anotherRecent = object as? Recent {
+            return self.repoName == anotherRecent.repoName
+                && self.ownerName == anotherRecent.ownerName
+                && self.file == anotherRecent.file
+        }
+        return false
+    }
 }

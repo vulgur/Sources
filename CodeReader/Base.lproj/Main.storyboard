@@ -1193,7 +1193,7 @@
         <!--Code View Controller-->
         <scene sceneID="ve1-GG-awN">
             <objects>
-                <viewController id="bdd-vg-XTJ" customClass="CodeViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CodeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bdd-vg-XTJ" customClass="CodeViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bwr-i5-J9V"/>
                         <viewControllerLayoutGuide type="bottom" id="qgu-jR-3k3"/>

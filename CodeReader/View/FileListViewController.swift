@@ -98,10 +98,6 @@ class FileListViewController: UITableViewController {
         } else if file.type == "file" {
             
             performSegueWithIdentifier("ShowCode", sender: file)
-//            let codeVC = CodeViewController()
-//            codeVC.filename = file.name
-//            codeVC.downloadAPI = file.downloadURLString
-//            navigationController?.pushViewController(codeVC, animated: true)
         }
     }
     

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -48,7 +49,7 @@
                         </variation>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZg-R0-jNa">
-                        <rect key="frame" x="8" y="8" width="359" height="40"/>
+                        <rect key="frame" x="8" y="8" width="314" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="lTS-6U-r6T"/>
                         </constraints>
@@ -56,26 +57,45 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="doB-2u-gQl">
+                        <rect key="frame" x="327" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="doB-2u-gQl" secondAttribute="height" multiplier="1:1" id="vR1-en-ImV"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
+                    <constraint firstItem="doB-2u-gQl" firstAttribute="centerY" secondItem="BZg-R0-jNa" secondAttribute="centerY" id="1Nq-8d-aCT"/>
                     <constraint firstItem="BZg-R0-jNa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="4vw-sj-o8B"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BZg-R0-jNa" secondAttribute="trailing" id="GbB-wd-ffm"/>
                     <constraint firstAttribute="trailing" secondItem="05e-sU-m9Q" secondAttribute="trailing" id="NYf-2B-8fM"/>
+                    <constraint firstItem="doB-2u-gQl" firstAttribute="leading" secondItem="BZg-R0-jNa" secondAttribute="trailing" constant="5" id="QeW-F0-Rl6"/>
                     <constraint firstItem="05e-sU-m9Q" firstAttribute="top" secondItem="BZg-R0-jNa" secondAttribute="bottom" constant="8" id="bfF-C7-7hc"/>
                     <constraint firstAttribute="bottom" secondItem="05e-sU-m9Q" secondAttribute="bottom" id="gTa-yP-jag"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="doB-2u-gQl" secondAttribute="trailing" id="gqK-V5-D5d"/>
                     <constraint firstItem="BZg-R0-jNa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jjR-7K-aAA"/>
                     <constraint firstItem="05e-sU-m9Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ktp-ya-CVA"/>
+                    <constraint firstItem="doB-2u-gQl" firstAttribute="height" secondItem="BZg-R0-jNa" secondAttribute="height" id="pMj-jt-Afg"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="GbB-wd-ffm"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="colorView1" destination="x62-wc-YQL" id="dpo-uo-1Le"/>
                 <outlet property="colorView2" destination="XtL-Y3-QWY" id="wDH-uc-DPs"/>
                 <outlet property="colorView3" destination="oDo-v0-ehC" id="tzA-xM-cTQ"/>
                 <outlet property="colorView4" destination="GMH-yG-Coj" id="Yeg-bI-rod"/>
+                <outlet property="lockImageView" destination="doB-2u-gQl" id="45g-Me-bIG"/>
                 <outlet property="nameLabel" destination="BZg-R0-jNa" id="VOG-SQ-Jrk"/>
             </connections>
             <point key="canvasLocation" x="15.5" y="392"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="lock" width="40" height="40"/>
+    </resources>
 </document>

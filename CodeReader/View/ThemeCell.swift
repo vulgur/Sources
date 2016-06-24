@@ -10,6 +10,7 @@ import UIKit
 
 class ThemeCell: UITableViewCell {
 
+    @IBOutlet var lockImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var colorView1: UIView!
     @IBOutlet var colorView2: UIView!

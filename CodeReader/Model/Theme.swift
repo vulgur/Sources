@@ -11,7 +11,9 @@ import UIKit
 class Theme {
     var name: String!
     var colors = [UIColor?]()
-    required init(name: String) {
+    var isPurchased: Bool = true
+    required init(name: String, purchased: Bool = false) {
         self.name = name
+        self.isPurchased = purchased
     }
 }

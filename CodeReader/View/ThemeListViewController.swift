@@ -37,6 +37,11 @@ class ThemeListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Theme", forIndexPath: indexPath) as! ThemeCell
         let theme = viewModel.themes[indexPath.section]
+        if theme.isPurchased || DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            cell.lockImageView.hidden = true
+        } else {
+            cell.lockImageView.hidden = false
+        }
         cell.contentView.backgroundColor = theme.colors[0]
         cell.nameLabel.text = theme.name
         cell.nameLabel.textColor = theme.colors[1]
@@ -48,7 +53,18 @@ class ThemeListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ChangeTheme", sender: indexPath)
+        let theme = viewModel.themes[indexPath.section]
+        if theme.isPurchased || DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            performSegueWithIdentifier("ChangeTheme", sender: indexPath)
+        } else {
+            let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all themes", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (_) in
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+            alertController.addAction(alertAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ChangeTheme" {

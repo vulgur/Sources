@@ -62,4 +62,13 @@ class RepoFile: NSObject, NSCoding, Mappable {
         aCoder.encodeObject(htmlURLString, forKey: RepoFileHTMLURLKey)
         aCoder.encodeObject(apiURLString, forKey: RepoFileAPIURLKey)
     }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let anotherRepoFile = object as? RepoFile {
+            return self.name == anotherRepoFile.name
+                && self.path == anotherRepoFile.path
+                && self.downloadURLString == anotherRepoFile.downloadURLString
+        }
+        return false
+    }
 }
