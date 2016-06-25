@@ -158,7 +158,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D20A10D61CF3324C00244357 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		D20A10D81CF823F600244357 /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
 		D20A10DA1CF8245A00244357 /* FileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		D20A10DB1CF8245A00244357 /* FileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCell.xib; sourceTree = "<group>"; };
@@ -452,7 +451,6 @@
 				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
 				D29202DC1D15B78E002F1FE7 /* StoreKit.framework */,
 				D29443541D0BFC6D00D4AA2C /* HEXColor.framework */,
-				D20A10D61CF3324C00244357 /* Reveal.framework */,
 				D2451F971CEC2C2D003CE49B /* Bond.framework */,
 				D23EE4351CE2387C00D6143D /* Kingfisher.framework */,
 				D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */,
@@ -861,12 +859,7 @@
 				INFOPLIST_FILE = CodeReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsd.Sources;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -886,12 +879,7 @@
 				INFOPLIST_FILE = CodeReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsd.Sources;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
