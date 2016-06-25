@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        Fabric.with([Answers.self, Crashlytics.self])
+        
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            
             if let recentsData = NSUserDefaults.standardUserDefaults().objectForKey("recents") {
                 RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObjectWithData(recentsData as! NSData) as! [Recent]
                 NSUserDefaults.standardUserDefaults().synchronize()

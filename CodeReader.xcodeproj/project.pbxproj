@@ -122,6 +122,8 @@
 		D26CA5A11D1C20110073FB53 /* RecentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A01D1C20110073FB53 /* RecentListViewController.swift */; };
 		D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */; };
 		D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */; };
+		D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECA91D1E3ABF00E3D366 /* Fabric.framework */; };
+		D27FECAC1D1E3ABF00E3D366 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */; };
 		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
 		D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */; };
 		D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29202DC1D15B78E002F1FE7 /* StoreKit.framework */; };
@@ -269,6 +271,8 @@
 		D26CA5A01D1C20110073FB53 /* RecentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentListViewController.swift; sourceTree = "<group>"; };
 		D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentFileCell.swift; sourceTree = "<group>"; };
 		D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentFileCell.xib; sourceTree = "<group>"; };
+		D27FECA91D1E3ABF00E3D366 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D28D50781D0C07E300779D30 /* ThemeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
 		D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D29202DC1D15B78E002F1FE7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -288,8 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23EE4361CE2387C00D6143D /* Kingfisher.framework in Frameworks */,
+				D27FECAC1D1E3ABF00E3D366 /* Crashlytics.framework in Frameworks */,
 				D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */,
 				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
+				D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */,
 				D23EE41A1CDF62A500D6143D /* ZipArchive.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
 				D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */,
@@ -442,6 +448,8 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D27FECA91D1E3ABF00E3D366 /* Fabric.framework */,
+				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
 				D29202DC1D15B78E002F1FE7 /* StoreKit.framework */,
 				D29443541D0BFC6D00D4AA2C /* HEXColor.framework */,
 				D20A10D61CF3324C00244357 /* Reveal.framework */,
@@ -537,6 +545,7 @@
 				D23EE4011CDF56B100D6143D /* Frameworks */,
 				D23EE4021CDF56B100D6143D /* Resources */,
 				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
+				D27FECA41D1E354000E3D366 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -682,6 +691,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D27FECA41D1E354000E3D366 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f88d269e9ebddfa5288c332293c76d498259c44c 6693f3cd2650d84a773743917ee96147f79bf22b8f57aab8792365eadad42a97";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D23EE4001CDF56B100D6143D /* Sources */ = {

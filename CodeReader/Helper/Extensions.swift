@@ -27,3 +27,11 @@ extension UIScrollView {
         self.contentSize = CGSize(width: contentWidth, height: contentHeight)
     }
 }
+
+extension NSDate {
+    var dateString: String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.stringFromDate(self)
+    }
+}

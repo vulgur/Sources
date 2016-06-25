@@ -7,6 +7,8 @@
 //
 
 import StoreKit
+import Crashlytics
+
 
 public typealias ProductRequestsCompletionHandler = (success: Bool, products: [SKProduct]?) -> ()
 
@@ -113,6 +115,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         
         deliverPurchasedNotificationForIdentifier(transaction.payment.productIdentifier)
         SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+        Answers.logContentViewWithName("Purchase completed", contentType: "IAP", contentId: NSDate().dateString, customAttributes: nil)
     }
     
     private func restoreTransaction(transaction: SKPaymentTransaction) {
@@ -123,12 +126,19 @@ extension IAPHelper: SKPaymentTransactionObserver {
         print("restoreTransaction... \(productIdentifier)")
         deliverPurchasedNotificationForIdentifier(productIdentifier)
         SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+        Answers.logContentViewWithName("Purchase restored", contentType: "IAP", contentId: NSDate().dateString, customAttributes: nil)
     }
     
     private func failedTransaction(transaction: SKPaymentTransaction) {
         print("failedTransaction...")
         if transaction.error!.code != SKErrorCode.PaymentCancelled.rawValue {
             print("Transaction Error: \(transaction.error?.localizedDescription)")
+            if let desc = transaction.error?.localizedDescription {
+                Answers.logContentViewWithName("Purchase failed",
+                                               contentType: "IAP",
+                                               contentId: NSDate().dateString,
+                                               customAttributes: ["Error": desc])
+            }
         }
         
         SKPaymentQueue.defaultQueue().finishTransaction(transaction)

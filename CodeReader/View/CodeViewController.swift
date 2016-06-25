@@ -71,6 +71,7 @@ class CodeViewController: UIViewController {
                                 self.navigationController?.popViewControllerAnimated(true)
                             })
                             alertController.addAction(alertAction)
+                            RecentsManager.sharedManager.recents.removeFirst()
                             self.presentViewController(alertController, animated: true, completion: nil)
                         }
                     }
