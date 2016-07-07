@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+import Bond
 
 class SearchRepoViewModel {
     
@@ -20,17 +21,22 @@ class SearchRepoViewModel {
     }
     
     var repos = [Repo]()
-    var keyword = ""
+    var searchResults = ObservableArray<Repo>()
+    var searchInProgress = Observable<Bool>(false)
+    var searchKeyword = Observable<String>("")
+    
+//    var keyword = ""
     var currentPage = 1
     var totalPage = 0
     var sortType: SortType = .Best
     
     func searchRepos(completion completion: () -> (), errorHandler: ((String) -> ())? = nil) {
         let urlParams = [
-            "q": keyword,
+            "q": searchKeyword.value,
             "sort" : sortType.rawValue,
         ]
         print("Search params:", urlParams)
+        searchInProgress.value = true
         
         // Fetch Request
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
@@ -41,7 +47,9 @@ class SearchRepoViewModel {
                         switch statusCode{
                         case 200..<299:
                             if let items = response.result.value!["items"], results = Mapper<Repo>().mapArray(items) {
-                                    self.repos = results
+//                                    self.repos = results
+                                    self.searchResults.removeAll()
+                                    self.searchResults.insertContentsOf(results, atIndex: 0)
                                     completion()
                             }
                         default:
@@ -57,6 +65,7 @@ class SearchRepoViewModel {
                         errorHandler(error.localizedDescription)
                     }
                 }
+                self.searchInProgress.value = false
             }
     }
     
@@ -64,7 +73,7 @@ class SearchRepoViewModel {
         
         currentPage += 1
         let urlParams = [
-            "q": keyword,
+            "q": searchKeyword.value,
             "sort" : sortType.rawValue,
             "page" : "\(currentPage)"
         ]

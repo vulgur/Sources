@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var maskView: UIView!
     
     var viewModel = SearchRepoViewModel()
     var errorHandler: (String) -> () = {_ in}
@@ -25,6 +26,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapToDissmissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        maskView.addGestureRecognizer(tapToDissmissKeyboard)
         
         searchBar.delegate = self
         tableView.delegate = self
@@ -42,9 +46,20 @@ class SearchViewController: UIViewController {
             alertController.addAction(action)
             self.presentViewController(alertController, animated: true, completion: nil)
         }
+        
+        // bind 
+        bindViewModel()
+        
     }
     
+    
     // MARK: Actions
+    func dismissKeyboard() {
+        viewModel.searchInProgress.value = false
+//        self.searchBar.endEditing(true)
+        self.searchBar.resignFirstResponder()
+    }
+    
     func searchSortChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -61,7 +76,7 @@ class SearchViewController: UIViewController {
         
         if let keyword = searchBar.text {
             if keyword.characters.count > 0 {
-                viewModel.keyword = keyword
+                viewModel.searchKeyword.value = keyword
                 EZLoadingActivity.show("searching...", disableUI: true)
                 viewModel.searchRepos(completion: { 
                     self.tableView.reloadDataWithAutoSizingCells()
@@ -82,12 +97,29 @@ class SearchViewController: UIViewController {
         }
     }
     // MARK: Private methods
-
+    func bindViewModel() {
+        
+        viewModel.searchInProgress.map{!$0}.bindTo(maskView.bnd_hidden)
+        
+        viewModel.searchResults.lift().bindTo(self.tableView) { (indexPath, dataSource, tableView) -> UITableViewCell in
+            let cell = tableView.dequeueReusableCellWithIdentifier("repo", forIndexPath: indexPath) as! SearchRepoCell
+            let repo = dataSource[indexPath.section][indexPath.row]
+            cell.repoNameLabel.text = repo.fullName
+            cell.repoDescriptionLabel.text = repo.description
+            cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
+            cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
+            cell.ownerAvatarImageView.kf_setImageWithURL(NSURL(string: repo.owner!.avatarURLString!)!,
+                                                         placeholderImage: UIImage(named: "user_avatar"),
+                                                         optionsInfo: [.Transition(ImageTransition.Fade(1))])
+            return cell
+            
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let repo = viewModel.repos[indexPath.row]
+        let repo = viewModel.searchResults[indexPath.row]
         let repoViewModel = RepoViewModel(repo: repo)
         performSegueWithIdentifier("ShowRepo", sender: repoViewModel)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -115,6 +147,7 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UIScrollViewDelegate {
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
         if (offset >= 0 && offset < 10 && isLoading == false) {
@@ -128,18 +161,23 @@ extension SearchViewController: UIScrollViewDelegate {
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("Search for: ", searchBar.text!)
         searchBar.endEditing(true)
         
-        viewModel.keyword = searchBar.text!
+        viewModel.searchKeyword.value = searchBar.text!
         
         EZLoadingActivity.show("searching...", disableUI: true)
         
         viewModel.searchRepos(completion: {
             self.tableView.reloadDataWithAutoSizingCells()
-//            self.tableView.reloadData()
             EZLoadingActivity.hide()
             }, errorHandler: self.errorHandler)
+    }
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        viewModel.searchInProgress.value = true
+        return true
     }
 }
