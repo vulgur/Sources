@@ -78,9 +78,6 @@ class SearchViewController: UIViewController {
             if let repoViewModel = sender {
                 let destVC = segue.destinationViewController as! RepoViewController
                 destVC.viewModel = repoViewModel as! RepoViewModel
-//                if let repoVC = destVC.viewControllers.first as? RepoViewController {
-//                    repoVC.viewModel = repoViewModel as! RepoViewModel
-//                }
             }
         }
     }

@@ -97,13 +97,6 @@ class RepoViewController: UIViewController {
     }
     
     private func bindViewModel() {
-//        navigationItem.bnd_title.observe { (event) in
-//            if event?.characters.count > 15 {
-//                self.navigationController?.navigationBar.titleTextAttributes =
-//                    [
-//                        NSFontAttributeName: UIFont.systemFontOfSize(12)]
-//            }
-//        }
         
         viewModel.name.bindTo(repoNameLabel.bnd_text)
         viewModel.ownerName.bindTo(navigationItem.bnd_title)
@@ -146,16 +139,7 @@ class RepoViewController: UIViewController {
 
 extension RepoViewController: UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
-//        let contentSize = webView.scrollView.contentSize
-//        let webViewSize = webView.bounds.size
-//        let ratio = webViewSize.width / contentSize.width
-//
-//        webView.scrollView.minimumZoomScale = ratio
-//        webView.scrollView.maximumZoomScale = ratio
-//        webView.scrollView.zoomScale = ratio
-        
-        
-//        webView.scrollView.scrollEnabled = false
+
         var frame = webView.frame
         frame.size.height = 1
         webView.frame = frame
