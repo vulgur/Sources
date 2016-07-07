@@ -37,12 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            let recentsData = NSKeyedArchiver.archivedDataWithRootObject(RecentsManager.sharedManager.recents)
-            NSUserDefaults.standardUserDefaults().setObject(recentsData, forKey: "recents")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            print("Recents saved")
-        }
+        RecentsManager.sharedManager.save(RecentsManager.SaveType.Recent)
+        RecentsManager.sharedManager.save(RecentsManager.SaveType.Favorite)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
