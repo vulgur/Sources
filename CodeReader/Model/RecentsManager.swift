@@ -31,14 +31,26 @@ class RecentsManager {
     }
     
     func save(type: SaveType) {
-        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            let data: AnyObject
-            switch type {
-            case .Recent:
+        var data: AnyObject?
+        var shouldSave = false
+        switch type {
+        case .Recent:
+            if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) && self.recents.count > 0 {
+                shouldSave = true
                 data = NSKeyedArchiver.archivedDataWithRootObject(self.recents)
-            case .Favorite:
-                data = NSKeyedArchiver.archivedDataWithRootObject(self.favorites)
+            } else {
+                shouldSave = false
             }
+        case .Favorite:
+            if self.favorites.count > 0 {
+                shouldSave = true
+                data = NSKeyedArchiver.archivedDataWithRootObject(self.favorites)
+            } else {
+                shouldSave = false
+            }
+        }
+        
+        if shouldSave {
             NSUserDefaults.standardUserDefaults().setObject(data, forKey: type.rawValue)
             NSUserDefaults.standardUserDefaults().synchronize()
             print("\(type.rawValue) saved")

@@ -15,7 +15,7 @@ let RepoFileDownloadURLKey = "repo_file_download_url"
 let RepoFileHTMLURLKey = "repo_file_html_url"
 let RepoFileAPIURLKey = "repo_file_api_url"
 
-class RepoFile: NSObject, NSCoding, Mappable {
+class RepoFile: NSObject, Mappable {
     var name: String?
     var type: String?
     var path: String?
@@ -29,14 +29,14 @@ class RepoFile: NSObject, NSCoding, Mappable {
     
     required init?(coder aDecoder: NSCoder) {
         guard let name = aDecoder.decodeObjectForKey(RepoFileNameKey) as? String,
-             let type = aDecoder.decodeObjectForKey(RepoFileTypeKey) as? String,
-             let path = aDecoder.decodeObjectForKey(RepoFilePathKey) as? String,
-             let downloadURLString = aDecoder.decodeObjectForKey(RepoFileDownloadURLKey) as? String,
-             let htmlURLString = aDecoder.decodeObjectForKey(RepoFileHTMLURLKey) as? String,
-             let apiURLString = aDecoder.decodeObjectForKey(RepoFileAPIURLKey) as? String
+            let type = aDecoder.decodeObjectForKey(RepoFileTypeKey) as? String,
+            let path = aDecoder.decodeObjectForKey(RepoFilePathKey) as? String,
+            let downloadURLString = aDecoder.decodeObjectForKey(RepoFileDownloadURLKey) as? String,
+            let htmlURLString = aDecoder.decodeObjectForKey(RepoFileHTMLURLKey) as? String,
+            let apiURLString = aDecoder.decodeObjectForKey(RepoFileAPIURLKey) as? String
             else {
                 return nil
-            }
+        }
         self.name = name
         self.type = type
         self.path = path
@@ -54,6 +54,22 @@ class RepoFile: NSObject, NSCoding, Mappable {
         apiURLString        <- map["url"]
     }
     
+
+    
+
+}
+
+extension RepoFile: NSCoding {
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let anotherRepoFile = object as? RepoFile {
+            return self.name == anotherRepoFile.name
+                && self.path == anotherRepoFile.path
+                && self.downloadURLString == anotherRepoFile.downloadURLString
+        }
+        return false
+    }
+
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: RepoFileNameKey)
         aCoder.encodeObject(type, forKey: RepoFileTypeKey)
@@ -63,12 +79,5 @@ class RepoFile: NSObject, NSCoding, Mappable {
         aCoder.encodeObject(apiURLString, forKey: RepoFileAPIURLKey)
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
-        if let anotherRepoFile = object as? RepoFile {
-            return self.name == anotherRepoFile.name
-                && self.path == anotherRepoFile.path
-                && self.downloadURLString == anotherRepoFile.downloadURLString
-        }
-        return false
-    }
+
 }
