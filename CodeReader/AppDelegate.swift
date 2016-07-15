@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        UITabBar.appearance().tintColor = UIColor.blackColor()
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
+        
         Fabric.with([Answers.self, Crashlytics.self])
         
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {

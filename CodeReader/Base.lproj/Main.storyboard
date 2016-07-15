@@ -19,6 +19,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="search repos" translatesAutoresizingMaskIntoConstraints="NO" id="ywB-kz-JDk">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Hr-hX-fcS">
@@ -29,6 +30,7 @@
                                     <segment title="forks"/>
                                     <segment title="updated"/>
                                 </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icA-Df-Sc5">
                                 <rect key="frame" x="0.0" y="164" width="600" height="387"/>
@@ -555,7 +557,7 @@
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cao-Vq-YLL">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="Iwq-Nc-kgx" kind="relationship" relationship="viewControllers" id="kqZ-Sc-79h"/>
