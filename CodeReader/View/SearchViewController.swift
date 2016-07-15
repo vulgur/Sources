@@ -111,6 +111,7 @@ class SearchViewController: UIViewController {
             cell.ownerAvatarImageView.kf_setImageWithURL(NSURL(string: repo.owner!.avatarURLString!)!,
                                                          placeholderImage: UIImage(named: "user_avatar"),
                                                          optionsInfo: [.Transition(ImageTransition.Fade(1))])
+            
             return cell
             
         }

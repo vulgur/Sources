@@ -19,6 +19,11 @@ class SearchRepoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        ownerAvatarImageView.layer.masksToBounds = true
+        ownerAvatarImageView.layer.cornerRadius = 20
+//        ownerAvatarImageView.layer.borderColor = UIColor.blackColor().CGColor
+//        ownerAvatarImageView.layer.borderWidth = 1
+        repoNameLabel.textColor = UIColor.blackColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
