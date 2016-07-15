@@ -85,14 +85,14 @@ class RepoViewController: UIViewController {
             repoDescriptionLabel.textAlignment = .Center
         }
         
-        sourceButton.backgroundColor = UIColor(red: 51/255, green: 98/255, blue: 178/255, alpha: 1)
-        sourceButton.tintColor = UIColor.whiteColor()
+//        sourceButton.backgroundColor = UIColor(red: 51/255, green: 98/255, blue: 178/255, alpha: 1)
+//        sourceButton.tintColor = UIColor.whiteColor()
 //        commitsButton.backgroundColor = UIColor(red: 36/255, green: 55/255, blue: 75/255, alpha: 1)
 //        commitsButton.tintColor = UIColor.whiteColor()
         
-        avatarImageView.layer.cornerRadius = 10
+        avatarImageView.layer.cornerRadius = 50
         avatarImageView.layer.masksToBounds = true
-        avatarImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        avatarImageView.layer.borderColor = UIColor.blackColor().CGColor
         avatarImageView.layer.borderWidth = 2
     }
     
@@ -104,9 +104,9 @@ class RepoViewController: UIViewController {
         viewModel.stars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
         viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
         viewModel.watchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
-        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
+//        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
         viewModel.updatedDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(updatedDateLabel.bnd_text)
-        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
+//        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
         viewModel.language.bindTo(languageLabel.bnd_text)
         
         avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!, placeholderImage: UIImage(named: "user_avatar"))
