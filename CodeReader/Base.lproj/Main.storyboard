@@ -411,6 +411,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="3bS-TL-De8" firstAttribute="centerX" secondItem="71X-uJ-MDL" secondAttribute="centerX" id="GL4-zx-W1Z"/>
                                     <constraint firstItem="3bS-TL-De8" firstAttribute="leading" secondItem="71X-uJ-MDL" secondAttribute="leading" id="Pm6-fF-DrO"/>
@@ -501,7 +502,20 @@
                     <view key="view" contentMode="scaleToFill" id="ldE-Aq-Rry">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-fl-hmp">
+                                <rect key="frame" x="540" y="540" width="40" height="40"/>
+                                <state key="normal" image="unfavorite"/>
+                                <connections>
+                                    <action selector="toggleFavorite:" destination="bdd-vg-XTJ" eventType="touchUpInside" id="lBh-Nd-gmM"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6SZ-fl-hmp" secondAttribute="trailing" id="Dse-zf-6Ec"/>
+                            <constraint firstItem="qgu-jR-3k3" firstAttribute="top" secondItem="6SZ-fl-hmp" secondAttribute="bottom" constant="20" id="vDd-Ke-te8"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Kwz-uX-sMs">
@@ -511,6 +525,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="favoriteButton" destination="6SZ-fl-hmp" id="eE8-mY-gJB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWY-cm-qF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -757,6 +774,7 @@
         <image name="recents_highlight" width="25" height="25"/>
         <image name="star" width="50" height="50"/>
         <image name="themes" width="22" height="22"/>
+        <image name="unfavorite" width="40" height="40"/>
         <image name="watch" width="50" height="50"/>
     </resources>
 </document>

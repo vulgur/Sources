@@ -106,8 +106,7 @@ class FileListViewController: UITableViewController {
             let codeVC = segue.destinationViewController as! CodeViewController
             let file = sender as! RepoFile
             RecentsManager.sharedManager.addRecentFile(file)
-            codeVC.filename = file.name
-            codeVC.downloadAPI = file.downloadURLString
+            codeVC.file = file
         }
     }
     

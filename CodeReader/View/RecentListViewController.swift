@@ -56,8 +56,7 @@ class RecentListViewController: UITableViewController {
         let file = recent.file
         
         let codeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CodeViewController") as! CodeViewController
-        codeVC.filename = file.name
-        codeVC.downloadAPI = file.downloadURLString
+        codeVC.file = file
         codeVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(codeVC, animated: true)
     }

@@ -75,7 +75,7 @@ class RecentsManager {
 //        }
 //    }
     
-    func addRecentFile(file: RepoFile) -> Bool {
+    func addRecentFile(file: RepoFile) {
         let ownerName = currentOwnerName ?? "Unknown"
         let repoName = currentRepoName ?? "Unknown"
         let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
@@ -86,17 +86,13 @@ class RecentsManager {
         }
         recents.insert(recent, atIndex: 0)
         if recents.count <= maxCapacity {
-            return true
         } else {
             recents.removeLast()
-            return false
         }
     }
     
-    func addFavoriteFile(file: RepoFile) -> Bool {
-        let ownerName = currentOwnerName ?? "Unknown"
-        let repoName = currentRepoName ?? "Unknown"
-        let favorite = Recent(file: file, ownerName: ownerName, repoName: repoName)
+    func addFavorite(recent: Recent) {
+        let favorite = recent
         if favorites.contains(favorite) {
             if let index = favorites.indexOf(favorite) {
                 favorites.removeAtIndex(index)
@@ -104,10 +100,15 @@ class RecentsManager {
         }
         favorites.insert(favorite, atIndex: 0)
         if favorites.count <= maxCapacity {
-            return true
         } else {
             favorites.removeLast()
-            return false
+        }
+    }
+    
+    func removeFavorite(recent: Recent) {
+        assert(favorites.count > 0, "Favorites must not be empty")
+        if let index = favorites.indexOf(recent) {
+            favorites.removeAtIndex(index)
         }
     }
 }

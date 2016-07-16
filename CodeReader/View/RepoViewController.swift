@@ -92,8 +92,8 @@ class RepoViewController: UIViewController {
         
         avatarImageView.layer.cornerRadius = 50
         avatarImageView.layer.masksToBounds = true
-        avatarImageView.layer.borderColor = UIColor.blackColor().CGColor
-        avatarImageView.layer.borderWidth = 2
+//        avatarImageView.layer.borderColor = UIColor.blackColor().CGColor
+//        avatarImageView.layer.borderWidth = 2
     }
     
     private func bindViewModel() {
@@ -131,6 +131,7 @@ class RepoViewController: UIViewController {
             let fileListVC = segue.destinationViewController as! FileListViewController
             fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
             fileListVC.pathTitle = "/"
+//            EZLoadingActivity.hide()
         }
     }
     
