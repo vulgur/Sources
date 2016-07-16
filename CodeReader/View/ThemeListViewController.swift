@@ -57,7 +57,7 @@ class ThemeListViewController: UITableViewController {
         if theme.isPurchased || DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
             performSegueWithIdentifier("ChangeTheme", sender: indexPath)
         } else {
-            let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all theme", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all themes", preferredStyle: .Alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (_) in
                 self.navigationController?.popViewControllerAnimated(true)
             })

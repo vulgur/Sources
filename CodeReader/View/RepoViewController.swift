@@ -73,17 +73,17 @@ class RepoViewController: UIViewController {
     
     private func setupUI() {
         // Set the text aligment of description label based on string length
-        let contraintSize = CGSize(width: CGFloat.max, height: descriptionLabelHeight)
-        let fontAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(descriptionFontSize)]
-        let stringRect = (viewModel.description.value as NSString).boundingRectWithSize(contraintSize,
-                                                                                            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
-                                                                                            attributes: fontAttribute,
-                                                                                            context: nil)
-        if CGRectGetWidth(stringRect) > CGRectGetWidth(repoDescriptionLabel.frame) {
-            repoDescriptionLabel.textAlignment = .Left
-        } else {
-            repoDescriptionLabel.textAlignment = .Center
-        }
+//        let contraintSize = CGSize(width: CGFloat.max, height: descriptionLabelHeight)
+//        let fontAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(descriptionFontSize)]
+//        let stringRect = (viewModel.description.value as NSString).boundingRectWithSize(contraintSize,
+//                                                                                            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+//                                                                                            attributes: fontAttribute,
+//                                                                                            context: nil)
+//        if CGRectGetWidth(stringRect) > CGRectGetWidth(repoDescriptionLabel.frame) {
+//            repoDescriptionLabel.textAlignment = .Left
+//        } else {
+//            repoDescriptionLabel.textAlignment = .Center
+//        }
         
 //        sourceButton.backgroundColor = UIColor(red: 51/255, green: 98/255, blue: 178/255, alpha: 1)
 //        sourceButton.tintColor = UIColor.whiteColor()

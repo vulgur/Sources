@@ -363,7 +363,7 @@
                                                             </mask>
                                                         </variation>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Repo desc" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-iB-nhQ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Repo desc" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-iB-nhQ">
                                                         <rect key="frame" x="20" y="130" width="560" height="46"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -420,7 +420,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="71X-uJ-MDL" firstAttribute="width" secondItem="L9b-nV-KVS" secondAttribute="width" id="aoi-7M-miv"/>
                             <constraint firstItem="u2a-8y-hmX" firstAttribute="top" secondItem="71X-uJ-MDL" secondAttribute="bottom" id="e3g-BN-jqX"/>
