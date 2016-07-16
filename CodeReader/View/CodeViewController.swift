@@ -67,10 +67,8 @@ class CodeViewController: UIViewController {
     private func setFavoriteButton() {
         if isFavorite() {
             favoriteButton.setBackgroundImage(UIImage(named: "favorite"), forState: .Normal)
-            print("Favorite true")
         } else {
             favoriteButton.setBackgroundImage(UIImage(named: "unfavorite"), forState: .Normal)
-            print("Favorite false")
         }
     }
     
