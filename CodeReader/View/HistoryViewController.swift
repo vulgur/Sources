@@ -47,7 +47,17 @@ class HistoryViewController: UIViewController {
         case 0:
             recentList = RecentsManager.sharedManager.recents
         case 1:
-            recentList = RecentsManager.sharedManager.favorites
+            if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+                recentList = RecentsManager.sharedManager.favorites
+            } else {
+                let alertController = UIAlertController(title: "", message: "Buy me a coffee to unlock favorites", preferredStyle: .Alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                alertController.addAction(alertAction)
+                self.presentViewController(alertController, animated: true, completion: {
+                    self.segmentedControl.selectedSegmentIndex = 0
+                    self.segmentedControl.didChangeValueForKey("selectedSegmentIndex")
+                })
+            }
         default:
             recentList = RecentsManager.sharedManager.recents
         }

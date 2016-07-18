@@ -149,18 +149,25 @@ class CodeViewController: UIViewController {
     }
     
     @IBAction func toggleFavorite(sender: UIButton) {
-        if let lastRecent = RecentsManager.sharedManager.recents.first {
-            if isFavorite() {
-                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: { 
-                    self.favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
-                    }, completion: nil)
-                RecentsManager.sharedManager.removeFavorite(lastRecent)
-            } else {
-                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: { 
-                    self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
-                    }, completion: nil)
-                RecentsManager.sharedManager.addFavorite(lastRecent)
-            }
+        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            if let lastRecent = RecentsManager.sharedManager.recents.first {
+                if isFavorite() {
+                    UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
+                        self.favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
+                        }, completion: nil)
+                    RecentsManager.sharedManager.removeFavorite(lastRecent)
+                } else {
+                    UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: { 
+                        self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                        }, completion: nil)
+                    RecentsManager.sharedManager.addFavorite(lastRecent)
+                }
+            }    
+        } else {
+            let alertController = UIAlertController(title: "", message: "Buy me a coffee to add this file to favorites", preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(alertAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }

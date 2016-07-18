@@ -57,24 +57,6 @@ class RecentsManager {
         }
     }
     
-//    func saveRecents() {
-//        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-//            let recentsData = NSKeyedArchiver.archivedDataWithRootObject(self.recents)
-//            NSUserDefaults.standardUserDefaults().setObject(recentsData, forKey: "recents")
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//            print("Recents saved")
-//        }
-//    }
-//    
-//    func saveFavorites() {
-//        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-//            let favoritesData = NSKeyedArchiver.archivedDataWithRootObject(self.favorites)
-//            NSUserDefaults.standardUserDefaults().setObject(favoritesData, forKey: "favorites")
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//            print("favorites saved")
-//        }
-//    }
-    
     func addRecentFile(file: RepoFile) {
         let ownerName = currentOwnerName ?? "Unknown"
         let repoName = currentRepoName ?? "Unknown"
@@ -99,10 +81,10 @@ class RecentsManager {
             }
         }
         favorites.insert(favorite, atIndex: 0)
-        if favorites.count <= maxCapacity {
-        } else {
-            favorites.removeLast()
-        }
+//        if favorites.count <= maxCapacity {
+//        } else {
+//            favorites.removeLast()
+//        }
     }
     
     func removeFavorite(recent: Recent) {
