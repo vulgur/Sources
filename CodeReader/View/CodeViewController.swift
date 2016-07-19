@@ -32,7 +32,7 @@ class CodeViewController: UIViewController {
         self.theme = NSUserDefaults.standardUserDefaults().stringForKey("default_theme") ?? "default"
         downloadSourceCode()
         
-        setFavoriteButton()
+        favoriteButton.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,22 +53,20 @@ class CodeViewController: UIViewController {
 
     // MARK: Private methods
     private func isFavorite() -> Bool {
-        if let lastRecent = RecentsManager.sharedManager.recents.first {
-            if RecentsManager.sharedManager.favorites.contains(lastRecent) {
+        for item in RecentsManager.sharedManager.favorites {
+            if item.file == self.file {
                 return true
-            } else {
-                return false
             }
-        } else {
-            return false
         }
+        return false
     }
     
     private func setFavoriteButton() {
+        favoriteButton.hidden = false
         if isFavorite() {
-            favoriteButton.setBackgroundImage(UIImage(named: "favorite"), forState: .Normal)
+            favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
         } else {
-            favoriteButton.setBackgroundImage(UIImage(named: "unfavorite"), forState: .Normal)
+            favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
         }
     }
     
@@ -82,6 +80,7 @@ class CodeViewController: UIViewController {
             Alamofire.request(.GET, url)
                 .responseData(completionHandler: { (response) in
                     EZLoadingActivity.hide()
+                    self.setFavoriteButton()
                     if let htmlData = response.data {
                         if let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding) {
                             let escapeString = dataString.stringByReplacingOccurrencesOfString("<", withString: "&lt;")
@@ -150,19 +149,17 @@ class CodeViewController: UIViewController {
     
     @IBAction func toggleFavorite(sender: UIButton) {
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            if let lastRecent = RecentsManager.sharedManager.recents.first {
-                if isFavorite() {
-                    UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
-                        self.favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
-                        }, completion: nil)
-                    RecentsManager.sharedManager.removeFavorite(lastRecent)
-                } else {
-                    UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: { 
-                        self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
-                        }, completion: nil)
-                    RecentsManager.sharedManager.addFavorite(lastRecent)
-                }
-            }    
+            if isFavorite() {
+                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
+                    self.favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
+                    }, completion: nil)
+                RecentsManager.sharedManager.removeFavoriteByFile(self.file)
+            } else {
+                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
+                    self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                    }, completion: nil)
+                RecentsManager.sharedManager.addFavoriteByFile(self.file)
+            }
         } else {
             let alertController = UIAlertController(title: "", message: "Buy me a coffee to add this file to favorites", preferredStyle: .Alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)

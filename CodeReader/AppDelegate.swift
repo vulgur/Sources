@@ -23,14 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Answers.self, Crashlytics.self])
         
-        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            
-            if let recentsData = NSUserDefaults.standardUserDefaults().objectForKey("recents") {
-                RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObjectWithData(recentsData as! NSData) as! [Recent]
-                NSUserDefaults.standardUserDefaults().synchronize()
-                print("Recents loaded")
-            }
-        }
+
         return true
     }
 
@@ -46,6 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            if let recentsData = NSUserDefaults.standardUserDefaults().objectForKey("favorites") {
+                RecentsManager.sharedManager.favorites = NSKeyedUnarchiver.unarchiveObjectWithData(recentsData as! NSData) as! [Recent]
+                print("Favorites loaded")
+            }
+            if let recentsData = NSUserDefaults.standardUserDefaults().objectForKey("recents") {
+                RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObjectWithData(recentsData as! NSData) as! [Recent]
+                print("Recents loaded")
+            }
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

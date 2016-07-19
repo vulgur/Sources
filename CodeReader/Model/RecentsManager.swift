@@ -73,7 +73,19 @@ class RecentsManager {
         }
     }
     
-    func addFavorite(recent: Recent) {
+    func addFavoriteByFile(file: RepoFile) {
+        let ownerName = currentOwnerName ?? "Unknown"
+        let repoName = currentRepoName ?? "Unknown"
+        let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
+        if favorites.contains(recent) {
+            if let index = favorites.indexOf(recent) {
+                favorites.removeAtIndex(index)
+            }
+        }
+        favorites.insert(recent, atIndex: 0)
+    }
+    
+    func addFavoriteByRecent(recent: Recent) {
         let favorite = recent
         if favorites.contains(favorite) {
             if let index = favorites.indexOf(favorite) {
@@ -81,16 +93,26 @@ class RecentsManager {
             }
         }
         favorites.insert(favorite, atIndex: 0)
-//        if favorites.count <= maxCapacity {
-//        } else {
-//            favorites.removeLast()
-//        }
     }
     
-    func removeFavorite(recent: Recent) {
+    func removeFavoriteByRecent(recent: Recent) {
         assert(favorites.count > 0, "Favorites must not be empty")
         if let index = favorites.indexOf(recent) {
             favorites.removeAtIndex(index)
+        }
+    }
+    
+    func removeFavoriteByFile(file: RepoFile) {
+        assert(favorites.count > 0, "Favorites must not be empty")
+        var indexToDelete: Int = -1
+        for (index, favorite) in favorites.enumerate() {
+            if favorite.file == file {
+                indexToDelete = index
+                break
+            }
+        }
+        if indexToDelete >= 0 {
+            favorites.removeAtIndex(indexToDelete)
         }
     }
 }

@@ -67,7 +67,7 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let recent = RecentsManager.sharedManager.recents[indexPath.row]
+        let recent = recentList[indexPath.row]
         let file = recent.file
         
         let codeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CodeViewController") as! CodeViewController
