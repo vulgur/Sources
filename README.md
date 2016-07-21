@@ -4,6 +4,15 @@
 
 App Store: [http://itunes.apple.com/app/id1125732186](http://itunes.apple.com/app/id1125732186)
 
+### What's New in Version 1.1
+1. New icon
+2. Complexion reduction UI style
+3. Add files to favorites
+4. Add Tomorrow themes
+5. Support screen rotation
+
+### Description
+
 Sources is a simplified github client for reading the source code easily and comfortably.
 
 Repos can be searched and sorted by stars, forks, latest updated time or just best matched. Sources presents the README in front of you along with other important metrics of the repo.
