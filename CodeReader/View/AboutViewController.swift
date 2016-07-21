@@ -11,6 +11,7 @@ import StoreKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var donateImageView: UIImageView!
     @IBOutlet var restoreButton: UIButton!
     var products = [SKProduct]()
@@ -63,6 +64,7 @@ class AboutViewController: UIViewController {
     private func changeStateToPurchased() {
         UIView.transitionWithView(donateImageView, duration: 0.5, options: [.TransitionCrossDissolve], animations: {
             self.donateImageView.image = UIImage(named: "purchased_coffee")
+            self.titleLabel.text = "You've unlocked all features"
             }, completion: nil)
         donateImageView.userInteractionEnabled = false
         restoreButton.hidden = true
