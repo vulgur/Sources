@@ -79,9 +79,9 @@ class SearchViewController: UIViewController {
                 viewModel.searchKeyword.value = keyword
                 EZLoadingActivity.show("searching...", disableUI: true)
                 viewModel.searchRepos(completion: { 
+                    let topIndexPath = NSIndexPath(forRow: NSNotFound, inSection: 0)
+                    self.tableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
                     self.tableView.reloadDataWithAutoSizingCells()
-                    let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-                    self.tableView .scrollToRowAtIndexPath(topIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
                     EZLoadingActivity.hide()
                 }, errorHandler: self.errorHandler)
             }
