@@ -134,6 +134,9 @@
 		D29443531D0BEC4E00D4AA2C /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */; };
 		D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; };
 		D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* Commit.swift */; };
+		D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */; };
+		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -279,6 +282,9 @@
 		D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoViewModel.swift; sourceTree = "<group>"; };
 		D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		D29443541D0BFC6D00D4AA2C /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
+		D2CE2E031D787E8A00AAAF8A /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFile.swift; sourceTree = "<group>"; };
+		D2CE2E091D79C3E500AAAF8A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +470,9 @@
 				D29443431D0BE2FD00D4AA2C /* Theme.swift */,
 				D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */,
 				D26CA59E1D1B33A10073FB53 /* Recent.swift */,
+				D2CE2E031D787E8A00AAAF8A /* Commit.swift */,
+				D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */,
+				D2CE2E091D79C3E500AAAF8A /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -733,14 +742,17 @@
 				D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */,
 				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
 				D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */,
+				D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */,
 				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
 				D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */,
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
+				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,
 				D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */,
+				D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */,
 				D29443441D0BE2FD00D4AA2C /* Theme.swift in Sources */,
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
