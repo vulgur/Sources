@@ -27,81 +27,36 @@ struct ParentCommit: Mappable {
 }
 
 
-// short info for "author" and "committer"
-struct CommitUser: Mappable {
-    var name: String?
-    var email: String?
-    var date: NSDate?
-    var avatarURLString: String?
-    
-    init?(_ map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        name    <- map["name"]
-        email   <- map["email"]
-        date    <- map["date"]
-    }
-}
-
-struct CommitListItem: Mappable {
-    
-    var URLString: String?
-    var htmlURLString: String?
-    var commentsURLString: String?
-    var sha: String?
-    var author: CommitUser?
-    var committer: CommitUser?
-    var parents = [ParentCommit]()
-    var message: String?
-    var comment_count: Int?
-    
-    init?(_ map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        sha                 <- map["sha"]
-        URLString           <- map["url"]
-        htmlURLString       <- map["html_url"]
-        author              <- map["commit"]["author"]
-        committer           <- map["commit"]["committer"]
-        comment_count       <- map["commit"]["comment_count"]
-        message             <- map["commit"]["message"]
-        commentsURLString   <- map["comments_url"]
-        parents             <- map["parents"]
-    }
-}
-
-/*
 struct Commit: Mappable {
     var sha: String?
-    var author: CommitUser?
-    var committer: CommitUser?
+    var committerName: String?
+//    var author: User?
+    var committer: User?
     var URLString: String?
     var htmlURLString: String?
-    var commentsURLString: String?
+//    var commentsURLString: String?
     var parents = [ParentCommit]()
     var message: String?
-    var comment_count: Int?
+//    var comment_count: Int?
     var files = [CommitFile]()
+    var date: NSDate?
     
     init?(_ map: Map) {
         
     }
     
     mutating func mapping(map: Map) {
-        // TODO: map the properties
         sha                 <- map["sha"]
-        author              <- map["author"]
-        committer           <- map["committer"]
         URLString           <- map["url"]
         htmlURLString       <- map["html_url"]
-        commentsURLString   <- map["comments_url"]
-        comment_count       <- map["commit"]["comment_count"]
+//        author              <- map["author"]
+        committer           <- map["committer"]
+        committerName       <- map["commit"]["committer"]["name"]
+        date                <- map["commit"]["committer"]["date"]
+//        comment_count       <- map["commit"]["comment_count"]
         message             <- map["commit"]["message"]
+//        commentsURLString   <- map["comments_url"]
+        parents             <- map["parents"]
         files               <- map["files"]
     }
 }
-*/
