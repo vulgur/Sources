@@ -136,6 +136,8 @@
 		D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* Commit.swift */; };
 		D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */; };
 		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
+		D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */; };
+		D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -283,6 +285,8 @@
 		D2CE2E031D787E8A00AAAF8A /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFile.swift; sourceTree = "<group>"; };
 		D2CE2E091D79C3E500AAAF8A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
+		D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +496,8 @@
 				D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */,
 				D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */,
 				D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */,
+				D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */,
+				D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				D20A11721CFD417C00244357 /* sunburst.css in Resources */,
 				D20A113F1CFD417C00244357 /* atelier-lakeside-dark.css in Resources */,
 				D20A11491CFD417C00244357 /* brown-paper.css in Resources */,
+				D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */,
 				D20A11791CFD417C00244357 /* xcode.css in Resources */,
 				D20A11651CFD417C00244357 /* paraiso-dark.css in Resources */,
 				D20A115A1CFD417C00244357 /* hopscotch.css in Resources */,
@@ -745,6 +752,7 @@
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
+				D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */,
 				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
 				D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */,
