@@ -17,7 +17,7 @@ class RepoViewModel {
     let stars = Observable(0)
     let watchers = Observable(0)
     let forks = Observable(0)
-    let owner = Observable(Owner())
+    let owner = Observable(User())
     let createdDate = Observable("")
     let updatedDate = Observable("")
     let language = Observable("")
@@ -36,7 +36,7 @@ class RepoViewModel {
         createdDate.value = repo.createdDate ?? ""
         updatedDate.value = repo.pushedDate ?? ""
         language.value = repo.language ?? "Unknown"
-        ownerName.value = repo.owner!.name ?? ""
+        ownerName.value = repo.owner!.loginName ?? ""
         size.value = repo.size ?? 0
         fullName.value = repo.fullName ?? ""
     }
@@ -44,7 +44,7 @@ class RepoViewModel {
     
     func fetchWatchers() {
         let url = String(format: "https://api.github.com/repos/%@/%@/subscribers",
-                         owner.value.name!, name.value)
+                         owner.value.loginName!, name.value)
         print(url)
         Alamofire.request(.GET, url)
         .responseJSON { (response) in

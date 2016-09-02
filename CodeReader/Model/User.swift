@@ -17,7 +17,7 @@ struct User: Mappable {
     /** search info **/
     var loginName: String?
     var userId: String?
-    var avatarURL: String?
+    var avatarURLString: String?
     var URLString: String?
     var reposURLString: String?
     
@@ -34,6 +34,10 @@ struct User: Mappable {
     var joinAtDate: NSDate?
     
     
+    init() {
+        
+    }
+    
     init?(_ map: Map) {
         
     }
@@ -41,7 +45,7 @@ struct User: Mappable {
     mutating func mapping(map: Map) {
         loginName               <- map["login"]
         userId                  <- map["id"]
-        avatarURL               <- map["avatar_url"]
+        avatarURLString         <- map["avatar_url"]
         URLString               <- map["url"]
         reposURLString          <- map["repos_url"]
         

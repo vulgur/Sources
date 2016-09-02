@@ -13,7 +13,7 @@ class Repo: Mappable {
     var repoId: String?
     var name: String?
     var fullName: String?
-    var owner: Owner?
+    var owner: User?
     var description: String?
     var size: Int?
     var starsCount: Int?

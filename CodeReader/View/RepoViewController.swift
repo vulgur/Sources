@@ -55,7 +55,7 @@ class RepoViewController: UIViewController {
     private func setupWebView() {
         webView.delegate = self
 //        webView.scalesPageToFit = true
-        let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.name!, viewModel.name.value))!
+        let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.loginName!, viewModel.name.value))!
         let request = NSMutableURLRequest(URL: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         

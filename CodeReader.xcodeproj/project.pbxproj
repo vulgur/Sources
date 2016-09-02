@@ -101,7 +101,6 @@
 		D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */; };
 		D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4251CE1C1A300D6143D /* Repo.swift */; };
-		D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4271CE1C2B200D6143D /* Owner.swift */; };
 		D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */; };
 		D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */; };
 		D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4311CE2266300D6143D /* SearchRepoCell.swift */; };
@@ -252,7 +251,6 @@
 		D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		D23EE4251CE1C1A300D6143D /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
-		D23EE4271CE1C2B200D6143D /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoResponse.swift; sourceTree = "<group>"; };
 		D23EE4311CE2266300D6143D /* SearchRepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoCell.swift; sourceTree = "<group>"; };
@@ -464,7 +462,6 @@
 			isa = PBXGroup;
 			children = (
 				D23EE4251CE1C1A300D6143D /* Repo.swift */,
-				D23EE4271CE1C2B200D6143D /* Owner.swift */,
 				D23EE42F1CE1D6DE00D6143D /* SearchRepoResponse.swift */,
 				D20A10DE1CF8278900244357 /* RepoFile.swift */,
 				D29443431D0BE2FD00D4AA2C /* Theme.swift */,
@@ -750,7 +747,6 @@
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
-				D23EE4281CE1C2B200D6143D /* Owner.swift in Sources */,
 				D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */,
 				D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */,
 				D29443441D0BE2FD00D4AA2C /* Theme.swift in Sources */,
