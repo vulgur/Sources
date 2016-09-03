@@ -10,6 +10,11 @@ import UIKit
 
 class CommitCell: UITableViewCell {
 
+    @IBOutlet var avatarImageView: UIImageView!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var shaLabel: UILabel!
+    @IBOutlet var committerLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

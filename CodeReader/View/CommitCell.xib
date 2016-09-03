@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,12 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who commit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyE-5Z-g2g">
-                        <rect key="frame" x="61" y="37" width="221" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R5e-M9-z1q">
                         <rect key="frame" x="13" y="17" width="40" height="40"/>
                         <constraints>
@@ -27,7 +21,7 @@
                             <constraint firstAttribute="height" constant="40" id="Ypo-OX-jVv"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="f132df" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiI-Mf-GJ5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="f132df" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiI-Mf-GJ5">
                         <rect key="frame" x="290" y="27" width="77" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,21 +33,33 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who commit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyE-5Z-g2g">
+                        <rect key="frame" x="61" y="36" width="221" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="top" secondItem="Yid-js-jUT" secondAttribute="bottom" constant="-2" id="23t-On-Pwl"/>
                     <constraint firstItem="R5e-M9-z1q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6tr-03-Vqh"/>
                     <constraint firstItem="qiI-Mf-GJ5" firstAttribute="leading" secondItem="Yid-js-jUT" secondAttribute="trailing" constant="8" id="8n2-hc-7Xj"/>
                     <constraint firstItem="R5e-M9-z1q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="AMG-ba-bW8"/>
                     <constraint firstItem="Yid-js-jUT" firstAttribute="leading" secondItem="R5e-M9-z1q" secondAttribute="trailing" constant="8" id="GjF-Vu-2fN"/>
-                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="leading" secondItem="Yid-js-jUT" secondAttribute="leading" id="Gq5-6r-nBt"/>
+                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="width" secondItem="Yid-js-jUT" secondAttribute="width" id="V2I-qM-CU6"/>
                     <constraint firstItem="qiI-Mf-GJ5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Z9i-Rt-j0k"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qiI-Mf-GJ5" secondAttribute="trailing" id="dNa-5A-cKy"/>
-                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="width" secondItem="Yid-js-jUT" secondAttribute="width" id="g5Z-Ch-6Xd"/>
-                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="top" secondItem="Yid-js-jUT" secondAttribute="bottom" constant="-1" id="i8I-ym-3Mi"/>
+                    <constraint firstItem="WyE-5Z-g2g" firstAttribute="leading" secondItem="Yid-js-jUT" secondAttribute="leading" id="hC6-i6-yEN"/>
                     <constraint firstItem="Yid-js-jUT" firstAttribute="top" secondItem="R5e-M9-z1q" secondAttribute="top" id="xkz-cz-uh0"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="264.5" y="314"/>
+            <connections>
+                <outlet property="avatarImageView" destination="R5e-M9-z1q" id="xHG-zg-WHo"/>
+                <outlet property="committerLabel" destination="WyE-5Z-g2g" id="fyd-a8-NN6"/>
+                <outlet property="messageLabel" destination="Yid-js-jUT" id="M4p-VX-hEy"/>
+                <outlet property="shaLabel" destination="qiI-Mf-GJ5" id="85p-FC-zzX"/>
+            </connections>
+            <point key="canvasLocation" x="372.5" y="326.5"/>
         </tableViewCell>
     </objects>
 </document>
