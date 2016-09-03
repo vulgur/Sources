@@ -119,6 +119,7 @@
 		D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */; };
 		D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */; };
 		D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */; };
+		D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */; };
 		D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECA91D1E3ABF00E3D366 /* Fabric.framework */; };
 		D27FECAC1D1E3ABF00E3D366 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */; };
 		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
@@ -269,6 +270,7 @@
 		D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentFileCell.swift; sourceTree = "<group>"; };
 		D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentFileCell.xib; sourceTree = "<group>"; };
+		D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitListViewController.swift; sourceTree = "<group>"; };
 		D27FECA91D1E3ABF00E3D366 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D28D50781D0C07E300779D30 /* ThemeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */,
 				D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */,
 				D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */,
+				D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */,
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */,
+				D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
 				D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */,
 				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,

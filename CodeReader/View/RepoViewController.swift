@@ -132,6 +132,9 @@ class RepoViewController: UIViewController {
             fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
             fileListVC.pathTitle = "/"
 //            EZLoadingActivity.hide()
+        } else if segue.identifier == "ShowCommitList" {
+            let commitListVC = segue.destinationViewController as! CommitListViewController
+            commitListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/commits"
         }
     }
     

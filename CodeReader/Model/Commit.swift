@@ -51,10 +51,10 @@ struct Commit: Mappable {
         htmlURLString       <- map["html_url"]
 //        author              <- map["author"]
         committer           <- map["committer"]
-        committerName       <- map["commit"]["committer"]["name"]
-        date                <- map["commit"]["committer"]["date"]
+        committerName       <- map["commit.committer.name"]
+        date                <- (map["commit.committer.date"], DateTransform())
 //        comment_count       <- map["commit"]["comment_count"]
-        message             <- map["commit"]["message"]
+        message             <- map["commit.message"]
 //        commentsURLString   <- map["comments_url"]
         parents             <- map["parents"]
         files               <- map["files"]
