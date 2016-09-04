@@ -58,3 +58,9 @@ Carthage/
 
 # Reveal
 Reveal.framework/
+
+# Fabric
+Fabric.framework/
+Crashlytics.framework/
+
+
