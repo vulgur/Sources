@@ -5,3 +5,4 @@ github "tristanhimmelman/AlamofireObjectMapper" ~> 3.0
 github "onevcat/Kingfisher" ~> 2.4
 github "SwiftBond/Bond" ~> 4.0
 github "yeahdongcn/UIColor-Hex-Swift" >= 2.1
+github "malcommac/SwiftDate"

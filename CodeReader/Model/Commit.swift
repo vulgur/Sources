@@ -26,20 +26,51 @@ struct ParentCommit: Mappable {
     }
 }
 
+struct CommitUser: Mappable {
+    
+    var name: String?
+    var email: String?
+    var dateString: String?
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        name        <- map["name"]
+        email       <- map["email"]
+        dateString  <- map["date"]
+    }
+}
+
+struct CommitInfo: Mappable {
+    var author: CommitUser?
+    var committer: CommitUser?
+    var message: String?
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        author      <- map["author"]
+        committer   <- map["committer"]
+        message     <- map["message"]
+    }
+}
+
 
 struct Commit: Mappable {
     var sha: String?
-    var committerName: String?
 //    var author: User?
     var committer: User?
     var URLString: String?
     var htmlURLString: String?
 //    var commentsURLString: String?
     var parents = [ParentCommit]()
-    var message: String?
 //    var comment_count: Int?
     var files = [CommitFile]()
-    var date: NSDate?
+    var commitInfo: CommitInfo?
     
     init?(_ map: Map) {
         
@@ -49,12 +80,10 @@ struct Commit: Mappable {
         sha                 <- map["sha"]
         URLString           <- map["url"]
         htmlURLString       <- map["html_url"]
+        commitInfo          <- map["commit"]
 //        author              <- map["author"]
         committer           <- map["committer"]
-        committerName       <- map["commit.committer.name"]
-        date                <- (map["commit.committer.date"], DateTransform())
 //        comment_count       <- map["commit"]["comment_count"]
-        message             <- map["commit.message"]
 //        commentsURLString   <- map["comments_url"]
         parents             <- map["parents"]
         files               <- map["files"]

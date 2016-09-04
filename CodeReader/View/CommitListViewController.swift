@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import ObjectMapper
 import Kingfisher
+import SwiftDate
 
 class CommitListViewController: UITableViewController {
     let CommitCellIdentifier = "CommitCell"
@@ -22,6 +23,7 @@ class CommitListViewController: UITableViewController {
         self.navigationItem.title = "Commits"
         
         tableView.registerNib(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
+        tableView.rowHeight = 70
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -78,10 +80,20 @@ class CommitListViewController: UITableViewController {
         // Configure the cell...
         let commit = commits[indexPath.row]
         cell.avatarImageView.kf_setImageWithURL(NSURL(string: commit.committer!.avatarURLString!)!)
-        if let message = commit.message, committerName = commit.committerName, date = commit.date, sha = commit.sha {
+        if let message = commit.commitInfo?.message,
+            committerName = commit.committer?.loginName,
+            dateString = commit.commitInfo?.committer?.dateString,
+            sha = commit.sha {
+            
+            if let date = dateString.toDateFromISO8601() {
+                
+                let dateToShow = date.inRegion().toString(nil, dateStyle: .MediumStyle, timeStyle: nil, relative: true)!
+                cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
+            } else {
+                cell.committerLabel.text = "\(committerName) committed on \(dateString)"
+            }
             cell.messageLabel.text = message
-            cell.committerLabel.text = "\(committerName) committed on \(date)"
-            cell.shaLabel.text = sha.substringToIndex(sha.startIndex.advancedBy(5))
+            cell.shaLabel.text = sha.substringToIndex(sha.startIndex.advancedBy(7))
         }
 
         return cell
