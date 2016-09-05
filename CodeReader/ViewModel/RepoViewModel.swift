@@ -45,7 +45,6 @@ class RepoViewModel {
     func fetchWatchers() {
         let url = String(format: "https://api.github.com/repos/%@/%@/subscribers",
                          owner.value.loginName!, name.value)
-        print(url)
         Alamofire.request(.GET, url)
         .responseJSON { (response) in
             if let watchers = response.result.value as? NSArray {

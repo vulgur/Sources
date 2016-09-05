@@ -35,7 +35,6 @@ class SearchRepoViewModel {
             "q": searchKeyword.value,
             "sort" : sortType.rawValue,
         ]
-        print("Search params:", urlParams)
         searchInProgress.value = true
         
         // Fetch Request

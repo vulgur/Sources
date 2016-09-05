@@ -164,7 +164,6 @@ extension SearchViewController: UIScrollViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("Search for: ", searchBar.text!)
         searchBar.endEditing(true)
         
         viewModel.searchKeyword.value = searchBar.text!
