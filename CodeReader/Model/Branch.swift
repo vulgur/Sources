@@ -27,6 +27,7 @@ struct Branch: Mappable {
     
     var name: String?
     var lastestCommit: LatestCommit?
+    var lastestUpdateDate: String?
     
     init?(_ map: Map) {
         
