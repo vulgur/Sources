@@ -26,6 +26,16 @@ class BranchListViewModel {
     }
     
     
+    func loadLatestCommit(urlString: String, completion: (Commit)->(), errorHandler: ((String)->())? = nil) {
+        Alamofire.request(.GET, urlString).responseJSON { res in
+            if let commitJSON = res.result.value {
+                if let commit = Mapper<Commit>().map(commitJSON) {
+                    completion(commit)
+                }
+            }
+        }
+    }
+    
     func loadBranches(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
         let url = "https://api.github.com/repos/\(ownerName)/\(repoName)/branches"
         Alamofire.request(.GET, url)
@@ -40,16 +50,6 @@ class BranchListViewModel {
                                     self.branches.removeAll()
                                     self.branches.appendContentsOf(items)
                                     completion()
-//                                    for branch in items {
-//                                        Alamofire.request(.GET, branch.latestCommitURLString!).responseJSON { res in
-//                                            if let commitJSON = res.result.value {
-//                                                if let commit = Mapper<Commit>().map(commitJSON) {
-//                                                    self.branches.append((branch, commit))
-//                                                    completion()
-//                                                }
-//                                            }
-//                                        }
-//                                    }
                                 }
                             }
                         default:

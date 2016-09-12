@@ -434,7 +434,7 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="nOS-1N-LYx" kind="show" identifier="ShowCommitList" id="9cl-Pm-sW7"/>
+                                                    <segue destination="aoK-RH-BSa" kind="show" identifier="ShowBranchList" id="wdf-rF-xfh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -554,6 +554,37 @@
             </objects>
             <point key="canvasLocation" x="4461" y="468"/>
         </scene>
+        <!--Branch List View Controller-->
+        <scene sceneID="VFH-VG-sxF">
+            <objects>
+                <tableViewController id="aoK-RH-BSa" customClass="BranchListViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="7kW-w0-T3s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jgW-br-UZW">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jgW-br-UZW" id="gbU-d2-Brf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nOS-1N-LYx" kind="show" identifier="ShowCommitList" id="zGA-4s-hxP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aoK-RH-BSa" id="qLe-Wq-Mkg"/>
+                            <outlet property="delegate" destination="aoK-RH-BSa" id="qK9-lE-OEi"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwr-w6-Xny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4461" y="1278"/>
+        </scene>
         <!--Commit List View Controller-->
         <scene sceneID="pUC-io-xOR">
             <objects>
@@ -580,7 +611,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5h-el-ghO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4183.5" y="1196.25"/>
+            <point key="canvasLocation" x="5259" y="1278"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="ve1-GG-awN">

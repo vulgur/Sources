@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class BranchListViewController: UITableViewController {
     var viewModel: BranchListViewModel!
@@ -65,6 +66,21 @@ class BranchListViewController: UITableViewController {
         cell.branchLabel.layer.cornerRadius = 3
         cell.branchLabel.layer.masksToBounds = true
         cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
+        
+        viewModel.loadLatestCommit(branch.latestCommitURLString!, completion: { (commit) in
+            if let dateString = commit.commitInfo?.committer?.dateString {
+                if let date = dateString.toDateFromISO8601() {
+                    let localRegion = Region(calendarName: .AutoUpdatingCurrent, timeZoneName: nil, localeName: nil)
+                    cell.updateLabel.alpha = 0
+                    let updateString = date.toNaturalString(NSDate(), inRegion: localRegion, style: FormatterStyle.init(style: .Full, units: nil, max: 1))!
+                        + " ago by " + (commit.committer?.loginName)!
+                    cell.updateLabel.text = updateString
+                    UIView.animateWithDuration(0.3, animations: {
+                        cell.updateLabel.alpha = 1
+                    })
+                }
+            }
+        })
 //        cell.updateLabel.text = branch.1.commitInfo?.committer?.dateString
 
         return cell

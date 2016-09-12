@@ -24,7 +24,7 @@ class FileListViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         if let path = apiURLString {
             fetchFileList(path)
         }
