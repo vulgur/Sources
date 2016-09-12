@@ -112,6 +112,8 @@
 		D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */; };
 		D2451F981CEC2C2D003CE49B /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; };
 		D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D263B3B31D8653F90050CB27 /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263B3B11D8653F90050CB27 /* BranchCell.swift */; };
+		D263B3B41D8653F90050CB27 /* BranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263B3B21D8653F90050CB27 /* BranchCell.xib */; };
 		D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
 		D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
 		D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
@@ -122,6 +124,12 @@
 		D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */; };
 		D278915D1D7C7AB700FC5191 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D278915C1D7C7AB700FC5191 /* SwiftDate.framework */; };
 		D278915E1D7C7AB700FC5191 /* SwiftDate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D278915C1D7C7AB700FC5191 /* SwiftDate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D27891601D7D55A900FC5191 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */; };
+		D27891611D7D55A900FC5191 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D27891631D7D5BCB00FC5191 /* CommitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */; };
+		D27891651D7DB30000FC5191 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891641D7DB30000FC5191 /* Branch.swift */; };
+		D27891671D7EBD4900FC5191 /* BranchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */; };
+		D27891691D7F048300FC5191 /* BranchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891681D7F048300FC5191 /* BranchListViewController.swift */; };
 		D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECA91D1E3ABF00E3D366 /* Fabric.framework */; };
 		D27FECAC1D1E3ABF00E3D366 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */; };
 		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
@@ -152,6 +160,7 @@
 			files = (
 				D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */,
 				D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */,
+				D27891611D7D55A900FC5191 /* SwiftyBeaver.framework in Embed Frameworks */,
 				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
 				D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */,
 				D278915E1D7C7AB700FC5191 /* SwiftDate.framework in Embed Frameworks */,
@@ -266,6 +275,8 @@
 		D23EE43B1CE479B700D6143D /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		D2451F971CEC2C2D003CE49B /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
+		D263B3B11D8653F90050CB27 /* BranchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
+		D263B3B21D8653F90050CB27 /* BranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BranchCell.xib; sourceTree = "<group>"; };
 		D26CA5981D17C0E70073FB53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationProduct.swift; sourceTree = "<group>"; };
 		D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsManager.swift; sourceTree = "<group>"; };
@@ -275,6 +286,11 @@
 		D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentFileCell.xib; sourceTree = "<group>"; };
 		D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitListViewController.swift; sourceTree = "<group>"; };
 		D278915C1D7C7AB700FC5191 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
+		D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitListViewModel.swift; sourceTree = "<group>"; };
+		D27891641D7DB30000FC5191 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchListViewModel.swift; sourceTree = "<group>"; };
+		D27891681D7F048300FC5191 /* BranchListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchListViewController.swift; sourceTree = "<group>"; };
 		D27FECA91D1E3ABF00E3D366 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D28D50781D0C07E300779D30 /* ThemeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +321,7 @@
 				D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */,
 				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
 				D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */,
+				D27891601D7D55A900FC5191 /* SwiftyBeaver.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
 				D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */,
 				D278915D1D7C7AB700FC5191 /* SwiftDate.framework in Frameworks */,
@@ -419,7 +436,6 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
-				D278915C1D7C7AB700FC5191 /* SwiftDate.framework */,
 				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
@@ -458,6 +474,8 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */,
+				D278915C1D7C7AB700FC5191 /* SwiftDate.framework */,
 				D27FECA91D1E3ABF00E3D366 /* Fabric.framework */,
 				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
 				D29202DC1D15B78E002F1FE7 /* StoreKit.framework */,
@@ -482,6 +500,7 @@
 				D2CE2E031D787E8A00AAAF8A /* Commit.swift */,
 				D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */,
 				D2CE2E091D79C3E500AAAF8A /* User.swift */,
+				D27891641D7DB30000FC5191 /* Branch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,6 +526,9 @@
 				D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */,
 				D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */,
 				D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */,
+				D27891681D7F048300FC5191 /* BranchListViewController.swift */,
+				D263B3B11D8653F90050CB27 /* BranchCell.swift */,
+				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -543,6 +565,8 @@
 				D294434E1D0BEC4E00D4AA2C /* RepoViewModel.swift */,
 				D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */,
 				D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */,
+				D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */,
+				D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -648,6 +672,7 @@
 				D20A11471CFD417C00244357 /* atelier-sulphurpool-dark.css in Resources */,
 				D20A116A1CFD417C00244357 /* qtcreator_dark.css in Resources */,
 				D20A11631CFD417C00244357 /* monokai.css in Resources */,
+				D263B3B41D8653F90050CB27 /* BranchCell.xib in Resources */,
 				D20A114B1CFD417C00244357 /* codepen-embed.css in Resources */,
 				D20A11421CFD417C00244357 /* atelier-plateau-light.css in Resources */,
 				D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */,
@@ -752,16 +777,20 @@
 				D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */,
 				D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */,
 				D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */,
+				D27891631D7D5BCB00FC5191 /* CommitListViewModel.swift in Sources */,
 				D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */,
 				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
 				D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */,
+				D263B3B31D8653F90050CB27 /* BranchCell.swift in Sources */,
 				D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */,
 				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
+				D27891671D7EBD4900FC5191 /* BranchListViewModel.swift in Sources */,
 				D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */,
 				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
 				D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */,
 				D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
+				D27891651D7DB30000FC5191 /* Branch.swift in Sources */,
 				D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */,
 				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
@@ -772,6 +801,7 @@
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
+				D27891691D7F048300FC5191 /* BranchListViewController.swift in Sources */,
 				D29443511D0BEC4E00D4AA2C /* RepoViewModel.swift in Sources */,
 				D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */,
 				D294434C1D0BEC2F00D4AA2C /* ThemeFactory.swift in Sources */,

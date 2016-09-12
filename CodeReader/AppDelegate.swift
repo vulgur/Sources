@@ -9,6 +9,9 @@
 import UIKit
 import Fabric
 import Crashlytics
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
         
         Fabric.with([Answers.self, Crashlytics.self])
+        
+        let console = ConsoleDestination()
+        log.addDestination(console)
         
 
         return true
