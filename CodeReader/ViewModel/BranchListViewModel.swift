@@ -12,7 +12,8 @@ import Alamofire
 import ObjectMapper
 
 struct BranchListViewModel {
-    var branches = [Branch]()
+    
+    var branches = [(Branch, Commit)]()
     
     var ownerName: String!
     var repoName: String!
@@ -23,8 +24,12 @@ struct BranchListViewModel {
         self.repoName = repoName
     }
     
+    mutating func loadLatestCommit(url: String) {
+        
+    }
     
-    func loadBranches(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
+    
+    mutating func loadBranches(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
         let url = "https://api.github.com/repos/\(ownerName)/\(repoName)/branches"
         Alamofire.request(.GET, url)
             .responseJSON { response in
@@ -34,10 +39,18 @@ struct BranchListViewModel {
                         switch statusCode{
                         case 200..<299:
                             if let json = response.result.value {
-                                log.info(json)
-                                
-                                // TODO: map the json to array
-//                                completion()
+                                if let items = Mapper<Branch>().mapArray(json) {
+                                    for branch in items {
+                                        Alamofire.request(.GET, branch.latestCommitURLString!).responseJSON { res in
+                                            if let commitJSON = res.result.value {
+                                                if let commit = Mapper<Commit>().map(commitJSON) {
+                                                    self.branches.append((branch, commit))
+                                                }
+                                            }
+                                        }
+                                    }
+                                    completion()
+                                }
                             }
                         default:
                             if let errorHandler = errorHandler {
