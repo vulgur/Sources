@@ -26,8 +26,8 @@ struct LatestCommit: Mappable {
 struct Branch: Mappable {
     
     var name: String?
-    var lastestCommit: LatestCommit?
-    var lastestUpdateDate: String?
+    var latestCommitURLString: String?
+//    var lastestUpdateDate: String?
     
     init?(_ map: Map) {
         
@@ -35,6 +35,6 @@ struct Branch: Mappable {
     
     mutating func mapping(map: Map) {
         name            <- map["name"]
-        lastestCommit   <- map["commit"]
+        latestCommitURLString   <- map["commit.url"]
     }
 }

@@ -11,9 +11,10 @@ import Bond
 import Alamofire
 import ObjectMapper
 
-struct BranchListViewModel {
+class BranchListViewModel {
     
-    var branches = [(Branch, Commit)]()
+//    var branches = [(Branch, Commit)]()
+    var branches = [Branch]()
     
     var ownerName: String!
     var repoName: String!
@@ -24,12 +25,8 @@ struct BranchListViewModel {
         self.repoName = repoName
     }
     
-    mutating func loadLatestCommit(url: String) {
-        
-    }
     
-    
-    mutating func loadBranches(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
+    func loadBranches(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
         let url = "https://api.github.com/repos/\(ownerName)/\(repoName)/branches"
         Alamofire.request(.GET, url)
             .responseJSON { response in
@@ -40,16 +37,19 @@ struct BranchListViewModel {
                         case 200..<299:
                             if let json = response.result.value {
                                 if let items = Mapper<Branch>().mapArray(json) {
-                                    for branch in items {
-                                        Alamofire.request(.GET, branch.latestCommitURLString!).responseJSON { res in
-                                            if let commitJSON = res.result.value {
-                                                if let commit = Mapper<Commit>().map(commitJSON) {
-                                                    self.branches.append((branch, commit))
-                                                }
-                                            }
-                                        }
-                                    }
+                                    self.branches.removeAll()
+                                    self.branches.appendContentsOf(items)
                                     completion()
+//                                    for branch in items {
+//                                        Alamofire.request(.GET, branch.latestCommitURLString!).responseJSON { res in
+//                                            if let commitJSON = res.result.value {
+//                                                if let commit = Mapper<Commit>().map(commitJSON) {
+//                                                    self.branches.append((branch, commit))
+//                                                    completion()
+//                                                }
+//                                            }
+//                                        }
+//                                    }
                                 }
                             }
                         default:
