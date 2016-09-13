@@ -571,7 +571,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="nOS-1N-LYx" kind="show" identifier="ShowCommitList" id="zGA-4s-hxP"/>
+                                    <segue destination="nOS-1N-LYx" kind="show" identifier="ShowCommitList" id="qwQ-R8-6ED"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

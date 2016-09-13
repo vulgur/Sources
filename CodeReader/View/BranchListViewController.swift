@@ -24,18 +24,12 @@ class BranchListViewController: UITableViewController {
         tableView.rowHeight = 70
         
         viewModel = BranchListViewModel(ownerName: ownerName, repoName: repoName)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         viewModel.loadBranches(completion:  {
-            log.info("Load branches success")
             self.tableView.reloadData()
         })
     }
@@ -81,7 +75,6 @@ class BranchListViewController: UITableViewController {
                 }
             }
         })
-//        cell.updateLabel.text = branch.1.commitInfo?.committer?.dateString
 
         return cell
     }
@@ -94,6 +87,11 @@ class BranchListViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.min
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let branch = viewModel.branches[indexPath.section]
+        performSegueWithIdentifier("ShowCommitList", sender: branch.name)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -102,7 +100,6 @@ class BranchListViewController: UITableViewController {
             let commitListVC = segue.destinationViewController as! CommitListViewController
             if let branchName = sender as? String {
                 let url = "https://api.github.com/repos/\(viewModel.ownerName)/\(viewModel.repoName)/commits?sha=\(branchName)"
-                log.info(url)
                 commitListVC.apiURLString = url
             }
         }
