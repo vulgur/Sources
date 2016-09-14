@@ -16,23 +16,20 @@ class CommitListViewController: UITableViewController {
     let CommitCellIdentifier = "CommitCell"
     var commits = [Commit]()
     var apiURLString: String?
+    var viewModel = CommitListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title = "Commits"
         
-        tableView.registerNib(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
+        tableView.register(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
         tableView.rowHeight = 70
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        bindViewModel()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let api = apiURLString {
             fetchFileList(api)
@@ -44,17 +41,21 @@ class CommitListViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func fetchFileList(urlString: String) {
+    // MARK: Private methods
+    func bindViewModel() {
+    }
+    
+    func fetchFileList(_ urlString: String) {
         EZLoadingActivity.show("loading files", disableUI: true)
         Alamofire.request(.GET, urlString)
             .responseJSON { (response) in
                 switch response.result{
-                case .Success:
+                case .success:
                     if let items = Mapper<Commit>().mapArray(response.result.value) {
                         self.commits = items
                         self.tableView.reloadData()
                     }
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
                 }
                 EZLoadingActivity.hide()
@@ -63,37 +64,37 @@ class CommitListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return commits.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CommitCellIdentifier, forIndexPath: indexPath) as! CommitCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommitCellIdentifier, for: indexPath) as! CommitCell
 
         // Configure the cell...
-        let commit = commits[indexPath.row]
-        cell.avatarImageView.kf_setImageWithURL(NSURL(string: commit.committer!.avatarURLString!)!)
+        let commit = commits[(indexPath as NSIndexPath).row]
+        cell.avatarImageView.kf_setImageWithURL(URL(string: commit.committer!.avatarURLString!)!)
         if let message = commit.commitInfo?.message,
-            committerName = commit.committer?.loginName,
-            dateString = commit.commitInfo?.committer?.dateString,
-            sha = commit.sha {
+            let committerName = commit.committer?.loginName,
+            let dateString = commit.commitInfo?.committer?.dateString,
+            let sha = commit.sha {
             
             if let date = dateString.toDateFromISO8601() {
                 
-                let dateToShow = date.inRegion().toString(nil, dateStyle: .MediumStyle, timeStyle: nil, relative: true)!
+                let dateToShow = date.inRegion().toString(nil, dateStyle: .medium, timeStyle: nil, relative: true)!
                 cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
             } else {
                 cell.committerLabel.text = "\(committerName) committed on \(dateString)"
             }
             cell.messageLabel.text = message
-            cell.shaLabel.text = sha.substringToIndex(sha.startIndex.advancedBy(7))
+            cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
         }
 
         return cell

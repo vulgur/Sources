@@ -28,12 +28,12 @@ class RepoFile: NSObject, Mappable {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        guard let name = aDecoder.decodeObjectForKey(RepoFileNameKey) as? String,
-            let type = aDecoder.decodeObjectForKey(RepoFileTypeKey) as? String,
-            let path = aDecoder.decodeObjectForKey(RepoFilePathKey) as? String,
-            let downloadURLString = aDecoder.decodeObjectForKey(RepoFileDownloadURLKey) as? String,
-            let htmlURLString = aDecoder.decodeObjectForKey(RepoFileHTMLURLKey) as? String,
-            let apiURLString = aDecoder.decodeObjectForKey(RepoFileAPIURLKey) as? String
+        guard let name = aDecoder.decodeObject(forKey: RepoFileNameKey) as? String,
+            let type = aDecoder.decodeObject(forKey: RepoFileTypeKey) as? String,
+            let path = aDecoder.decodeObject(forKey: RepoFilePathKey) as? String,
+            let downloadURLString = aDecoder.decodeObject(forKey: RepoFileDownloadURLKey) as? String,
+            let htmlURLString = aDecoder.decodeObject(forKey: RepoFileHTMLURLKey) as? String,
+            let apiURLString = aDecoder.decodeObject(forKey: RepoFileAPIURLKey) as? String
             else {
                 return nil
         }
@@ -45,7 +45,7 @@ class RepoFile: NSObject, Mappable {
         self.apiURLString = apiURLString
     }
     
-    func mapping(map: Map) {
+    func mapping(_ map: Map) {
         name                <- map["name"]
         type                <- map["type"]
         path                <- map["path"]
@@ -61,20 +61,20 @@ class RepoFile: NSObject, Mappable {
 
 extension RepoFile: NSCoding {
 
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let anotherRepoFile = object as? RepoFile {
             return self.htmlURLString == anotherRepoFile.htmlURLString
         }
         return false
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: RepoFileNameKey)
-        aCoder.encodeObject(type, forKey: RepoFileTypeKey)
-        aCoder.encodeObject(path, forKey: RepoFilePathKey)
-        aCoder.encodeObject(downloadURLString, forKey: RepoFileDownloadURLKey)
-        aCoder.encodeObject(htmlURLString, forKey: RepoFileHTMLURLKey)
-        aCoder.encodeObject(apiURLString, forKey: RepoFileAPIURLKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: RepoFileNameKey)
+        aCoder.encode(type, forKey: RepoFileTypeKey)
+        aCoder.encode(path, forKey: RepoFilePathKey)
+        aCoder.encode(downloadURLString, forKey: RepoFileDownloadURLKey)
+        aCoder.encode(htmlURLString, forKey: RepoFileHTMLURLKey)
+        aCoder.encode(apiURLString, forKey: RepoFileAPIURLKey)
     }
     
 

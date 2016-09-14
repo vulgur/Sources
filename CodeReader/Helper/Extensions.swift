@@ -22,16 +22,16 @@ extension UIScrollView {
         let contentWidth = self.frame.width
         var contentHeight: CGFloat = 0
         for subview in subviews {
-            contentHeight += CGRectGetHeight(subview.frame)
+            contentHeight += subview.frame.height
         }
         self.contentSize = CGSize(width: contentWidth, height: contentHeight)
     }
 }
 
-extension NSDate {
+extension Date {
     var dateString: String {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
 }

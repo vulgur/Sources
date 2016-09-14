@@ -30,7 +30,7 @@ class SearchRepoViewModel {
     var totalPage = 0
     var sortType: SortType = .Best
     
-    func searchRepos(completion completion: () -> (), errorHandler: ((String) -> ())? = nil) {
+    func searchRepos(completion: @escaping () -> (), errorHandler: ((String) -> ())? = nil) {
         let urlParams = [
             "q": searchKeyword.value,
             "sort" : sortType.rawValue,
@@ -41,24 +41,24 @@ class SearchRepoViewModel {
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
             .responseJSON { (response) in
                 switch response.result {
-                case .Success:
+                case .success:
                     if let statusCode = response.response?.statusCode{
                         switch statusCode{
                         case 200..<299:
-                            if let items = response.result.value!["items"], results = Mapper<Repo>().mapArray(items) {
+                            if let items = response.result.value!["items"], let results = Mapper<Repo>().mapArray(items) {
 //                                    self.repos = results
                                     self.searchResults.removeAll()
                                     self.searchResults.insertContentsOf(results, atIndex: 0)
                                     completion()
                             }
                         default:
-                            if let message = response.result.value!["message"], errorHandler = errorHandler {
+                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
                                 errorHandler(message as! String)
                             }
                         }
                         
                     }
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
                     if let errorHandler = errorHandler {
                         errorHandler(error.localizedDescription)
@@ -68,7 +68,7 @@ class SearchRepoViewModel {
             }
     }
     
-    func loadMore(completion completion: ()->(), errorHandler: ((String) -> ())? = nil) {
+    func loadMore(completion: @escaping ()->(), errorHandler: ((String) -> ())? = nil) {
         
         currentPage += 1
         let urlParams = [
@@ -80,23 +80,23 @@ class SearchRepoViewModel {
         Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
             .responseJSON { (response) in
                 switch response.result {
-                case .Success:
+                case .success:
                     if let statusCode = response.response?.statusCode{
                         switch statusCode{
                         case 200..<299:
-                            if let items = response.result.value!["items"], results = Mapper<Repo>().mapArray(items) {
-                                    self.repos.appendContentsOf(results)
+                            if let items = response.result.value!["items"], let results = Mapper<Repo>().mapArray(items) {
+                                    self.repos.append(contentsOf: results)
                                     completion()
                             }
                         default:
                             self.currentPage -= 1
-                            if let message = response.result.value!["message"], errorHandler = errorHandler {
+                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
                                 errorHandler(message as! String)
                             }
                         }
                         
                     }
-                case .Failure(let error):
+                case .failure(let error):
                     self.currentPage -= 1
                     if let errorHandler = errorHandler {
                         errorHandler(error.localizedDescription)

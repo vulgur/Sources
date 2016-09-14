@@ -23,10 +23,10 @@ class SearchRepoCell: UITableViewCell {
         ownerAvatarImageView.layer.cornerRadius = 20
 //        ownerAvatarImageView.layer.borderColor = UIColor.blackColor().CGColor
 //        ownerAvatarImageView.layer.borderWidth = 1
-        repoNameLabel.textColor = UIColor.blackColor()
+        repoNameLabel.textColor = UIColor.black
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -17,7 +17,7 @@ class SearchRepoResponse: Mappable {
         
     }
     
-    func mapping(map: Map) {
+    func mapping(_ map: Map) {
         totalCount  <- map["total_count"]
         items       <- map["items"]
     }

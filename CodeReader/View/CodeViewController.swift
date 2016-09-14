@@ -29,18 +29,18 @@ class CodeViewController: UIViewController {
         config.preferences.javaScriptEnabled = true
         webView = WKWebView(frame: view.bounds, configuration: config)
         view.insertSubview(webView, belowSubview: favoriteButton)
-        self.theme = NSUserDefaults.standardUserDefaults().stringForKey("default_theme") ?? "default"
+        self.theme = UserDefaults.standard.string(forKey: "default_theme") ?? "default"
         downloadSourceCode()
         
-        favoriteButton.hidden = true
+        favoriteButton.isHidden = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         webView.scrollView.delegate = self
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         webView.scrollView.delegate = nil
     }
@@ -52,7 +52,7 @@ class CodeViewController: UIViewController {
     
 
     // MARK: Private methods
-    private func isFavorite() -> Bool {
+    fileprivate func isFavorite() -> Bool {
         for item in RecentsManager.sharedManager.favorites {
             if item.file == self.file {
                 return true
@@ -61,19 +61,19 @@ class CodeViewController: UIViewController {
         return false
     }
     
-    private func setFavoriteButton() {
-        favoriteButton.hidden = false
+    fileprivate func setFavoriteButton() {
+        favoriteButton.isHidden = false
         if isFavorite() {
-            favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+            favoriteButton.setImage(UIImage(named: "favorite"), for: UIControlState())
         } else {
-            favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
+            favoriteButton.setImage(UIImage(named: "unfavorite"), for: UIControlState())
         }
     }
     
-    private func downloadSourceCode() {
-        if let template = htmlTemplateString(), downloadURLString = file.downloadURLString {
+    fileprivate func downloadSourceCode() {
+        if let template = htmlTemplateString(), let downloadURLString = file.downloadURLString {
             
-            let url = NSURL(string: downloadURLString)!
+            let url = URL(string: downloadURLString)!
             
             EZLoadingActivity.show("loading source", disableUI: true)
             
@@ -82,64 +82,64 @@ class CodeViewController: UIViewController {
                     EZLoadingActivity.hide()
                     self.setFavoriteButton()
                     if let htmlData = response.data {
-                        if let dataString = String(data: htmlData, encoding: NSUTF8StringEncoding) {
-                            let escapeString = dataString.stringByReplacingOccurrencesOfString("<", withString: "&lt;")
-                                .stringByReplacingOccurrencesOfString(">", withString: "&gt;")
+                        if let dataString = String(data: htmlData, encoding: String.Encoding.utf8) {
+                            let escapeString = dataString.replacingOccurrences(of: "<", with: "&lt;")
+                                .replacingOccurrences(of: ">", with: "&gt;")
                             self.contentString = escapeString
-                            let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: escapeString)
-                                .stringByReplacingOccurrencesOfString("#title#", withString: self.file.name ?? "")
-                                .stringByReplacingOccurrencesOfString("#theme#", withString: self.theme)
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
+                            let htmlString = template.replacingOccurrences(of: "#code#", with: escapeString)
+                                .replacingOccurrences(of: "#title#", with: self.file.name ?? "")
+                                .replacingOccurrences(of: "#theme#", with: self.theme)
+                            DispatchQueue.main.async(execute: {
+                                self.webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
                             })
                         } else {
                             // not a text file, show alert and then pop back
                             
-                            let alertController = UIAlertController(title: "", message: "This file is not a source code file", preferredStyle: .Alert)
-                            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (_) in
-                                self.navigationController?.popViewControllerAnimated(true)
+                            let alertController = UIAlertController(title: "", message: "This file is not a source code file", preferredStyle: .alert)
+                            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
+                                self.navigationController?.popViewController(animated: true)
                             })
                             alertController.addAction(alertAction)
                             RecentsManager.sharedManager.recents.removeFirst()
-                            self.presentViewController(alertController, animated: true, completion: nil)
+                            self.present(alertController, animated: true, completion: nil)
                         }
                     }
                 })
         }
     }
     
-    private func htmlTemplateString() -> String? {
-        let path = NSBundle.mainBundle().URLForResource("template", withExtension: "html")!
+    fileprivate func htmlTemplateString() -> String? {
+        let path = Bundle.main.url(forResource: "template", withExtension: "html")!
         let str: String?
         do {
-            str = try String(contentsOfURL: path)
+            str = try String(contentsOf: path)
         } catch {
             str = nil
         }
         return str
     }
     
-    private func reloadWebView(contentString: String, theme: String) {
+    fileprivate func reloadWebView(_ contentString: String, theme: String) {
         self.theme = theme
         if let template = htmlTemplateString() {
-            let htmlString = template.stringByReplacingOccurrencesOfString("#code#", withString: contentString)
-                .stringByReplacingOccurrencesOfString("#title#", withString: self.file.name ?? "")
-                .stringByReplacingOccurrencesOfString("#theme#", withString: theme)
-            dispatch_async(dispatch_get_main_queue(), {
+            let htmlString = template.replacingOccurrences(of: "#code#", with: contentString)
+                .replacingOccurrences(of: "#title#", with: self.file.name ?? "")
+                .replacingOccurrences(of: "#theme#", with: theme)
+            DispatchQueue.main.async(execute: {
 //                self.webView.loadHTMLString("", baseURL: nil)
-                self.webView.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().bundleURL)
+                self.webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
             })
  
         }
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        self.webView.frame = CGRect(origin: CGPointZero, size: size)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.webView.frame = CGRect(origin: CGPoint.zero, size: size)
     }
     
-    @IBAction func changeTheme(segue: UIStoryboardSegue) {
-        if let themeListVC = segue.sourceViewController as? ThemeListViewController {
+    @IBAction func changeTheme(_ segue: UIStoryboardSegue) {
+        if let themeListVC = segue.source as? ThemeListViewController {
 //            print(themeListVC.selectedTheme)
             if let selectedTheme = themeListVC.selectedTheme?.name {
                 reloadWebView(contentString, theme: selectedTheme)
@@ -147,43 +147,43 @@ class CodeViewController: UIViewController {
         }
     }
     
-    @IBAction func toggleFavorite(sender: UIButton) {
+    @IBAction func toggleFavorite(_ sender: UIButton) {
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
             if isFavorite() {
-                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
-                    self.favoriteButton.setImage(UIImage(named: "unfavorite"), forState: .Normal)
+                UIView.transition(with: self.favoriteButton, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                    self.favoriteButton.setImage(UIImage(named: "unfavorite"), for: UIControlState())
                     }, completion: nil)
                 RecentsManager.sharedManager.removeFavoriteByFile(self.file)
             } else {
-                UIView.transitionWithView(self.favoriteButton, duration: 0.3, options: [.TransitionCrossDissolve], animations: {
-                    self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                UIView.transition(with: self.favoriteButton, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                    self.favoriteButton.setImage(UIImage(named: "favorite"), for: UIControlState())
                     }, completion: nil)
                 RecentsManager.sharedManager.addFavoriteByFile(self.file)
             }
         } else {
-            let alertController = UIAlertController(title: "", message: "Buy me a coffee to add this file to favorites", preferredStyle: .Alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            let alertController = UIAlertController(title: "", message: "Buy me a coffee to add this file to favorites", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
             alertController.addAction(alertAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }
 
 extension CodeViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if self.webView.scrollView == scrollView {
-            UIView.animateWithDuration(0.3, delay: 0, options: [.CurveEaseIn], animations: { 
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: { 
                 self.favoriteButton.alpha = 0
                 }, completion: nil)
         }
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.webView.scrollView == scrollView {
-            let time: NSTimeInterval = 1
-            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
-            dispatch_after(delay, dispatch_get_main_queue(), {
-                UIView.animateWithDuration(0.3, delay: 0, options: [.CurveEaseOut], animations: {
+            let time: TimeInterval = 1
+            let delay = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delay, execute: {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
                     self.favoriteButton.alpha = 1
                     }, completion: nil)
             })

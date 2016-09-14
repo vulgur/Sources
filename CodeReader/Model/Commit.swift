@@ -19,7 +19,7 @@ struct ParentCommit: Mappable {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating func mapping(_ map: Map) {
         URLString       <- map["url"]
         htmlURLString   <- map["html_url"]
         sha             <- map["sha"]
@@ -36,7 +36,7 @@ struct CommitUser: Mappable {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating func mapping(_ map: Map) {
         name        <- map["name"]
         email       <- map["email"]
         dateString  <- map["date"]
@@ -52,7 +52,7 @@ struct CommitInfo: Mappable {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating func mapping(_ map: Map) {
         author      <- map["author"]
         committer   <- map["committer"]
         message     <- map["message"]
@@ -76,7 +76,7 @@ struct Commit: Mappable {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating func mapping(_ map: Map) {
         sha                 <- map["sha"]
         URLString           <- map["url"]
         htmlURLString       <- map["html_url"]

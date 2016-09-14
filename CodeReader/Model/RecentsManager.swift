@@ -22,7 +22,7 @@ class RecentsManager {
     var currentRepoName: String?
     var currentOwnerName: String?
     
-    private var maxCapacity: Int {
+    fileprivate var maxCapacity: Int {
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
             return 50
         } else {
@@ -30,89 +30,89 @@ class RecentsManager {
         }
     }
     
-    func save(type: SaveType) {
+    func save(_ type: SaveType) {
         var data: AnyObject?
         var shouldSave = false
         switch type {
         case .Recent:
             if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) && self.recents.count > 0 {
                 shouldSave = true
-                data = NSKeyedArchiver.archivedDataWithRootObject(self.recents)
+                data = NSKeyedArchiver.archivedData(withRootObject: self.recents) as AnyObject?
             } else {
                 shouldSave = false
             }
         case .Favorite:
             if self.favorites.count > 0 {
                 shouldSave = true
-                data = NSKeyedArchiver.archivedDataWithRootObject(self.favorites)
+                data = NSKeyedArchiver.archivedData(withRootObject: self.favorites) as AnyObject?
             } else {
                 shouldSave = false
             }
         }
         
         if shouldSave {
-            NSUserDefaults.standardUserDefaults().setObject(data, forKey: type.rawValue)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(data, forKey: type.rawValue)
+            UserDefaults.standard.synchronize()
             print("\(type.rawValue) saved")
         }
     }
     
-    func addRecentFile(file: RepoFile) {
+    func addRecentFile(_ file: RepoFile) {
         let ownerName = currentOwnerName ?? "Unknown"
         let repoName = currentRepoName ?? "Unknown"
         let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
         if recents.contains(recent) {
-            if let index = recents.indexOf(recent) {
-                recents.removeAtIndex(index)
+            if let index = recents.index(of: recent) {
+                recents.remove(at: index)
             }
         }
-        recents.insert(recent, atIndex: 0)
+        recents.insert(recent, at: 0)
         if recents.count <= maxCapacity {
         } else {
             recents.removeLast()
         }
     }
     
-    func addFavoriteByFile(file: RepoFile) {
+    func addFavoriteByFile(_ file: RepoFile) {
         let ownerName = currentOwnerName ?? "Unknown"
         let repoName = currentRepoName ?? "Unknown"
         let recent = Recent(file: file, ownerName: ownerName, repoName: repoName)
         if favorites.contains(recent) {
-            if let index = favorites.indexOf(recent) {
-                favorites.removeAtIndex(index)
+            if let index = favorites.index(of: recent) {
+                favorites.remove(at: index)
             }
         }
-        favorites.insert(recent, atIndex: 0)
+        favorites.insert(recent, at: 0)
     }
     
-    func addFavoriteByRecent(recent: Recent) {
+    func addFavoriteByRecent(_ recent: Recent) {
         let favorite = recent
         if favorites.contains(favorite) {
-            if let index = favorites.indexOf(favorite) {
-                favorites.removeAtIndex(index)
+            if let index = favorites.index(of: favorite) {
+                favorites.remove(at: index)
             }
         }
-        favorites.insert(favorite, atIndex: 0)
+        favorites.insert(favorite, at: 0)
     }
     
-    func removeFavoriteByRecent(recent: Recent) {
+    func removeFavoriteByRecent(_ recent: Recent) {
         assert(favorites.count > 0, "Favorites must not be empty")
-        if let index = favorites.indexOf(recent) {
-            favorites.removeAtIndex(index)
+        if let index = favorites.index(of: recent) {
+            favorites.remove(at: index)
         }
     }
     
-    func removeFavoriteByFile(file: RepoFile) {
+    func removeFavoriteByFile(_ file: RepoFile) {
         assert(favorites.count > 0, "Favorites must not be empty")
         var indexToDelete: Int = -1
-        for (index, favorite) in favorites.enumerate() {
+        for (index, favorite) in favorites.enumerated() {
             if favorite.file == file {
                 indexToDelete = index
                 break
             }
         }
         if indexToDelete >= 0 {
-            favorites.removeAtIndex(indexToDelete)
+            favorites.remove(at: indexToDelete)
         }
     }
 }

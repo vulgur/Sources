@@ -52,26 +52,26 @@ class RepoViewController: UIViewController {
     
 
     // MARK: Private methods
-    private func setupWebView() {
+    fileprivate func setupWebView() {
         webView.delegate = self
 //        webView.scalesPageToFit = true
-        let url = NSURL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.loginName!, viewModel.name.value))!
-        let request = NSMutableURLRequest(URL: url)
+        let url = URL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.loginName!, viewModel.name.value))!
+        let request = NSMutableURLRequest(url: url)
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         
         EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
         Alamofire.request(request).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
-                    let htmlStr = readmeTemplate.stringByReplacingOccurrencesOfString("#code#", withString: readmeStr)
-                    self.webView.loadHTMLString(htmlStr, baseURL: NSBundle.mainBundle().bundleURL)
+                    let htmlStr = readmeTemplate.replacingOccurrences(of: "#code#", with: readmeStr)
+                    self.webView.loadHTMLString(htmlStr, baseURL: Bundle.main.bundleURL)
                 }
             }
         }
         
     }
     
-    private func setupUI() {
+    fileprivate func setupUI() {
         // Set the text aligment of description label based on string length
 //        let contraintSize = CGSize(width: CGFloat.max, height: descriptionLabelHeight)
 //        let fontAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(descriptionFontSize)]
@@ -96,7 +96,7 @@ class RepoViewController: UIViewController {
 //        avatarImageView.layer.borderWidth = 2
     }
     
-    private func bindViewModel() {
+    fileprivate func bindViewModel() {
         
         viewModel.name.bindTo(repoNameLabel.bnd_text)
         viewModel.ownerName.bindTo(navigationItem.bnd_title)
@@ -105,36 +105,36 @@ class RepoViewController: UIViewController {
         viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
         viewModel.watchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
 //        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
-        viewModel.updatedDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(updatedDateLabel.bnd_text)
+        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bindTo(updatedDateLabel.bnd_text)
 //        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
         viewModel.language.bindTo(languageLabel.bnd_text)
         
-        avatarImageView.kf_setImageWithURL(NSURL(string: viewModel.avatarImageURLString.value)!, placeholderImage: UIImage(named: "user_avatar"))
+        avatarImageView.kf_setImageWithURL(URL(string: viewModel.avatarImageURLString.value)!, placeholderImage: UIImage(named: "user_avatar"))
         
         RecentsManager.sharedManager.currentRepoName = viewModel.name.value
         RecentsManager.sharedManager.currentOwnerName = viewModel.ownerName.value
     }
     
-    private func readmeTemplateString() -> String? {
-        let path = NSBundle.mainBundle().URLForResource("readme", withExtension: "html")!
+    fileprivate func readmeTemplateString() -> String? {
+        let path = Bundle.main.url(forResource: "readme", withExtension: "html")!
         let str: String?
         do {
-            str = try String(contentsOfURL: path)
+            str = try String(contentsOf: path)
         } catch {
             str = nil
         }
         return str
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFileList" {
-            let fileListVC = segue.destinationViewController as! FileListViewController
+            let fileListVC = segue.destination as! FileListViewController
             fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
             fileListVC.pathTitle = "/"
 //            EZLoadingActivity.hide()
         }
         else if segue.identifier == "ShowBranchList" {
-            let branchListVC = segue.destinationViewController as! BranchListViewController
+            let branchListVC = segue.destination as! BranchListViewController
             branchListVC.ownerName = viewModel.ownerName.value
             branchListVC.repoName = viewModel.name.value
         }
@@ -144,12 +144,12 @@ class RepoViewController: UIViewController {
 }
 
 extension RepoViewController: UIWebViewDelegate {
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
 
         var frame = webView.frame
         frame.size.height = 1
         webView.frame = frame
-        let fitSize = webView.sizeThatFits(CGSizeZero)
+        let fitSize = webView.sizeThatFits(CGSize.zero)
         frame.size = fitSize
         webView.frame = frame
         self.view.layoutIfNeeded()
@@ -159,7 +159,7 @@ extension RepoViewController: UIWebViewDelegate {
 //        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")! as NSString).floatValue
 //        let webViewHeight = (webView.stringByEvaluatingJavaScriptFromString("document.height")! as NSString).floatValue
         let contentViewHeight = CGFloat(webViewHeight) + webView.frame.origin.y
-        self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: contentViewHeight))
+        self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .height, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentViewHeight))
         self.view.layoutIfNeeded()
         EZLoadingActivity.hide()
     }

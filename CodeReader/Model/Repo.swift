@@ -28,7 +28,7 @@ class Repo: Mappable {
     }
     
     // Mappable
-    func mapping(map: Map) {
+    func mapping(_ map: Map) {
         repoId          <- map["id"]
         name            <- map["name"]
         fullName        <- map["full_name"]

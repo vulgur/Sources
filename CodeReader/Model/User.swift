@@ -31,7 +31,7 @@ struct User: Mappable {
     var publicReposCount: Int?
     var followersCount: Int?
     var followingCount: Int?
-    var joinAtDate: NSDate?
+    var joinAtDate: Date?
     
     
     init() {
@@ -42,7 +42,7 @@ struct User: Mappable {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating func mapping(_ map: Map) {
         loginName               <- map["login"]
         userId                  <- map["id"]
         avatarURLString         <- map["avatar_url"]

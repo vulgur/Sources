@@ -15,7 +15,7 @@ class ThemeListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(UINib.init(nibName: "ThemeCell", bundle: nil), forCellReuseIdentifier: "Theme")
+        tableView.register(UINib.init(nibName: "ThemeCell", bundle: nil), forCellReuseIdentifier: "Theme")
         tableView.reloadData()
     }
 
@@ -26,21 +26,21 @@ class ThemeListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.themes.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Theme", forIndexPath: indexPath) as! ThemeCell
-        let theme = viewModel.themes[indexPath.section]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Theme", for: indexPath) as! ThemeCell
+        let theme = viewModel.themes[(indexPath as NSIndexPath).section]
         if theme.isPurchased || DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            cell.lockImageView.hidden = true
+            cell.lockImageView.isHidden = true
         } else {
-            cell.lockImageView.hidden = false
+            cell.lockImageView.isHidden = false
         }
         cell.contentView.backgroundColor = theme.colors[0]
         cell.nameLabel.text = theme.name
@@ -52,25 +52,25 @@ class ThemeListViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let theme = viewModel.themes[indexPath.section]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let theme = viewModel.themes[(indexPath as NSIndexPath).section]
         if theme.isPurchased || DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            performSegueWithIdentifier("ChangeTheme", sender: indexPath)
+            performSegue(withIdentifier: "ChangeTheme", sender: indexPath)
         } else {
-            let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all themes", preferredStyle: .Alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (_) in
-                self.navigationController?.popViewControllerAnimated(true)
+            let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all themes", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
+                self.navigationController?.popViewController(animated: true)
             })
             alertController.addAction(alertAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.present(alertController, animated: true, completion: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeTheme" {
-            if let indexPath = sender as? NSIndexPath{
-                selectedTheme = viewModel.themes[indexPath.section]
-                NSUserDefaults.standardUserDefaults().setObject(selectedTheme?.name, forKey: "default_theme")
+            if let indexPath = sender as? IndexPath{
+                selectedTheme = viewModel.themes[(indexPath as NSIndexPath).section]
+                UserDefaults.standard.set(selectedTheme?.name, forKey: "default_theme")
             }
         }
     }

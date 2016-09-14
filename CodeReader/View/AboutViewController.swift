@@ -19,10 +19,10 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AboutViewController.handlePurchasedNotification(_:)), name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.handlePurchasedNotification(_:)), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
             changeStateToPurchased()
@@ -37,7 +37,7 @@ class AboutViewController: UIViewController {
                             self.changeStateToPurchased()
                         } else {
                             let tap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.tapToDonate))
-                            self.donateImageView.userInteractionEnabled = true
+                            self.donateImageView.isUserInteractionEnabled = true
                             self.donateImageView.addGestureRecognizer(tap)
                         }
                     }
@@ -52,7 +52,7 @@ class AboutViewController: UIViewController {
     }
     
     
-    @objc private func handlePurchasedNotification(notification: NSNotification) {
+    @objc fileprivate func handlePurchasedNotification(_ notification: Notification) {
         guard let identifier = notification.object as? String else { return }
         
         for product in products {
@@ -61,23 +61,23 @@ class AboutViewController: UIViewController {
         }
     }
     
-    private func changeStateToPurchased() {
-        UIView.transitionWithView(donateImageView, duration: 0.5, options: [.TransitionCrossDissolve], animations: {
+    fileprivate func changeStateToPurchased() {
+        UIView.transition(with: donateImageView, duration: 0.5, options: [.transitionCrossDissolve], animations: {
             self.donateImageView.image = UIImage(named: "purchased_coffee")
             self.titleLabel.text = "You've unlocked all features"
             }, completion: nil)
-        donateImageView.userInteractionEnabled = false
-        restoreButton.hidden = true
+        donateImageView.isUserInteractionEnabled = false
+        restoreButton.isHidden = true
     }
     
-    @objc private func tapToDonate() {
+    @objc fileprivate func tapToDonate() {
         if let buyMeACoffee = self.products.first {
             DonationProduct.store.buyProduct(buyMeACoffee)
         }
         
     }
 
-    @IBAction func restoreTapped(sender: UIButton) {
+    @IBAction func restoreTapped(_ sender: UIButton) {
         DonationProduct.store.restorePurchases()
     }
     /*

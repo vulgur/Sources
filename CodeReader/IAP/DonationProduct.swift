@@ -9,14 +9,14 @@
 import Foundation
 
 public struct DonationProduct {
-    private static let Prefix = "com.wsd.Sources."
+    fileprivate static let Prefix = "com.wsd.Sources."
     public static let BuyMeACoffee = Prefix + "Donation"
-    private static let productIdentifiers: Set<String> = [DonationProduct.BuyMeACoffee]
+    fileprivate static let productIdentifiers: Set<String> = [DonationProduct.BuyMeACoffee]
     public static let store = IAPHelper(productIds: DonationProduct.productIdentifiers)
 }
 
-func resourceNameForProductIdentifier(productIdentifier: String) -> String? {
-    return productIdentifier.componentsSeparatedByString(".").last
+func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {
+    return productIdentifier.components(separatedBy: ".").last
 }
 
 

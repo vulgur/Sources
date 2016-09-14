@@ -17,7 +17,7 @@ class BranchCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -43,20 +43,20 @@ class BranchCell: UITableViewCell {
         }
     }
     
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         let insects = UIEdgeInsets.init(top:topInsets, left: leftInsets, bottom: bottomInsets, right: rightInsets)
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insects))
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insects))
     }
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = super.sizeThatFits(size)
         newSize.width += leftInsets + rightInsets
         newSize.height += topInsets + bottomInsets
         return newSize
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        var contentSize = super.intrinsicContentSize()
+    override var intrinsicContentSize : CGSize {
+        var contentSize = super.intrinsicContentSize
         contentSize.width += leftInsets + rightInsets
         contentSize.height += topInsets + bottomInsets
         return contentSize

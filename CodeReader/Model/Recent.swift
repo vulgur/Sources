@@ -26,22 +26,22 @@ class Recent: NSObject, NSCoding{
     
     // MARK: NSCoding
     convenience required init?(coder aDecoder: NSCoder) {
-        guard let file = aDecoder.decodeObjectForKey(RecentRepoFileKey) as? RepoFile,
-            let ownerName = aDecoder.decodeObjectForKey(RecentOwnerNameKey) as? String,
-            let repoName = aDecoder.decodeObjectForKey(RecentRepoNameKey) as? String
+        guard let file = aDecoder.decodeObject(forKey: RecentRepoFileKey) as? RepoFile,
+            let ownerName = aDecoder.decodeObject(forKey: RecentOwnerNameKey) as? String,
+            let repoName = aDecoder.decodeObject(forKey: RecentRepoNameKey) as? String
             else {
                 return nil
             }
         self.init(file: file, ownerName: ownerName, repoName: repoName)
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.file, forKey: RecentRepoFileKey)
-        aCoder.encodeObject(self.ownerName, forKey: RecentOwnerNameKey)
-        aCoder.encodeObject(self.repoName, forKey: RecentRepoNameKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.file, forKey: RecentRepoFileKey)
+        aCoder.encode(self.ownerName, forKey: RecentOwnerNameKey)
+        aCoder.encode(self.repoName, forKey: RecentRepoNameKey)
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let anotherRecent = object as? Recent {
             return self.repoName == anotherRecent.repoName
                 && self.ownerName == anotherRecent.ownerName

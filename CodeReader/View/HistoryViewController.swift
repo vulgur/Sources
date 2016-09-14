@@ -21,12 +21,12 @@ class HistoryViewController: UIViewController {
         
         self.navigationItem.title = "History"
 
-        self.tableView.registerNib(UINib.init(nibName: "RecentFileCell", bundle: nil), forCellReuseIdentifier: CellIdentifier)
+        self.tableView.register(UINib.init(nibName: "RecentFileCell", bundle: nil), forCellReuseIdentifier: CellIdentifier)
         self.tableView.rowHeight = 70
         configSegmentedControl()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
@@ -36,13 +36,13 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func configSegmentedControl() {
-        self.segmentedControl.addTarget(self, action: #selector(HistoryViewController.segmentChanged(_:)), forControlEvents: .ValueChanged)
+    fileprivate func configSegmentedControl() {
+        self.segmentedControl.addTarget(self, action: #selector(HistoryViewController.segmentChanged(_:)), for: .valueChanged)
         self.segmentedControl.selectedSegmentIndex = 0
         self.recentList = RecentsManager.sharedManager.recents
     }
 
-    @objc private func segmentChanged(sender: UISegmentedControl) {
+    @objc fileprivate func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             recentList = RecentsManager.sharedManager.recents
@@ -50,12 +50,12 @@ class HistoryViewController: UIViewController {
             if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
                 recentList = RecentsManager.sharedManager.favorites
             } else {
-                let alertController = UIAlertController(title: "", message: "Buy me a coffee to unlock favorites", preferredStyle: .Alert)
-                let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                let alertController = UIAlertController(title: "", message: "Buy me a coffee to unlock favorites", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
                 alertController.addAction(alertAction)
-                self.presentViewController(alertController, animated: true, completion: {
+                self.present(alertController, animated: true, completion: {
                     self.segmentedControl.selectedSegmentIndex = 0
-                    self.segmentedControl.didChangeValueForKey("selectedSegmentIndex")
+                    self.segmentedControl.didChangeValue(forKey: "selectedSegmentIndex")
                 })
             }
         default:
@@ -66,11 +66,11 @@ class HistoryViewController: UIViewController {
 }
 
 extension HistoryViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let recent = recentList[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recent = recentList[(indexPath as NSIndexPath).row]
         let file = recent.file
         
-        let codeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CodeViewController") as! CodeViewController
+        let codeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CodeViewController") as! CodeViewController
         codeVC.file = file
         codeVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(codeVC, animated: true)
@@ -78,19 +78,19 @@ extension HistoryViewController: UITableViewDelegate {
 }
 
 extension HistoryViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recentList.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! RecentFileCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! RecentFileCell
         
-        let recent = recentList[indexPath.row]
+        let recent = recentList[(indexPath as NSIndexPath).row]
         cell.fileNameLabel.text = recent.file.name
         cell.ownerRepoLabel.text = recent.ownerName + " / " + recent.repoName
         
