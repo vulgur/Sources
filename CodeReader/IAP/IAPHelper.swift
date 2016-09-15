@@ -26,9 +26,9 @@ open class IAPHelper : NSObject{
             let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
             if purchased {
                 purchasedProductIdentifiers.insert(productIdentifier)
-                print("Previously purchased: \(productIdentifier)")
+                log.info("Previously purchased: \(productIdentifier)")
             } else {
-                print("Not purchased: \(productIdentifier)")
+                log.info("Not purchased: \(productIdentifier)")
             }
         }
         super.init()
@@ -49,7 +49,7 @@ extension IAPHelper {
     }
     
     public func buyProduct(_ product: SKProduct) {
-        print("Buying \(product.productIdentifier)...")
+        log.info("Buying \(product.productIdentifier)...")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -70,19 +70,19 @@ extension IAPHelper {
 
 extension IAPHelper: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("Loaded list of products...")
+        log.info("Loaded list of products...")
         let products = response.products
         productsRequestCompeletionHandler?(true, products)
         clearRequestAndHandler()
         
         for p in products {
-            print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
+            log.info("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
         }
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("Failed to load list of products")
-        print("Error: \(error.localizedDescription)")
+        log.error("Failed to load list of products")
+        log.error("Error: \(error.localizedDescription)")
         
         productsRequestCompeletionHandler?(false, nil)
         clearRequestAndHandler()
@@ -111,7 +111,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     fileprivate func completeTransaction(_ transaction: SKPaymentTransaction) {
-        print("completeTransanction...")
+        log.warning("completeTransanction...")
         
         deliverPurchasedNotificationForIdentifier(transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -123,21 +123,24 @@ extension IAPHelper: SKPaymentTransactionObserver {
             return
         }
         
-        print("restoreTransaction... \(productIdentifier)")
+        log.warning("restoreTransaction... \(productIdentifier)")
         deliverPurchasedNotificationForIdentifier(productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
         Answers.logContentView(withName: "Purchase restored", contentType: "IAP", contentId: Date().dateString, customAttributes: nil)
     }
     
     fileprivate func failedTransaction(_ transaction: SKPaymentTransaction) {
-        print("failedTransaction...")
-        if transaction.error!.code != SKError.paymentCancelled.rawValue {
-            print("Transaction Error: \(transaction.error?.localizedDescription)")
-            if let desc = transaction.error?.localizedDescription {
-                Answers.logContentView(withName: "Purchase failed",
-                                               contentType: "IAP",
-                                               contentId: Date().dateString,
-                                               customAttributes: ["Error": desc])
+        log.warning("failedTransaction...")
+        if let transactionError = transaction.error as? SKError{
+            
+            if transactionError.code != SKError.paymentCancelled {
+                log.warning("Transaction Error: \(transaction.error?.localizedDescription)")
+                if let desc = transaction.error?.localizedDescription {
+                    Answers.logContentView(withName: "Purchase failed",
+                                                   contentType: "IAP",
+                                                   contentId: Date().dateString,
+                                                   customAttributes: ["Error": desc])
+                }
             }
         }
         
