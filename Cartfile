@@ -1,11 +1,9 @@
-#github "ReactiveKit/ReactiveKit" ~> 3.0
 github "Alamofire/Alamofire" ~> 4.0
 github "Hearst-DD/ObjectMapper" ~> 2.0.0
 github "onevcat/Kingfisher" ~> 3.0
-github "SwiftBond/Bond" ~> 5.0
 github "yeahdongcn/UIColor-Hex-Swift" "Swift-3.0"
 github "malcommac/SwiftDate" "feature/swift-3.0"
-github "SwiftyBeaver/SwiftyBeaver" "swift3"
+github "SwiftyBeaver/SwiftyBeaver"
 github "tristanhimmelman/AlamofireObjectMapper" ~> 4.0
+github "ReactiveX/RxSwift" "3.0.0-beta.1"
 #github "ZipArchive/ZipArchive"
-#github "ReactiveKit/Bond" ~> 5.0
