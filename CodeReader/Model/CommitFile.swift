@@ -23,11 +23,11 @@ struct CommitFile: Mappable {
     var patch: String?
     
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         // TODO: map properties
     }
 }

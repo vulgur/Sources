@@ -77,7 +77,7 @@ class CodeViewController: UIViewController {
             
             EZLoadingActivity.show("loading source", disableUI: true)
             
-            Alamofire.request(.GET, url)
+            Alamofire.request(url)
                 .responseData(completionHandler: { (response) in
                     EZLoadingActivity.hide()
                     self.setFavoriteButton()

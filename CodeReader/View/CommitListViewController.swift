@@ -47,19 +47,26 @@ class CommitListViewController: UITableViewController {
     
     func fetchFileList(_ urlString: String) {
         EZLoadingActivity.show("loading files", disableUI: true)
-        Alamofire.request(.GET, urlString)
-            .responseJSON { (response) in
-                switch response.result{
-                case .success:
-                    if let items = Mapper<Commit>().mapArray(response.result.value) {
-                        self.commits = items
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+        Alamofire.request(urlString)
+            .responseArray(completionHandler: { (response: DataResponse<[Commit]>) in
+                if let items = response.result.value {
+                    self.commits = items
+                    self.tableView.reloadData()
                 }
                 EZLoadingActivity.hide()
-        }
+            })
+//            .responseJSON { (response) in
+//                switch response.result{
+//                case .success:
+//                    if let items = Mapper<Commit>().mapArray(response.result.value) {
+//                        self.commits = items
+//                        self.tableView.reloadData()
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                }
+
+//        }
     }
 
     // MARK: - Table view data source
@@ -80,7 +87,7 @@ class CommitListViewController: UITableViewController {
 
         // Configure the cell...
         let commit = commits[(indexPath as NSIndexPath).row]
-        cell.avatarImageView.kf_setImageWithURL(URL(string: commit.committer!.avatarURLString!)!)
+        cell.avatarImageView.kf_setImage(with: URL(string: commit.committer!.avatarURLString!)!)
         if let message = commit.commitInfo?.message,
             let committerName = commit.committer?.loginName,
             let dateString = commit.commitInfo?.committer?.dateString,
@@ -88,7 +95,7 @@ class CommitListViewController: UITableViewController {
             
             if let date = dateString.toDateFromISO8601() {
                 
-                let dateToShow = date.inRegion().toString(nil, dateStyle: .medium, timeStyle: nil, relative: true)!
+                let dateToShow = date.inRegion().toString(style: nil, dateStyle: .medium, timeStyle: nil, relative: true)!
                 cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
             } else {
                 cell.committerLabel.text = "\(committerName) committed on \(dateString)"

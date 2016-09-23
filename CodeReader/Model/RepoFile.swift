@@ -23,7 +23,7 @@ class RepoFile: NSObject, Mappable {
     var htmlURLString: String?
     var apiURLString: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
     
     }
     
@@ -45,7 +45,7 @@ class RepoFile: NSObject, Mappable {
         self.apiURLString = apiURLString
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         name                <- map["name"]
         type                <- map["type"]
         path                <- map["path"]

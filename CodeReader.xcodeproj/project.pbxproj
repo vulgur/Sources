@@ -109,6 +109,8 @@
 		D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4391CE3653E00D6143D /* Extensions.swift */; };
 		D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
+		D2405CE11D8E7F6B00943B24 /* ReactiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */; };
+		D2405CE21D8E7F6B00943B24 /* ReactiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */; };
 		D2451F981CEC2C2D003CE49B /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; };
 		D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2451F971CEC2C2D003CE49B /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -162,6 +164,7 @@
 				D23EE4231CE1C0E300D6143D /* ObjectMapper.framework in Embed Frameworks */,
 				D27891611D7D55A900FC5191 /* SwiftyBeaver.framework in Embed Frameworks */,
 				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
+				D2405CE21D8E7F6B00943B24 /* ReactiveKit.framework in Embed Frameworks */,
 				D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */,
 				D278915E1D7C7AB700FC5191 /* SwiftDate.framework in Embed Frameworks */,
 				D2451F991CEC2C2D003CE49B /* Bond.framework in Embed Frameworks */,
@@ -273,6 +276,7 @@
 		D23EE4351CE2387C00D6143D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		D23EE4391CE3653E00D6143D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D23EE43B1CE479B700D6143D /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveKit.framework; path = Carthage/Build/iOS/ReactiveKit.framework; sourceTree = "<group>"; };
 		D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		D2451F971CEC2C2D003CE49B /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
 		D263B3B11D8653F90050CB27 /* BranchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				D27891601D7D55A900FC5191 /* SwiftyBeaver.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
 				D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */,
+				D2405CE11D8E7F6B00943B24 /* ReactiveKit.framework in Frameworks */,
 				D278915D1D7C7AB700FC5191 /* SwiftDate.framework in Frameworks */,
 				D2451F981CEC2C2D003CE49B /* Bond.framework in Frameworks */,
 			);
@@ -436,6 +441,7 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
+				D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */,
 				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
@@ -873,7 +879,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -912,6 +918,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

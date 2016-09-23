@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 import Bond
 
-struct CommitListViewModel {
+class CommitListViewModel {
     
     var commits = [Commit]()
     var isLoading = Observable<Bool>(false)
@@ -19,13 +19,13 @@ struct CommitListViewModel {
     var nextPageUrl: String = ""
     
     
-    mutating func loadCommitList(_ urlString: String, completion: @escaping () -> (), errorHandler: (() -> ())? = nil) {
+    func loadCommitList(_ urlString: String, completion: @escaping () -> (), errorHandler: (() -> ())? = nil) {
         // TODO: get he commit list of a specific branch
-        Alamofire.request(.GET, urlString)
+        Alamofire.request(urlString)
             .responseJSON { (response) in
                 switch response.result{
                 case .success:
-                    if let items = Mapper<Commit>().mapArray(response.result.value) {
+                    if let value = response.result.value as? [[String: Any]], let items = Mapper<Commit>().mapArray(JSONArray: value) {
                         self.commits = items
                         completion()
                     }

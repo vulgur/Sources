@@ -38,11 +38,11 @@ struct User: Mappable {
         
     }
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         loginName               <- map["login"]
         userId                  <- map["id"]
         avatarURLString         <- map["avatar_url"]

@@ -23,12 +23,12 @@ class Repo: Mappable {
     var createdDate: String?
     var pushedDate: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
     
     }
     
     // Mappable
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         repoId          <- map["id"]
         name            <- map["name"]
         fullName        <- map["full_name"]

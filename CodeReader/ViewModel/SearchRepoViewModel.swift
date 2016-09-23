@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+import AlamofireObjectMapper
 import Bond
 
 class SearchRepoViewModel {
@@ -20,8 +21,7 @@ class SearchRepoViewModel {
         case Updated = "updated"
     }
     
-    var repos = [Repo]()
-    var searchResults = ObservableArray<Repo>()
+    var searchResults = MutableObservableArray<Repo>([Repo]())
     var searchInProgress = Observable<Bool>(false)
     var searchKeyword = Observable<String>("")
     
@@ -38,34 +38,45 @@ class SearchRepoViewModel {
         searchInProgress.value = true
         
         // Fetch Request
-        Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
-            .responseJSON { (response) in
-                switch response.result {
-                case .success:
-                    if let statusCode = response.response?.statusCode{
-                        switch statusCode{
-                        case 200..<299:
-                            if let items = response.result.value!["items"], let results = Mapper<Repo>().mapArray(items) {
-//                                    self.repos = results
-                                    self.searchResults.removeAll()
-                                    self.searchResults.insertContentsOf(results, atIndex: 0)
-                                    completion()
-                            }
-                        default:
-                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
-                                errorHandler(message as! String)
-                            }
-                        }
-                        
-                    }
-                case .failure(let error):
-                    print(error)
-                    if let errorHandler = errorHandler {
-                        errorHandler(error.localizedDescription)
-                    }
+        Alamofire.request("https://api.github.com/search/repositories", parameters: urlParams)
+            .responseObject { (response: DataResponse<SearchRepoResponse>) in
+                if let searchResult = response.result.value {
+                    searchResult.items?.forEach({ (item) in
+                        self.searchResults.append(item)
+                    })
+                    
+                    completion()
                 }
-                self.searchInProgress.value = false
-            }
+            EZLoadingActivity.hide()
+        }
+//            .responseJSON { (response) in
+//                switch response.result {
+//                case .success:
+//                    if let statusCode = response.response?.statusCode{
+//                        switch statusCode{
+//                        case 200..<299:
+//                            if let value = response.result.value as? [String: Any] {
+//                                if let items = value["items"], let results = Mapper<Repo>().mapArray(JSONArray: items as! [[String : Any]]) {
+//                                    self.searchResults.removeAll()
+//                                    self.searchResults.insert(contentsOf: results, at: 0)
+//                                    completion()
+//                                }
+//                            }
+//                        default:
+//                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
+//                                errorHandler(message as! String)
+//                            }
+//                        }
+//                        
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                    if let errorHandler = errorHandler {
+//                        errorHandler(error.localizedDescription)
+//                    }
+//                }
+//                self.searchInProgress.value = false
+//            }
     }
     
     func loadMore(completion: @escaping ()->(), errorHandler: ((String) -> ())? = nil) {
@@ -77,31 +88,34 @@ class SearchRepoViewModel {
             "page" : "\(currentPage)"
         ]
         // Fetch Request
-        Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: urlParams)
-            .responseJSON { (response) in
-                switch response.result {
-                case .success:
-                    if let statusCode = response.response?.statusCode{
-                        switch statusCode{
-                        case 200..<299:
-                            if let items = response.result.value!["items"], let results = Mapper<Repo>().mapArray(items) {
-                                    self.repos.append(contentsOf: results)
-                                    completion()
-                            }
-                        default:
-                            self.currentPage -= 1
-                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
-                                errorHandler(message as! String)
-                            }
-                        }
-                        
-                    }
-                case .failure(let error):
-                    self.currentPage -= 1
-                    if let errorHandler = errorHandler {
-                        errorHandler(error.localizedDescription)
-                    }
-                }
-            }
+        Alamofire.request("https://api.github.com/search/repositories", parameters: urlParams)
+            .responseObject { (response: DataResponse<SearchRepoResponse>) in
+                log.info(response.result.value)
+        }
+//            .responseJSON { (response) in
+//                switch response.result {
+//                case .success:
+//                    if let statusCode = response.response?.statusCode{
+//                        switch statusCode{
+//                        case 200..<299:
+//                            if let items = response.result.value!["items"], let results = Mapper<Repo>().mapArray(items) {
+//                                    self.repos.append(contentsOf: results)
+//                                    completion()
+//                            }
+//                        default:
+//                            self.currentPage -= 1
+//                            if let message = response.result.value!["message"], let errorHandler = errorHandler {
+//                                errorHandler(message as! String)
+//                            }
+//                        }
+//                        
+//                    }
+//                case .failure(let error):
+//                    self.currentPage -= 1
+//                    if let errorHandler = errorHandler {
+//                        errorHandler(error.localizedDescription)
+//                    }
+//                }
+//            }
     }
 }

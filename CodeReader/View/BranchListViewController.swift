@@ -66,8 +66,10 @@ class BranchListViewController: UITableViewController {
                 if let date = dateString.toDateFromISO8601() {
                     let localRegion = Region(calendarName: .autoUpdatingCurrent, timeZoneName: nil, localeName: nil)
                     cell.updateLabel.alpha = 0
-                    let updateString = date.toNaturalString(Date(), inRegion: localRegion, style: FormatterStyle.init(style: .full, units: nil, max: 1))!
-                        + " ago by " + (commit.committer?.loginName)!
+                    
+                    let updateString = date.toString(style: .full)
+//                        date.toNaturalString(Date(), inRegion: localRegion, style: FormatterStyle.init(style: .full, units: nil, max: 1))!
+//                        + " ago by " + (commit.committer?.loginName)!
                     cell.updateLabel.text = updateString
                     UIView.animate(withDuration: 0.3, animations: {
                         cell.updateLabel.alpha = 1

@@ -13,11 +13,11 @@ class SearchRepoResponse: Mappable {
     var totalCount: Int?
     var items: [Repo]?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         totalCount  <- map["total_count"]
         items       <- map["items"]
     }

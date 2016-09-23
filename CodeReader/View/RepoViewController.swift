@@ -60,7 +60,7 @@ class RepoViewController: UIViewController {
         request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         
         EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
-        Alamofire.request(request).responseString { (response) in
+        Alamofire.request(request as! URLRequestConvertible).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
                     let htmlStr = readmeTemplate.replacingOccurrences(of: "#code#", with: readmeStr)
@@ -97,19 +97,19 @@ class RepoViewController: UIViewController {
     }
     
     fileprivate func bindViewModel() {
-        
-        viewModel.name.bindTo(repoNameLabel.bnd_text)
-        viewModel.ownerName.bindTo(navigationItem.bnd_title)
-        viewModel.description.bindTo(repoDescriptionLabel.bnd_text)
-        viewModel.stars.map {"\($0)"}.bindTo(starsLabel.bnd_text)
-        viewModel.forks.map {"\($0)"}.bindTo(forksLabel.bnd_text)
-        viewModel.watchers.map {"\($0)"}.bindTo(watchersLabel.bnd_text)
+        viewModel.name.bind(to: repoNameLabel.bnd_text)
+        viewModel.name.bind(to: repoNameLabel.bnd_text)
+        viewModel.ownerName.bind(to: navigationItem.bnd_title)
+        viewModel.description.bind(to: repoDescriptionLabel.bnd_text)
+        viewModel.stars.map {"\($0)"}.bind(to: starsLabel.bnd_text)
+        viewModel.forks.map {"\($0)"}.bind(to: forksLabel.bnd_text)
+        viewModel.watchers.map {"\($0)"}.bind(to: watchersLabel.bnd_text)
 //        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
-        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bindTo(updatedDateLabel.bnd_text)
+        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bind(to:updatedDateLabel.bnd_text)
 //        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
-        viewModel.language.bindTo(languageLabel.bnd_text)
+        viewModel.language.bind(to: languageLabel.bnd_text)
         
-        avatarImageView.kf_setImageWithURL(URL(string: viewModel.avatarImageURLString.value)!, placeholderImage: UIImage(named: "user_avatar"))
+        avatarImageView.kf_setImage(with: URL(string: viewModel.avatarImageURLString.value), placeholder: UIImage(named: "user_avatar"))
         
         RecentsManager.sharedManager.currentRepoName = viewModel.name.value
         RecentsManager.sharedManager.currentOwnerName = viewModel.ownerName.value

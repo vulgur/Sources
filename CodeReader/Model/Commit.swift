@@ -15,11 +15,11 @@ struct ParentCommit: Mappable {
     var htmlURLString: String?
     var sha: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         URLString       <- map["url"]
         htmlURLString   <- map["html_url"]
         sha             <- map["sha"]
@@ -32,11 +32,11 @@ struct CommitUser: Mappable {
     var email: String?
     var dateString: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         name        <- map["name"]
         email       <- map["email"]
         dateString  <- map["date"]
@@ -48,11 +48,11 @@ struct CommitInfo: Mappable {
     var committer: CommitUser?
     var message: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         author      <- map["author"]
         committer   <- map["committer"]
         message     <- map["message"]
@@ -72,11 +72,11 @@ struct Commit: Mappable {
     var files = [CommitFile]()
     var commitInfo: CommitInfo?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         sha                 <- map["sha"]
         URLString           <- map["url"]
         htmlURLString       <- map["html_url"]

@@ -13,11 +13,11 @@ struct LatestCommit: Mappable {
     var sha: String?
     var URLString: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         sha        <- map["sha"]
         URLString  <- map["url"]
     }
@@ -29,11 +29,11 @@ struct Branch: Mappable {
     var latestCommitURLString: String?
 //    var lastestUpdateDate: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         name            <- map["name"]
         latestCommitURLString   <- map["commit.url"]
     }

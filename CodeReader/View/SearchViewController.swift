@@ -99,18 +99,18 @@ class SearchViewController: UIViewController {
     // MARK: Private methods
     func bindViewModel() {
         
-        viewModel.searchInProgress.map{!$0}.bindTo(maskView.bnd_hidden)
-        
-        viewModel.searchResults.lift().bindTo(self.tableView) { (indexPath, dataSource, tableView) -> UITableViewCell in
+        viewModel.searchInProgress.map{!$0}.bind(to: maskView.bnd_isHidden)
+    
+        viewModel.searchResults.bind(to: self.tableView) { (dataSource, indexPath, tableView) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
             let repo = dataSource[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
             cell.repoNameLabel.text = repo.fullName
             cell.repoDescriptionLabel.text = repo.description
             cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
             cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
-            cell.ownerAvatarImageView.kf_setImageWithURL(URL(string: repo.owner!.avatarURLString!)!,
-                                                         placeholderImage: UIImage(named: "user_avatar"),
-                                                         optionsInfo: [.transition(ImageTransition.fade(1))])
+            cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
+                                                  placeholder: UIImage(named: "user_avatar"),
+                                                  options: [.transition(ImageTransition.fade(1))])
             
             return cell
             
@@ -130,19 +130,19 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.repos.count
+        return viewModel.searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
-        let repo = viewModel.repos[(indexPath as NSIndexPath).row]
+        let repo = viewModel.searchResults[(indexPath as NSIndexPath).row]
         cell.repoNameLabel.text = repo.fullName
         cell.repoDescriptionLabel.text = repo.description
         cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
         cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
-        cell.ownerAvatarImageView.kf_setImageWithURL(URL(string: repo.owner!.avatarURLString!)!,
-                                                     placeholderImage: UIImage(named: "user_avatar"),
-                                                     optionsInfo: [.transition(ImageTransition.fade(1))])
+        cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
+                                              placeholder: UIImage(named: "user_avatar"),
+                                              options: [.transition(ImageTransition.fade(1))])
         return cell
     }
 }

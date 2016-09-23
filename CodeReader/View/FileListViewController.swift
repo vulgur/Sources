@@ -48,19 +48,26 @@ class FileListViewController: UITableViewController {
     
     func fetchFileList(_ path: String) {
         EZLoadingActivity.show("loading files", disableUI: true)
-        Alamofire.request(.GET, path)
-            .responseJSON { (response) in
-                switch response.result{
-                case .success:
-                    if let items = Mapper<RepoFile>().mapArray(response.result.value) {
-                        self.fileList = items
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+        Alamofire.request(path)
+            .responseArray(completionHandler: { (response: DataResponse<[RepoFile]>) in
+                if let items = response.result.value {
+                    self.fileList = items
+                    self.tableView.reloadData()
                 }
                 EZLoadingActivity.hide()
-        }
+            })
+//            .responseJSON { (response) in
+//                switch response.result{
+//                case .success:
+//                    if let items = Mapper<RepoFile>().mapArray(response.result.value) {
+//                        self.fileList = items
+//                        self.tableView.reloadData()
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                }
+//                EZLoadingActivity.hide()
+//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
