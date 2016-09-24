@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Bond
 import Alamofire
 
 class RepoViewModel {

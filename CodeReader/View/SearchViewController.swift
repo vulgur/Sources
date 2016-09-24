@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
-//import AlamofireObjectMapper
 import ObjectMapper
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class SearchViewController: UIViewController {
 
@@ -99,22 +100,40 @@ class SearchViewController: UIViewController {
     // MARK: Private methods
     func bindViewModel() {
         
-        viewModel.searchInProgress.map{!$0}.bind(to: maskView.bnd_isHidden)
-    
-        viewModel.searchResults.bind(to: self.tableView) { (dataSource, indexPath, tableView) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
-            let repo = dataSource[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-            cell.repoNameLabel.text = repo.fullName
-            cell.repoDescriptionLabel.text = repo.description
-            cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
-            cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
-            cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
-                                                  placeholder: UIImage(named: "user_avatar"),
-                                                  options: [.transition(ImageTransition.fade(1))])
+        let searchResults = searchBar.rx.text
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest { (keyword) -> Observable<[Repo]> in
+                if keyword.isEmpty {
+                    return .just([])
+                }
+                
+                return self.viewModel.searchRepos(keyword: keyword)
+            }
+            .observeOn(MainScheduler.instance)
+        
+        searchResults.subscribe(onNext: { (repos) in
+            repos.forEach({ (repo) in
+                print(repo.name)
+            })
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
             
-            return cell
-            
-        }
+//        viewModel.searchInProgress.map{!$0}.bind(to: maskView.bnd_isHidden)
+//    
+//        viewModel.searchResults.bind(to: self.tableView) { (dataSource, indexPath, tableView) -> UITableViewCell in
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
+//            let repo = dataSource[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+//            cell.repoNameLabel.text = repo.fullName
+//            cell.repoDescriptionLabel.text = repo.description
+//            cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
+//            cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
+//            cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
+//                                                  placeholder: UIImage(named: "user_avatar"),
+//                                                  options: [.transition(ImageTransition.fade(1))])
+//            
+//            return cell
+//            
+//        }
     }
 }
 

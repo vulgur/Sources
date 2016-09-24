@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Bond
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper

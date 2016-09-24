@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Bond
 import Kingfisher
 import Alamofire
 
