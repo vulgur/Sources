@@ -3,7 +3,7 @@ github "Hearst-DD/ObjectMapper" ~> 2.0.0
 github "onevcat/Kingfisher" ~> 3.0
 github "yeahdongcn/UIColor-Hex-Swift" "Swift-3.0"
 github "malcommac/SwiftDate" "feature/swift-3.0"
-github "SwiftyBeaver/SwiftyBeaver"
+github "SwiftyBeaver/SwiftyBeaver" "swift3"
 github "tristanhimmelman/AlamofireObjectMapper" ~> 4.0
 github "ReactiveX/RxSwift" "3.0.0-beta.1"
-#github "ZipArchive/ZipArchive"
+github "devxoul/Then" ~> 2.0
