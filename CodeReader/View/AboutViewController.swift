@@ -19,31 +19,31 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.handlePurchasedNotification(_:)), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.handlePurchasedNotification(_:)), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-            changeStateToPurchased()
-        } else {
-            EZLoadingActivity.show("loading...", disableUI: true)
-            DonationProduct.store.requestProducts { (success, products) in
-                if success {
-                    EZLoadingActivity.hide()
-                    self.products = products!
-                    if let buyMeACoffee = self.products.first {
-                        if DonationProduct.store.isProductPurchased(buyMeACoffee.productIdentifier) {
-                            self.changeStateToPurchased()
-                        } else {
-                            let tap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.tapToDonate))
-                            self.donateImageView.isUserInteractionEnabled = true
-                            self.donateImageView.addGestureRecognizer(tap)
-                        }
-                    }
-                }
-            }
-        }
+//        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+//            changeStateToPurchased()
+//        } else {
+//            EZLoadingActivity.show("loading...", disableUI: true)
+//            DonationProduct.store.requestProducts { (success, products) in
+//                if success {
+//                    EZLoadingActivity.hide()
+//                    self.products = products!
+//                    if let buyMeACoffee = self.products.first {
+//                        if DonationProduct.store.isProductPurchased(buyMeACoffee.productIdentifier) {
+//                            self.changeStateToPurchased()
+//                        } else {
+//                            let tap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.tapToDonate))
+//                            self.donateImageView.isUserInteractionEnabled = true
+//                            self.donateImageView.addGestureRecognizer(tap)
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,13 +72,13 @@ class AboutViewController: UIViewController {
     
     @objc fileprivate func tapToDonate() {
         if let buyMeACoffee = self.products.first {
-            DonationProduct.store.buyProduct(buyMeACoffee)
+//            DonationProduct.store.buyProduct(buyMeACoffee)
         }
         
     }
 
     @IBAction func restoreTapped(_ sender: UIButton) {
-        DonationProduct.store.restorePurchases()
+//        DonationProduct.store.restorePurchases()
     }
     /*
     // MARK: - Navigation

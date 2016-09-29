@@ -41,3 +41,9 @@ extension UITableView {
         self.tableFooterView = UIView(frame: .zero)
     }
 }
+
+extension String {
+    var URLEscaped: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+    }
+}

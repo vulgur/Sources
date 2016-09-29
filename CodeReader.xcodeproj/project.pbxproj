@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10D81CF823F600244357 /* FileListViewController.swift */; };
-		D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DA1CF8245A00244357 /* FileCell.swift */; };
+		D20483CB1D9A18E900A33CD5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */; };
 		D20A10DD1CF8245A00244357 /* FileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D20A10DB1CF8245A00244357 /* FileCell.xib */; };
-		D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DE1CF8278900244357 /* RepoFile.swift */; };
 		D20A10E31CFD413600244357 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = D20A10E21CFD413600244357 /* highlight.pack.js */; };
 		D20A11301CFD417C00244357 /* agate.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A10E41CFD417C00244357 /* agate.css */; };
 		D20A11311CFD417C00244357 /* androidstudio.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A10E51CFD417C00244357 /* androidstudio.css */; };
@@ -89,7 +87,6 @@
 		D20A117A1CFD417C00244357 /* xt256.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A112E1CFD417C00244357 /* xt256.css */; };
 		D20A117B1CFD417C00244357 /* zenburn.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A112F1CFD417C00244357 /* zenburn.css */; };
 		D20A117E1CFD41C000244357 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A117D1CFD41C000244357 /* template.html */; };
-		D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A117F1CFD427A00244357 /* CodeViewController.swift */; };
 		D20A11821CFDF1AD00244357 /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A11811CFDF1AD00244357 /* github-markdown.css */; };
 		D20A11841CFDF31500244357 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A11831CFDF31500244357 /* readme.html */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
@@ -108,44 +105,22 @@
 		D23EE4361CE2387C00D6143D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; };
 		D23EE4371CE2387C00D6143D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23EE4351CE2387C00D6143D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4391CE3653E00D6143D /* Extensions.swift */; };
-		D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
 		D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */; };
-		D263B3B31D8653F90050CB27 /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263B3B11D8653F90050CB27 /* BranchCell.swift */; };
 		D263B3B41D8653F90050CB27 /* BranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263B3B21D8653F90050CB27 /* BranchCell.xib */; };
-		D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
-		D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
-		D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
-		D26CA59F1D1B33A10073FB53 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59E1D1B33A10073FB53 /* Recent.swift */; };
-		D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */; };
-		D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */; };
 		D26CA5A51D1C31A20073FB53 /* RecentFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */; };
-		D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */; };
 		D278915D1D7C7AB700FC5191 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D278915C1D7C7AB700FC5191 /* SwiftDate.framework */; };
 		D278915E1D7C7AB700FC5191 /* SwiftDate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D278915C1D7C7AB700FC5191 /* SwiftDate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D27891601D7D55A900FC5191 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */; };
 		D27891611D7D55A900FC5191 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D27891631D7D5BCB00FC5191 /* CommitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */; };
-		D27891651D7DB30000FC5191 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891641D7DB30000FC5191 /* Branch.swift */; };
-		D27891671D7EBD4900FC5191 /* BranchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */; };
-		D27891691D7F048300FC5191 /* BranchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891681D7F048300FC5191 /* BranchListViewController.swift */; };
 		D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECA91D1E3ABF00E3D366 /* Fabric.framework */; };
 		D27FECAC1D1E3ABF00E3D366 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */; };
-		D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
 		D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */; };
 		D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29202DC1D15B78E002F1FE7 /* StoreKit.framework */; };
-		D29443441D0BE2FD00D4AA2C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443431D0BE2FD00D4AA2C /* Theme.swift */; };
-		D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443471D0BE80F00D4AA2C /* ThemeCell.swift */; };
 		D294434A1D0BE80F00D4AA2C /* ThemeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29443481D0BE80F00D4AA2C /* ThemeCell.xib */; };
-		D294434C1D0BEC2F00D4AA2C /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434B1D0BEC2F00D4AA2C /* ThemeFactory.swift */; };
-		D29443511D0BEC4E00D4AA2C /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434E1D0BEC4E00D4AA2C /* RepoViewModel.swift */; };
 		D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */; };
-		D29443531D0BEC4E00D4AA2C /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */; };
 		D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; };
 		D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* Commit.swift */; };
-		D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */; };
 		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
-		D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */; };
 		D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
 		D2DC098C1D964A1E00AF3EE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */; };
 		D2DC098D1D964A1E00AF3EE7 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -175,6 +150,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D20A10D81CF823F600244357 /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
 		D20A10DA1CF8245A00244357 /* FileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		D20A10DB1CF8245A00244357 /* FileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCell.xib; sourceTree = "<group>"; };
@@ -276,7 +252,6 @@
 		D23EE4351CE2387C00D6143D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		D23EE4391CE3653E00D6143D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D23EE43B1CE479B700D6143D /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
-		D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveKit.framework; path = Carthage/Build/iOS/ReactiveKit.framework; sourceTree = "<group>"; };
 		D2451F931CEA0CF3003CE49B /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		D263B3B11D8653F90050CB27 /* BranchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
 		D263B3B21D8653F90050CB27 /* BranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BranchCell.xib; sourceTree = "<group>"; };
@@ -480,18 +455,17 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */,
-				D2DC098B1D964A1E00AF3EE7 /* RxCocoa.framework */,
-				D2405CE01D8E7F6B00943B24 /* ReactiveKit.framework */,
-				D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */,
-				D278915C1D7C7AB700FC5191 /* SwiftDate.framework */,
-				D27FECA91D1E3ABF00E3D366 /* Fabric.framework */,
+				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
 				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
-				D29202DC1D15B78E002F1FE7 /* StoreKit.framework */,
+				D27FECA91D1E3ABF00E3D366 /* Fabric.framework */,
 				D29443541D0BFC6D00D4AA2C /* HEXColor.framework */,
 				D23EE4351CE2387C00D6143D /* Kingfisher.framework */,
 				D23EE4211CE1C0E300D6143D /* ObjectMapper.framework */,
-				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
+				D2DC098B1D964A1E00AF3EE7 /* RxCocoa.framework */,
+				D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */,
+				D29202DC1D15B78E002F1FE7 /* StoreKit.framework */,
+				D278915C1D7C7AB700FC5191 /* SwiftDate.framework */,
+				D278915F1D7D55A900FC5191 /* SwiftyBeaver.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -537,6 +511,7 @@
 				D27891681D7F048300FC5191 /* BranchListViewController.swift */,
 				D263B3B11D8653F90050CB27 /* BranchCell.swift */,
 				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
+				D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -763,7 +738,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bond.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HEXColor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
@@ -781,41 +755,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D26CA5991D17C0E70073FB53 /* IAPHelper.swift in Sources */,
-				D29443531D0BEC4E00D4AA2C /* ThemeViewModel.swift in Sources */,
 				D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */,
-				D28D50791D0C07E300779D30 /* ThemeListViewController.swift in Sources */,
 				D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */,
-				D27891631D7D5BCB00FC5191 /* CommitListViewModel.swift in Sources */,
-				D26CA59B1D17C49A0073FB53 /* DonationProduct.swift in Sources */,
-				D23EE43C1CE479B700D6143D /* RepoViewController.swift in Sources */,
-				D20A10DC1CF8245A00244357 /* FileCell.swift in Sources */,
-				D263B3B31D8653F90050CB27 /* BranchCell.swift in Sources */,
+				D20483CB1D9A18E900A33CD5 /* BaseViewController.swift in Sources */,
 				D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */,
-				D20A11801CFD427A00244357 /* CodeViewController.swift in Sources */,
-				D27891671D7EBD4900FC5191 /* BranchListViewModel.swift in Sources */,
-				D29443491D0BE80F00D4AA2C /* ThemeCell.swift in Sources */,
-				D20A10D91CF823F600244357 /* FileListViewController.swift in Sources */,
-				D26CA5A11D1C20110073FB53 /* HistoryViewController.swift in Sources */,
-				D278915B1D7B2B2100FC5191 /* CommitListViewController.swift in Sources */,
 				D2451F941CEA0CF3003CE49B /* EZLoadingActivity.swift in Sources */,
-				D27891651D7DB30000FC5191 /* Branch.swift in Sources */,
-				D2CE2E0D1D79E7A500AAAF8A /* CommitCell.swift in Sources */,
-				D2CE2E061D788C2A00AAAF8A /* CommitFile.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
-				D26CA59D1D1B31AD0073FB53 /* RecentsManager.swift in Sources */,
-				D2CE2E041D787E8A00AAAF8A /* Commit.swift in Sources */,
-				D29443441D0BE2FD00D4AA2C /* Theme.swift in Sources */,
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
-				D26CA5A41D1C31A20073FB53 /* RecentFileCell.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
-				D27891691D7F048300FC5191 /* BranchListViewController.swift in Sources */,
-				D29443511D0BEC4E00D4AA2C /* RepoViewModel.swift in Sources */,
-				D20A10DF1CF8278900244357 /* RepoFile.swift in Sources */,
-				D294434C1D0BEC2F00D4AA2C /* ThemeFactory.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
-				D26CA59F1D1B33A10073FB53 /* Recent.swift in Sources */,
 				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

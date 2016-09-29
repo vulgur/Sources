@@ -21,18 +21,59 @@ class SearchRepoViewModel {
         case Updated = "updated"
     }
     
+    var searchInProgress = Variable<Bool>(false)
+    var sortType = Variable<SortType>(.Best)
     
-//    var searchResults = Observable<[Repo]>()
-//    var searchInProgress = Observable<Bool>()
-//    var searchKeyword = Observable<String>()
+    // MARK: Input
+    let cellDidSelect = PublishSubject<IndexPath>()
+    let segmentDidSelect = PublishSubject<Int>()
+    var searchKeyword = PublishSubject<String>()
     
-//    var keyword = ""
+    // MARK: Output
+    
+    // MARK: Private
+    private let disposeBag = DisposeBag()
+    var repos: [Repo]
+    
+
     var currentPage = 1
     var totalPage = 0
-    var sortType: SortType = .Best
+//    var sortType: SortType = .Best
+    
+    init() {
+        
+        self.repos = [Repo]()
+        self.cellDidSelect
+            .subscribe(onNext: { (indexPath) in
+                print("Selected: \(indexPath.section)-\(indexPath.row)")
+            })
+            .addDisposableTo(disposeBag)
+    }
+    
     
     func searchRepos(keyword: String) -> Observable<[Repo]> {
-        return Observable.just([])
+        let escapedKeyword = keyword.URLEscaped
+        let urlParams = [
+            "q": escapedKeyword,
+            "sort" : self.sortType.value.rawValue,
+            ]
+        return Observable.create({ (observer) -> Disposable in
+
+            self.searchInProgress.value = true
+            let request = Alamofire.request("https://api.github.com/search/repositories", parameters: urlParams)
+                        .responseObject { (response: DataResponse<SearchRepoResponse>) in
+                            if let searchResult = response.result.value {
+                                self.repos.append(contentsOf: searchResult.items!)
+                                observer.onNext(self.repos)
+                                observer.onCompleted()
+                            } else if let error = response.result.error {
+                                observer.onError(error)
+                            }
+            }
+            return Disposables.create {
+                log.info("dispose request:\(request)")
+            }
+        })
     }
     
 //    func searchRepos(completion: @escaping () -> (), errorHandler: ((String) -> ())? = nil) {

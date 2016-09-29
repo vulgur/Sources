@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import Alamofire
-import ObjectMapper
 import Kingfisher
 import RxSwift
 import RxCocoa
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var maskView: UIView!
+    
+    let SearchRepoCellIdentifier = "SearchRepoCell"
     
     var viewModel = SearchRepoViewModel()
     var errorHandler: (String) -> () = {_ in}
@@ -33,8 +33,8 @@ class SearchViewController: UIViewController {
         
         searchBar.delegate = self
         tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib.init(nibName: "SearchRepoCell", bundle: nil), forCellReuseIdentifier: "repo")
+//        tableView.dataSource = self
+        tableView.register(UINib.init(nibName: "SearchRepoCell", bundle: nil), forCellReuseIdentifier: SearchRepoCellIdentifier)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75.0
         
@@ -56,7 +56,7 @@ class SearchViewController: UIViewController {
     
     // MARK: Actions
     func dismissKeyboard() {
-        viewModel.searchInProgress.value = false
+//        viewModel.searchInProgress.value = false
 //        self.searchBar.endEditing(true)
         self.searchBar.resignFirstResponder()
     }
@@ -64,59 +64,70 @@ class SearchViewController: UIViewController {
     func searchSortChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            viewModel.sortType = .Best
+            viewModel.sortType.value = .Best
         case 1:
-            viewModel.sortType = .Stars
+            viewModel.sortType.value = .Stars
         case 2:
-            viewModel.sortType = .Forks
+            viewModel.sortType.value = .Forks
         case 3:
-            viewModel.sortType = .Updated
+            viewModel.sortType.value = .Updated
         default:
-            viewModel.sortType = .Best
+            viewModel.sortType.value = .Best
         }
         
         if let keyword = searchBar.text {
             if keyword.characters.count > 0 {
-                viewModel.searchKeyword.value = keyword
+//                viewModel.searchKeyword.value = keyword
                 EZLoadingActivity.show("searching...", disableUI: true)
-                viewModel.searchRepos(completion: { 
-                    let topIndexPath = IndexPath(row: NSNotFound, section: 0)
-                    self.tableView.scrollToRow(at: topIndexPath, at: UITableViewScrollPosition.top, animated: true)
-                    self.tableView.reloadDataWithAutoSizingCells()
-                    EZLoadingActivity.hide()
-                }, errorHandler: self.errorHandler)
+//                viewModel.searchRepos(completion: { 
+//                    let topIndexPath = IndexPath(row: NSNotFound, section: 0)
+//                    self.tableView.scrollToRow(at: topIndexPath, at: UITableViewScrollPosition.top, animated: true)
+//                    self.tableView.reloadDataWithAutoSizingCells()
+//                    EZLoadingActivity.hide()
+//                }, errorHandler: self.errorHandler)
             }
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowRepo" {
-            if let repoViewModel = sender {
-                let destVC = segue.destination as! RepoViewController
-                destVC.viewModel = repoViewModel as! RepoViewModel
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowRepo" {
+//            if let repoViewModel = sender {
+//                let destVC = segue.destination as! RepoViewController
+//                destVC.viewModel = repoViewModel as! RepoViewModel
+//            }
+//        }
+//    }
+    
+    
     // MARK: Private methods
     func bindViewModel() {
         
-        let searchResults = searchBar.rx.text
-            .throttle(0.3, scheduler: MainScheduler.instance)
+        let searchResults:Driver<[Repo]> = self.searchBar.rx.text
+            .asDriver()
+            .throttle(0.3)
             .distinctUntilChanged()
-            .flatMapLatest { (keyword) -> Observable<[Repo]> in
+            .flatMapLatest { (keyword) in
                 if keyword.isEmpty {
                     return .just([])
                 }
-                
-                return self.viewModel.searchRepos(keyword: keyword)
+                print(keyword)
+                return self.viewModel.searchRepos(keyword: keyword).asDriver(onErrorJustReturn: [])
             }
-            .observeOn(MainScheduler.instance)
         
-        searchResults.subscribe(onNext: { (repos) in
-            repos.forEach({ (repo) in
-                print(repo.name)
-            })
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        searchResults
+            .drive(tableView.rx.items(cellIdentifier: SearchRepoCellIdentifier, cellType: SearchRepoCell.self)) { [unowned self] (row, element, cell) in
+                
+                cell.repoNameLabel.text = element.fullName
+                cell.repoDescriptionLabel.text = element.description
+                cell.repoStarsLabel.text = "stars: \(element.starsCount!)"
+                cell.repoForksLabel.text = "forks: \(element.forksCount!)"
+                cell.ownerAvatarImageView.kf.setImage(with: URL(string: element.owner!.avatarURLString!)!,
+                                                      placeholder: UIImage(named: "user_avatar"),
+                                                      options: [.transition(ImageTransition.fade(1))])
+            
+                
+        }
+        .addDisposableTo(disposeBag)
             
 //        viewModel.searchInProgress.map{!$0}.bind(to: maskView.bnd_isHidden)
 //    
@@ -138,33 +149,33 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repo = viewModel.searchResults[(indexPath as NSIndexPath).row]
-        let repoViewModel = RepoViewModel(repo: repo)
-        performSegue(withIdentifier: "ShowRepo", sender: repoViewModel)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let repo = viewModel.searchResults[(indexPath as NSIndexPath).row]
+//        let repoViewModel = RepoViewModel(repo: repo)
+//        performSegue(withIdentifier: "ShowRepo", sender: repoViewModel)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
     
 }
 
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.searchResults.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
-        let repo = viewModel.searchResults[(indexPath as NSIndexPath).row]
-        cell.repoNameLabel.text = repo.fullName
-        cell.repoDescriptionLabel.text = repo.description
-        cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
-        cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
-        cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
-                                              placeholder: UIImage(named: "user_avatar"),
-                                              options: [.transition(ImageTransition.fade(1))])
-        return cell
-    }
-}
+//extension SearchViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 0
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "repo", for: indexPath) as! SearchRepoCell
+//        let repo = viewModel.searchResults[(indexPath as NSIndexPath).row]
+//        cell.repoNameLabel.text = repo.fullName
+//        cell.repoDescriptionLabel.text = repo.description
+//        cell.repoStarsLabel.text = "stars: \(repo.starsCount!)"
+//        cell.repoForksLabel.text = "forks: \(repo.forksCount!)"
+//        cell.ownerAvatarImageView.kf_setImage(with: URL(string: repo.owner!.avatarURLString!)!,
+//                                              placeholder: UIImage(named: "user_avatar"),
+//                                              options: [.transition(ImageTransition.fade(1))])
+//        return cell
+//    }
+//}
 
 extension SearchViewController: UIScrollViewDelegate {
     
@@ -172,31 +183,31 @@ extension SearchViewController: UIScrollViewDelegate {
         let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
         if (offset >= 0 && offset < 10 && isLoading == false) {
             isLoading = true
-            viewModel.loadMore(completion:{
-                self.tableView.reloadDataWithAutoSizingCells()
-                self.isLoading = false
-                }, errorHandler: self.errorHandler)
+//            viewModel.loadMore(completion:{
+//                self.tableView.reloadDataWithAutoSizingCells()
+//                self.isLoading = false
+//                }, errorHandler: self.errorHandler)
         }
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-        
-        viewModel.searchKeyword.value = searchBar.text!
-        
-        EZLoadingActivity.show("searching...", disableUI: true)
-        
-        viewModel.searchRepos(completion: {
-            self.tableView.reloadDataWithAutoSizingCells()
-            EZLoadingActivity.hide()
-            }, errorHandler: self.errorHandler)
-    }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        viewModel.searchInProgress.value = true
-        return true
-    }
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.endEditing(true)
+//        
+//        viewModel.searchKeyword.value = searchBar.text!
+//        
+//        EZLoadingActivity.show("searching...", disableUI: true)
+//        
+//        viewModel.searchRepos(completion: {
+//            self.tableView.reloadDataWithAutoSizingCells()
+//            EZLoadingActivity.hide()
+//            }, errorHandler: self.errorHandler)
+//    }
+//    
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        viewModel.searchInProgress.value = true
+//        return true
+//    }
 }
