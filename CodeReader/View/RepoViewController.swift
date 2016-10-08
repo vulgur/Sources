@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import Alamofire
 
-class RepoViewController: UIViewController {
+class RepoViewController: BaseViewController {
     
     let descriptionFontSize: CGFloat = 18.0
     let descriptionLabelHeight: CGFloat = 22.0
@@ -55,11 +55,12 @@ class RepoViewController: UIViewController {
         webView.delegate = self
 //        webView.scalesPageToFit = true
         let url = URL(string: String(format: "https://api.github.com/repos/%@/%@/readme", viewModel.owner.value.loginName!, viewModel.name.value))!
-        let request = NSMutableURLRequest(url: url)
-        request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
+//        let request = NSMutableURLRequest(url: url)
+//        request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
+        let headers: HTTPHeaders = ["Accept":"application/vnd.github.VERSION.html"]
         
         EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
-        Alamofire.request(request as! URLRequestConvertible).responseString { (response) in
+        Alamofire.request(url, headers: headers).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
                     let htmlStr = readmeTemplate.replacingOccurrences(of: "#code#", with: readmeStr)
@@ -96,19 +97,25 @@ class RepoViewController: UIViewController {
     }
     
     fileprivate func bindViewModel() {
-        viewModel.name.bind(to: repoNameLabel.bnd_text)
-        viewModel.name.bind(to: repoNameLabel.bnd_text)
-        viewModel.ownerName.bind(to: navigationItem.bnd_title)
-        viewModel.description.bind(to: repoDescriptionLabel.bnd_text)
-        viewModel.stars.map {"\($0)"}.bind(to: starsLabel.bnd_text)
-        viewModel.forks.map {"\($0)"}.bind(to: forksLabel.bnd_text)
-        viewModel.watchers.map {"\($0)"}.bind(to: watchersLabel.bnd_text)
-//        viewModel.createdDate.map{ $0.componentsSeparatedByString("T").first }.bindTo(createdDateLabel.bnd_text)
-        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bind(to:updatedDateLabel.bnd_text)
-//        viewModel.size.map {  String(format: "%.2fMB" , Float($0)/1024) }.bindTo(sizeLabel.bnd_text)
-        viewModel.language.bind(to: languageLabel.bnd_text)
+        viewModel.name.asObservable().map { $0 }.bindTo(repoNameLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.ownerName.asObservable().map{$0}.bindTo(navigationItem.rx.title).addDisposableTo(disposeBag)
+        viewModel.description.asObservable().map{$0}.bindTo(repoDescriptionLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.stars.asObservable().map{"\($0)"}.bindTo(starsLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.forks.asObservable().map{"\($0)"}.bindTo(forksLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.watchers.asObservable().map{"\($0)"}.bindTo(watchersLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.updatedDate.asObservable().map{ $0.components(separatedBy: "T").first }.bindTo(updatedDateLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.language.asObservable().map{"\($0)"}.bindTo(languageLabel.rx.text).addDisposableTo(disposeBag)
+//        viewModel.name.bind(to: repoNameLabel.bnd_text)
+//        viewModel.name.bind(to: repoNameLabel.bnd_text)
+//        viewModel.ownerName.bind(to: navigationItem.bnd_title)
+//        viewModel.description.bind(to: repoDescriptionLabel.bnd_text)
+//        viewModel.stars.map {"\($0)"}.bind(to: starsLabel.bnd_text)
+//        viewModel.forks.map {"\($0)"}.bind(to: forksLabel.bnd_text)
+//        viewModel.watchers.map {"\($0)"}.bind(to: watchersLabel.bnd_text)
+//        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bind(to:updatedDateLabel.bnd_text)
+//        viewModel.language.bind(to: languageLabel.bnd_text)
         
-        avatarImageView.kf_setImage(with: URL(string: viewModel.avatarImageURLString.value), placeholder: UIImage(named: "user_avatar"))
+        avatarImageView.kf.setImage(with: URL(string: viewModel.avatarImageURLString.value), placeholder: UIImage(named: "user_avatar"))
         
         RecentsManager.sharedManager.currentRepoName = viewModel.name.value
         RecentsManager.sharedManager.currentOwnerName = viewModel.ownerName.value
@@ -125,19 +132,19 @@ class RepoViewController: UIViewController {
         return str
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowFileList" {
-            let fileListVC = segue.destination as! FileListViewController
-            fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
-            fileListVC.pathTitle = "/"
-//            EZLoadingActivity.hide()
-        }
-        else if segue.identifier == "ShowBranchList" {
-            let branchListVC = segue.destination as! BranchListViewController
-            branchListVC.ownerName = viewModel.ownerName.value
-            branchListVC.repoName = viewModel.name.value
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowFileList" {
+//            let fileListVC = segue.destination as! FileListViewController
+//            fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
+//            fileListVC.pathTitle = "/"
+////            EZLoadingActivity.hide()
+//        }
+//        else if segue.identifier == "ShowBranchList" {
+//            let branchListVC = segue.destination as! BranchListViewController
+//            branchListVC.ownerName = viewModel.ownerName.value
+//            branchListVC.repoName = viewModel.name.value
+//        }
+//    }
     
 
 }

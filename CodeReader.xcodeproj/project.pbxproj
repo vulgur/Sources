@@ -120,6 +120,13 @@
 		D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */; };
 		D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; };
 		D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2C60FEF1DA88A4900D27446 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
+		D2C60FF01DA88A4900D27446 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434E1D0BEC4E00D4AA2C /* RepoViewModel.swift */; };
+		D2C60FF11DA88F3B00D27446 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
+		D2C60FF21DA88F3B00D27446 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59E1D1B33A10073FB53 /* Recent.swift */; };
+		D2C60FF31DA88F6B00D27446 /* RepoFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DE1CF8278900244357 /* RepoFile.swift */; };
+		D2C60FF41DA88F7400D27446 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
+		D2C60FF51DA88F7400D27446 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
 		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
 		D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
 		D2DC098C1D964A1E00AF3EE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */; };
@@ -755,6 +762,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C60FF41DA88F7400D27446 /* IAPHelper.swift in Sources */,
+				D2C60FF51DA88F7400D27446 /* DonationProduct.swift in Sources */,
+				D2C60FF31DA88F6B00D27446 /* RepoFile.swift in Sources */,
+				D2C60FF11DA88F3B00D27446 /* RecentsManager.swift in Sources */,
+				D2C60FF21DA88F3B00D27446 /* Recent.swift in Sources */,
+				D2C60FEF1DA88A4900D27446 /* RepoViewController.swift in Sources */,
+				D2C60FF01DA88A4900D27446 /* RepoViewModel.swift in Sources */,
 				D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */,
 				D29202DB1D1311F9002F1FE7 /* AboutViewController.swift in Sources */,
 				D20483CB1D9A18E900A33CD5 /* BaseViewController.swift in Sources */,

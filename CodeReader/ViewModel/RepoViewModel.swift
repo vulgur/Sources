@@ -8,21 +8,23 @@
 
 import Foundation
 import Alamofire
+import RxSwift
+//import RxCocoa
 
 class RepoViewModel {
-    let avatarImageURLString = Observable("")
-    let name = Observable("")
-    let description = Observable("")
-    let stars = Observable(0)
-    let watchers = Observable(0)
-    let forks = Observable(0)
-    let owner = Observable(User())
-    let createdDate = Observable("")
-    let updatedDate = Observable("")
-    let language = Observable("")
-    let ownerName = Observable("")
-    let fullName = Observable("")
-    let size = Observable(0)
+    let avatarImageURLString = Variable<String>("")
+    let name = Variable<String>("")
+    let description = Variable<String>("")
+    let stars = Variable<Int>(0)
+    let watchers = Variable<Int>(0)
+    let forks = Variable<Int>(0)
+    let owner = Variable<User>(User())
+    let createdDate = Variable<String>("")
+    let updatedDate = Variable<String>("")
+    let language = Variable<String>("")
+    let ownerName = Variable<String>("")
+    let fullName = Variable<String>("")
+    let size = Variable<Int>(0)
     
     init(repo: Repo) {
         avatarImageURLString.value = (repo.owner?.avatarURLString)!
