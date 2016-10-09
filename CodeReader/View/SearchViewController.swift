@@ -28,12 +28,12 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+//        searchBar.delegate = self
         tableView.delegate = self
 //        tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SearchRepoCell", bundle: nil), forCellReuseIdentifier: SearchRepoCellIdentifier)
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 75.0
+        tableView.estimatedRowHeight = 120
         
 //        segmentedControl.addTarget(self, action: #selector(self.searchSortChanged(_:)), for: .valueChanged)
         errorHandler =  { [unowned self] msg in
@@ -47,6 +47,8 @@ class SearchViewController: BaseViewController {
         
         // bind 
         bindViewModel()
+        tableView.setNeedsLayout()
+        tableView.layoutIfNeeded()
         
     }
     
