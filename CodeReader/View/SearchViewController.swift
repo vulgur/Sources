@@ -67,7 +67,10 @@ class SearchViewController: BaseViewController {
         // bind segmented control
         _ = self.segmentedControl.rx.value
             .bindTo(viewModel.segmentDidSelect)
-
+        
+        _ = self.segmentedControl.rx.value.asDriver().drive(onNext: { (_) in
+            self.tableView.scrollToRow(at: IndexPath.init(row: NSNotFound, section: 0), at: .top, animated: false)
+            })
         // bind search bar
         _ = self.searchBar.rx.searchButtonClicked.subscribe(onNext: { (_) in
             self.searchBar.endEditing(true)
