@@ -21,9 +21,7 @@ class SearchViewController: BaseViewController {
     let SearchRepoCellIdentifier = "SearchRepoCell"
     
     var viewModel = SearchRepoViewModel()
-    var errorHandler: (String) -> () = {_ in}
-    var isLoading = false
-    
+//    var errorHandler: (String) -> () = {_ in}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +33,26 @@ class SearchViewController: BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-//        segmentedControl.addTarget(self, action: #selector(self.searchSortChanged(_:)), for: .valueChanged)
-        errorHandler =  { [unowned self] msg in
-            EZLoadingActivity.hide()
-            self.isLoading = false
-            let alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-            alertController.addAction(action)
-            self.present(alertController, animated: true, completion: nil)
-        }
+
+//        errorHandler =  { [unowned self] msg in
+//            EZLoadingActivity.hide()
+//            
+//            let alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
+//            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+//            alertController.addAction(action)
+//            self.present(alertController, animated: true, completion: nil)
+//        }
         
         // bind 
         bindViewModel()
-        tableView.setNeedsLayout()
-        tableView.layoutIfNeeded()
+//        tableView.setNeedsLayout()
+//        tableView.layoutIfNeeded()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchBar.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
