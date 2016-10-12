@@ -11,6 +11,7 @@ import Alamofire
 import ObjectMapper
 import Kingfisher
 import SwiftDate
+import EZLoadingActivity
 
 class CommitListViewController: UITableViewController {
     let CommitCellIdentifier = "CommitCell"
@@ -87,15 +88,14 @@ class CommitListViewController: UITableViewController {
 
         // Configure the cell...
         let commit = commits[(indexPath as NSIndexPath).row]
-        cell.avatarImageView.kf_setImage(with: URL(string: commit.committer!.avatarURLString!)!)
+        cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
         if let message = commit.commitInfo?.message,
             let committerName = commit.committer?.loginName,
             let dateString = commit.commitInfo?.committer?.dateString,
             let sha = commit.sha {
             
-            if let date = dateString.toDateFromISO8601() {
-                
-                let dateToShow = date.inRegion().toString(style: nil, dateStyle: .medium, timeStyle: nil, relative: true)!
+            if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
+                let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
                 cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
             } else {
                 cell.committerLabel.text = "\(committerName) committed on \(dateString)"

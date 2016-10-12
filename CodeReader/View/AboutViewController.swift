@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import EZLoadingActivity
 
 class AboutViewController: UIViewController {
 

@@ -63,11 +63,11 @@ class BranchListViewController: UITableViewController {
         
         viewModel.loadLatestCommit(branch.latestCommitURLString!, completion: { (commit) in
             if let dateString = commit.commitInfo?.committer?.dateString {
-                if let date = dateString.toDateFromISO8601() {
-                    let localRegion = Region(calendarName: .autoUpdatingCurrent, timeZoneName: nil, localeName: nil)
+                if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
+//                    let localRegion = Region(calendarName: .autoUpdatingCurrent, timeZoneName: nil, localeName: nil)
                     cell.updateLabel.alpha = 0
                     
-                    let updateString = date.toString(style: .full)
+                    let updateString = date.string()
 //                        date.toNaturalString(Date(), inRegion: localRegion, style: FormatterStyle.init(style: .full, units: nil, max: 1))!
 //                        + " ago by " + (commit.committer?.loginName)!
                     cell.updateLabel.text = updateString

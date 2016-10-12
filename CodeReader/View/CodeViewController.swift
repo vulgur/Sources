@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import Alamofire
+import EZLoadingActivity
 
 class CodeViewController: UIViewController {
     
@@ -97,7 +98,7 @@ class CodeViewController: UIViewController {
                             
                             let alertController = UIAlertController(title: "", message: "This file is not a source code file", preferredStyle: .alert)
                             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
-                                self.navigationController?.popViewController(animated: true)
+                                _ = self.navigationController?.popViewController(animated: true)
                             })
                             alertController.addAction(alertAction)
                             RecentsManager.sharedManager.recents.removeFirst()

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+import EZLoadingActivity
 
 class FileListViewController: UITableViewController {
     

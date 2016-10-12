@@ -33,7 +33,6 @@ class CommitListViewModel {
                 case .failure(let error):
                     print(error)
                 }
-                EZLoadingActivity.hide()
         }
     }
 }

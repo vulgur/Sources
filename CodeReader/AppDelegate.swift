@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import SwiftyBeaver
+import EZLoadingActivity
 
 let log = SwiftyBeaver.self
 
@@ -23,13 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().tintColor = UIColor.black
         UINavigationBar.appearance().tintColor = UIColor.black
-        
+    
         Fabric.with([Answers.self, Crashlytics.self])
         
         let console = ConsoleDestination()
         log.addDestination(console)
         
-
+        EZLoadingActivity.Settings.BackgroundColor = UIColor.white
+        EZLoadingActivity.Settings.DarkensBackground = true
+        
         return true
     }
 

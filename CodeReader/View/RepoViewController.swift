@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import Alamofire
+import EZLoadingActivity
 
 class RepoViewController: BaseViewController {
     
@@ -59,7 +60,8 @@ class RepoViewController: BaseViewController {
 //        request.setValue("application/vnd.github.VERSION.html", forHTTPHeaderField: "Accept")
         let headers: HTTPHeaders = ["Accept":"application/vnd.github.VERSION.html"]
         
-        EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
+//        EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
+        EZLoadingActivity.show("loading README", disableUI: false)
         Alamofire.request(url, headers: headers).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
