@@ -9,11 +9,13 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import RxSwift
+import RxCocoa
 
 class CommitListViewModel {
     
     var commits = [Commit]()
-    var isLoading = Observable<Bool>(false)
+    var isLoading = Variable<Bool>(false)
     
     var nextPageUrl: String = ""
     

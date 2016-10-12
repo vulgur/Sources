@@ -90,7 +90,11 @@ class ThemeFactory {
             let theme = Theme(name: item[1] as! String)
             theme.isPurchased = item[0] as! Bool
             for i in 2..<item.count {
-                theme.colors.append(UIColor(rgba: item[i] as! String))
+                do {
+                    try theme.colors.append(UIColor(rgba_throws: item[i] as! String))
+                } catch {
+                    // do nothing
+                }
             }
             themes.append(theme)
         }

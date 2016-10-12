@@ -105,15 +105,6 @@ class RepoViewController: BaseViewController {
         viewModel.watchers.asObservable().map{"\($0)"}.bindTo(watchersLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.updatedDate.asObservable().map{ $0.components(separatedBy: "T").first }.bindTo(updatedDateLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.language.asObservable().map{"\($0)"}.bindTo(languageLabel.rx.text).addDisposableTo(disposeBag)
-//        viewModel.name.bind(to: repoNameLabel.bnd_text)
-//        viewModel.name.bind(to: repoNameLabel.bnd_text)
-//        viewModel.ownerName.bind(to: navigationItem.bnd_title)
-//        viewModel.description.bind(to: repoDescriptionLabel.bnd_text)
-//        viewModel.stars.map {"\($0)"}.bind(to: starsLabel.bnd_text)
-//        viewModel.forks.map {"\($0)"}.bind(to: forksLabel.bnd_text)
-//        viewModel.watchers.map {"\($0)"}.bind(to: watchersLabel.bnd_text)
-//        viewModel.updatedDate.map{ $0.components(separatedBy: "T").first }.bind(to:updatedDateLabel.bnd_text)
-//        viewModel.language.bind(to: languageLabel.bnd_text)
         
         avatarImageView.kf.setImage(with: URL(string: viewModel.avatarImageURLString.value), placeholder: UIImage(named: "user_avatar"))
         
@@ -132,19 +123,19 @@ class RepoViewController: BaseViewController {
         return str
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowFileList" {
-//            let fileListVC = segue.destination as! FileListViewController
-//            fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
-//            fileListVC.pathTitle = "/"
-////            EZLoadingActivity.hide()
-//        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowFileList" {
+            let fileListVC = segue.destination as! FileListViewController
+            fileListVC.apiURLString = "https://api.github.com/repos/" + viewModel.fullName.value + "/contents"
+            fileListVC.pathTitle = "/"
+//            EZLoadingActivity.hide()
+        }
 //        else if segue.identifier == "ShowBranchList" {
 //            let branchListVC = segue.destination as! BranchListViewController
 //            branchListVC.ownerName = viewModel.ownerName.value
 //            branchListVC.repoName = viewModel.name.value
 //        }
-//    }
+    }
     
 
 }

@@ -119,9 +119,9 @@ class FileListViewController: UITableViewController {
     
     @IBAction func backToRoot(_ sender: UIBarButtonItem) {
         if let repoVC = navigationController?.viewControllers[1] {
-            navigationController?.popToViewController(repoVC, animated: true)
+            _ = navigationController?.popToViewController(repoVC, animated: true)
         } else {
-            navigationController?.popToRootViewController(animated: true)
+            _ = navigationController?.popToRootViewController(animated: true)
         }
     }
 }

@@ -127,6 +127,31 @@
 		D2C60FF31DA88F6B00D27446 /* RepoFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DE1CF8278900244357 /* RepoFile.swift */; };
 		D2C60FF41DA88F7400D27446 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5981D17C0E70073FB53 /* IAPHelper.swift */; };
 		D2C60FF51DA88F7400D27446 /* DonationProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59A1D17C49A0073FB53 /* DonationProduct.swift */; };
+		D2C60FF81DACB99F00D27446 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10D81CF823F600244357 /* FileListViewController.swift */; };
+		D2C60FF91DACB99F00D27446 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DA1CF8245A00244357 /* FileCell.swift */; };
+		D2C60FFA1DACB99F00D27446 /* FileCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DB1CF8245A00244357 /* FileCell.xib */; };
+		D2C60FFB1DACBA8200D27446 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443431D0BE2FD00D4AA2C /* Theme.swift */; };
+		D2C60FFC1DACBA8200D27446 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* Commit.swift */; };
+		D2C60FFD1DACBA8200D27446 /* CommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */; };
+		D2C60FFE1DACBA8200D27446 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891641D7DB30000FC5191 /* Branch.swift */; };
+		D2C60FFF1DACBA8C00D27446 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434B1D0BEC2F00D4AA2C /* ThemeFactory.swift */; };
+		D2C610001DACBAB400D27446 /* SearchRepoCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4321CE2266300D6143D /* SearchRepoCell.xib */; };
+		D2C610011DACBAB400D27446 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A117F1CFD427A00244357 /* CodeViewController.swift */; };
+		D2C610021DACBAB400D27446 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443471D0BE80F00D4AA2C /* ThemeCell.swift */; };
+		D2C610031DACBAB400D27446 /* ThemeCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D29443481D0BE80F00D4AA2C /* ThemeCell.xib */; };
+		D2C610041DACBAB400D27446 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D50781D0C07E300779D30 /* ThemeListViewController.swift */; };
+		D2C610051DACBAB400D27446 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */; };
+		D2C610061DACBAB400D27446 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */; };
+		D2C610071DACBAB400D27446 /* RecentFileCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */; };
+		D2C610081DACBAB400D27446 /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */; };
+		D2C610091DACBAB400D27446 /* CommitCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
+		D2C6100A1DACBAB400D27446 /* CommitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */; };
+		D2C6100B1DACBAB400D27446 /* BranchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891681D7F048300FC5191 /* BranchListViewController.swift */; };
+		D2C6100C1DACBAB400D27446 /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263B3B11D8653F90050CB27 /* BranchCell.swift */; };
+		D2C6100D1DACBAB400D27446 /* BranchCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D263B3B21D8653F90050CB27 /* BranchCell.xib */; };
+		D2C6100E1DACBAC400D27446 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */; };
+		D2C6100F1DACBAC400D27446 /* CommitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */; };
+		D2C610101DACBAC400D27446 /* BranchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */; };
 		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
 		D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
 		D2DC098C1D964A1E00AF3EE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */; };
@@ -762,6 +787,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C6100E1DACBAC400D27446 /* ThemeViewModel.swift in Sources */,
+				D2C6100F1DACBAC400D27446 /* CommitListViewModel.swift in Sources */,
+				D2C610101DACBAC400D27446 /* BranchListViewModel.swift in Sources */,
+				D2C610001DACBAB400D27446 /* SearchRepoCell.xib in Sources */,
+				D2C610011DACBAB400D27446 /* CodeViewController.swift in Sources */,
+				D2C610021DACBAB400D27446 /* ThemeCell.swift in Sources */,
+				D2C610031DACBAB400D27446 /* ThemeCell.xib in Sources */,
+				D2C610041DACBAB400D27446 /* ThemeListViewController.swift in Sources */,
+				D2C610051DACBAB400D27446 /* HistoryViewController.swift in Sources */,
+				D2C610061DACBAB400D27446 /* RecentFileCell.swift in Sources */,
+				D2C610071DACBAB400D27446 /* RecentFileCell.xib in Sources */,
+				D2C610081DACBAB400D27446 /* CommitCell.swift in Sources */,
+				D2C610091DACBAB400D27446 /* CommitCell.xib in Sources */,
+				D2C6100A1DACBAB400D27446 /* CommitListViewController.swift in Sources */,
+				D2C6100B1DACBAB400D27446 /* BranchListViewController.swift in Sources */,
+				D2C6100C1DACBAB400D27446 /* BranchCell.swift in Sources */,
+				D2C6100D1DACBAB400D27446 /* BranchCell.xib in Sources */,
+				D2C60FFF1DACBA8C00D27446 /* ThemeFactory.swift in Sources */,
+				D2C60FFB1DACBA8200D27446 /* Theme.swift in Sources */,
+				D2C60FFC1DACBA8200D27446 /* Commit.swift in Sources */,
+				D2C60FFD1DACBA8200D27446 /* CommitFile.swift in Sources */,
+				D2C60FFE1DACBA8200D27446 /* Branch.swift in Sources */,
+				D2C60FF81DACB99F00D27446 /* FileListViewController.swift in Sources */,
+				D2C60FF91DACB99F00D27446 /* FileCell.swift in Sources */,
+				D2C60FFA1DACB99F00D27446 /* FileCell.xib in Sources */,
 				D2C60FF41DA88F7400D27446 /* IAPHelper.swift in Sources */,
 				D2C60FF51DA88F7400D27446 /* DonationProduct.swift in Sources */,
 				D2C60FF31DA88F6B00D27446 /* RepoFile.swift in Sources */,
