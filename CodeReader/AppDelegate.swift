@@ -42,22 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-//        RecentsManager.sharedManager.save(RecentsManager.SaveType.Recent)
-//        RecentsManager.sharedManager.save(RecentsManager.SaveType.Favorite)
+        RecentsManager.sharedManager.save(RecentsManager.SaveType.Recent)
+        RecentsManager.sharedManager.save(RecentsManager.SaveType.Favorite)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-//        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
-//            if let recentsData = UserDefaults.standard.object(forKey: "favorites") {
-//                RecentsManager.sharedManager.favorites = NSKeyedUnarchiver.unarchiveObject(with: recentsData as! Data) as! [Recent]
-//                print("Favorites loaded")
-//            }
-//            if let recentsData = UserDefaults.standard.object(forKey: "recents") {
-//                RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObject(with: recentsData as! Data) as! [Recent]
-//                print("Recents loaded")
-//            }
-//        }
+        if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
+            if let recentsData = UserDefaults.standard.object(forKey: "favorites") {
+                RecentsManager.sharedManager.favorites = NSKeyedUnarchiver.unarchiveObject(with: recentsData as! Data) as! [Recent]
+                log.info("Favorites loaded")
+            }
+            if let recentsData = UserDefaults.standard.object(forKey: "recents") {
+                RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObject(with: recentsData as! Data) as! [Recent]
+                log.info("Recents loaded")
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

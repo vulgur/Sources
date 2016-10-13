@@ -10,19 +10,27 @@ import UIKit
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
+import RxSwift
+import RxCocoa
 
 class BranchListViewModel {
     
-//    var branches = [(Branch, Commit)]()
-    var branches = [Branch]()
-    
+    var branches = Variable<[Branch]>([])
     var ownerName: String!
     var repoName: String!
+    let disposeBag = DisposeBag()
     
     init(ownerName: String, repoName: String) {
         
         self.ownerName = ownerName
         self.repoName = repoName
+        
+        loadBranches().subscribe(onNext: { (branches) in
+            self.branches.value = branches
+            }, onError: { error in
+                log.error("Error in loading branches: \(error)")
+            })
+        .addDisposableTo(disposeBag)
     }
     
     
@@ -41,44 +49,24 @@ class BranchListViewModel {
 //        }
     }
     
-    func loadBranches(completion: @escaping ()->(), errorHandler: ((String) -> ())? = nil) {
-        let url = "https://api.github.com/repos/\(ownerName)/\(repoName)/branches"
-        Alamofire.request(url)
-            .responseArray(completionHandler: { (response: DataResponse<[Branch]>) in
-                if let branches = response.result.value {
-                    log.info(branches)
-                    self.branches.removeAll()
-                    self.branches.append(contentsOf: branches)
-                }
-                
-            })
-//            .responseJSON { response in
-//                switch response.result {
-//                case .success:
-//                    if let statusCode = response.response?.statusCode {
-//                        switch statusCode{
-//                        case 200..<299:
-//                            if let json = response.result.value {
-//                                if let items = Mapper<Branch>().mapArray(json) {
-//                                    self.branches.removeAll()
-//                                    self.branches.append(contentsOf: items)
-//                                    completion()
-//                                }
-//                            }
-//                        default:
-//                            if let errorHandler = errorHandler {
-//                                errorHandler("Status Code is wrong")
-//                            }
-//                        }
-//                        
-//                    }
-//                case .failure(let error):
-//                    log.error(error)
-//                    if let errorHandler = errorHandler {
-//                        errorHandler(error.localizedDescription)
-//                    }
-//                }
+    func loadBranches() -> Observable<[Branch]> {
+        let url = "https://api.github.com/repos/\(ownerName!)/\(repoName!)/branches"
         
-//        }
+        return Observable.create({ (observer) -> Disposable in
+            let request = Alamofire.request(url)
+                .responseArray(completionHandler: { (response: DataResponse<[Branch]>) in
+                    if let branches = response.result.value {
+                        log.info(branches)
+                        observer.onNext(branches)
+                        observer.onCompleted()
+                    } else if let error = response.result.error{
+                        observer.onError(error)
+                    }
+                    
+                })
+            return Disposables.create {
+                log.info("dispose request: \(request)")
+            }
+        })
     }
 }

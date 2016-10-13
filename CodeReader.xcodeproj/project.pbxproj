@@ -452,7 +452,6 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
-				D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */,
 				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
@@ -491,6 +490,7 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */,
 				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
 				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
 				D27FECA91D1E3ABF00E3D366 /* Fabric.framework */,

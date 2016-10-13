@@ -132,11 +132,11 @@ class RepoViewController: BaseViewController {
             fileListVC.pathTitle = "/"
 //            EZLoadingActivity.hide()
         }
-//        else if segue.identifier == "ShowBranchList" {
-//            let branchListVC = segue.destination as! BranchListViewController
-//            branchListVC.ownerName = viewModel.ownerName.value
-//            branchListVC.repoName = viewModel.name.value
-//        }
+        else if segue.identifier == "ShowBranchList" {
+            let branchListVC = segue.destination as! BranchListViewController
+            branchListVC.ownerName = viewModel.ownerName.value
+            branchListVC.repoName = viewModel.name.value
+        }
     }
     
 
