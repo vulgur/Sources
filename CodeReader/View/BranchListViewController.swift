@@ -47,12 +47,14 @@ class BranchListViewController: UITableViewController {
             
             
         viewModel.branches.asDriver()
-            .drive(tableView.rx.items(cellIdentifier: BranchCellIdentifier, cellType: BranchCell.self)) { (row, branch, cell) in
+            .drive(tableView.rx.items(cellIdentifier: BranchCellIdentifier, cellType: BranchCell.self)) {[unowned self] (row, branch, cell) in
                 cell.branchLabel.text = branch.name
                 cell.branchLabel.layer.cornerRadius = 3
                 cell.branchLabel.layer.masksToBounds = true
                 cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
-                
+                self.viewModel.loadLatestCommit(urlString: branch.latestCommitURLString!).subscribe(onNext: { (commit) in
+                    cell.updateLabel.text = commit.commitInfo?.message
+                }).addDisposableTo(self.disposeBag)
         }.addDisposableTo(disposeBag)
     }
 
