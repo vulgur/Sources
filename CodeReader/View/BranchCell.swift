@@ -11,7 +11,8 @@ import UIKit
 class BranchCell: UITableViewCell {
 
     @IBOutlet var branchLabel: BranchLabel!
-    @IBOutlet var updateLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var updateInfoLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -12,40 +12,43 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="375" height="79"/>
+                <frame key="frameInset" width="375" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtE-5E-KI9" customClass="BranchLabel" customModule="CodeReader" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBe-E3-38G">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-hg-aee">
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtE-5E-KI9" customClass="BranchLabel" customModule="CodeReader" customModuleProvider="target">
                         <color key="backgroundColor" red="0.8901960784313725" green="0.92941176470588238" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" red="0.19607843137254902" green="0.3843137254901961" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-hg-aee">
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5s6-hg-aee" firstAttribute="top" secondItem="mtE-5E-KI9" secondAttribute="bottom" constant="8" id="1pJ-kf-ZZx"/>
-                    <constraint firstItem="mtE-5E-KI9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="Bf4-FA-cJm"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="mtE-5E-KI9" secondAttribute="trailing" constant="8" id="Rcb-WW-bbP"/>
+                    <constraint firstItem="rBe-E3-38G" firstAttribute="centerY" secondItem="mtE-5E-KI9" secondAttribute="centerY" id="8WH-cn-gez"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="mtE-5E-KI9" secondAttribute="leading" id="NV4-4U-FUg"/>
+                    <constraint firstItem="5s6-hg-aee" firstAttribute="top" secondItem="mtE-5E-KI9" secondAttribute="bottom" constant="9" id="QQ4-mc-272"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rBe-E3-38G" secondAttribute="trailing" constant="8" id="XQC-AA-aJu"/>
                     <constraint firstAttribute="trailingMargin" secondItem="5s6-hg-aee" secondAttribute="trailing" constant="8" id="aGo-sa-Hao"/>
+                    <constraint firstItem="rBe-E3-38G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mtE-5E-KI9" secondAttribute="trailing" constant="10" id="inu-5m-aRU"/>
+                    <constraint firstItem="mtE-5E-KI9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="qYt-JB-WVd"/>
                     <constraint firstItem="5s6-hg-aee" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="rtv-Gu-Iec"/>
-                    <constraint firstItem="mtE-5E-KI9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="xAy-64-Ttu"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="Rcb-WW-bbP"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="branchLabel" destination="mtE-5E-KI9" id="KSb-8W-gCW"/>
-                <outlet property="updateLabel" destination="5s6-hg-aee" id="9Xe-P6-Jui"/>
+                <outlet property="messageLabel" destination="5s6-hg-aee" id="CLn-3z-h1u"/>
+                <outlet property="updateInfoLabel" destination="rBe-E3-38G" id="QWf-YH-eLW"/>
             </connections>
-            <point key="canvasLocation" x="175" y="329"/>
+            <point key="canvasLocation" x="-478.5" y="283"/>
         </tableViewCell>
     </objects>
 </document>

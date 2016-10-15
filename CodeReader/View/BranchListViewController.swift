@@ -53,7 +53,12 @@ class BranchListViewController: UITableViewController {
                 cell.branchLabel.layer.masksToBounds = true
                 cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
                 self.viewModel.loadLatestCommit(urlString: branch.latestCommitURLString!).subscribe(onNext: { (commit) in
-                    cell.updateLabel.text = commit.commitInfo?.message
+                    cell.messageLabel.text = commit.commitInfo?.message
+                    if let dateString = commit.commitInfo?.committer?.dateString {
+                        let date = try! DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime))
+                        let (colloquial, _) = try! date.colloquialSinceNow()
+                        cell.updateInfoLabel.text = colloquial
+                    }
                 }).addDisposableTo(self.disposeBag)
         }.addDisposableTo(disposeBag)
     }
