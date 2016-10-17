@@ -61,7 +61,7 @@ class RepoViewController: BaseViewController {
         let headers: HTTPHeaders = ["Accept":"application/vnd.github.VERSION.html"]
         
 //        EZLoadingActivity.showOnView("loading README", disableUI: false, view: webView)
-        EZLoadingActivity.show("loading README", disableUI: false)
+        _ = EZLoadingActivity.show("loading readme", disableUI: false)
         Alamofire.request(url, headers: headers).responseString { (response) in
             if let readmeStr = response.result.value {
                 if let readmeTemplate = self.readmeTemplateString() {
@@ -160,6 +160,6 @@ extension RepoViewController: UIWebViewDelegate {
         let contentViewHeight = CGFloat(webViewHeight) + webView.frame.origin.y
         self.contentView.addConstraint(NSLayoutConstraint(item: self.contentView, attribute: .height, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentViewHeight))
         self.view.layoutIfNeeded()
-        EZLoadingActivity.hide()
+        _ = EZLoadingActivity.hide()
     }
 }

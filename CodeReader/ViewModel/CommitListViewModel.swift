@@ -14,25 +14,35 @@ import RxCocoa
 
 class CommitListViewModel {
     
-    var commits = [Commit]()
+    var commits = Variable<[CommitItem]>([])
     var isLoading = Variable<Bool>(false)
+    let apiURLString: String?
     
     var nextPageUrl: String = ""
     
+    init(apiURLString: String) {
+        self.apiURLString = apiURLString
+    }
     
-    func loadCommitList(_ urlString: String, completion: @escaping () -> (), errorHandler: (() -> ())? = nil) {
-        // TODO: get he commit list of a specific branch
-        Alamofire.request(urlString)
-            .responseJSON { (response) in
-                switch response.result{
-                case .success:
-                    if let value = response.result.value as? [[String: Any]], let items = Mapper<Commit>().mapArray(JSONArray: value) {
-                        self.commits = items
-                        completion()
-                    }
-                case .failure(let error):
-                    print(error)
+    func loadCommitList() -> Observable<[CommitItem]> {
+        return Observable.create({ (observer) -> Disposable in
+            guard let url = self.apiURLString else {
+                return Disposables.create {
+                    log.error("wrong url")
                 }
-        }
+            }
+            let request = Alamofire.request(url)
+                .responseArray(completionHandler: { (response: DataResponse<[CommitItem]>) in
+                    if let items = response.result.value {
+                        observer.onNext(items)
+                        observer.onCompleted()
+                    } else if let error = response.result.error {
+                        observer.onError(error)
+                    }
+                })
+            return Disposables.create {
+                log.info("dispose request: \(request)")
+            }
+        })
     }
 }

@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.black
         UINavigationBar.appearance().tintColor = UIColor.black
     
-        Fabric.sharedSDK().debug = true
         Fabric.with([Answers.self, Crashlytics.self])
         
         let console = ConsoleDestination()

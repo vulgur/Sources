@@ -1,91 +1,54 @@
 //
-//  Commit.swift
+//  CommitFile.swift
 //  CodeReader
 //
-//  Created by vulgur on 16/9/1.
+//  Created by vulgur on 16/9/2.
 //  Copyright © 2016年 MAD. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-// "parents" item in JSON
-struct ParentCommit: Mappable {
-    var URLString: String?
-    var htmlURLString: String?
+/**
+ item in one commit, reperesent for changes of a file
+ **/
+struct CommitFile: Mappable {
+    
     var sha: String?
+    var filename: String?
+    var status: String?
+    var additions: Int?
+    var deletions: Int?
+    var changes: Int?
+//    var blogURLString: String?
+//    var contentsURLString: String?
+//    var rawURLString: String?
+    var patch: String?
     
     init?(map: Map) {
         
     }
     
     mutating func mapping(map: Map) {
-        URLString       <- map["url"]
-        htmlURLString   <- map["html_url"]
-        sha             <- map["sha"]
+        sha         <- map["sha"]
+        filename    <- map["filename"]
+        status      <- map["status"]
+        additions   <- map["additions"]
+        deletions   <- map["deletions"]
+        changes     <- map["changes"]
+        patch       <- map["patch"]
     }
 }
 
-struct CommitUser: Mappable {
-    
-    var name: String?
-    var email: String?
-    var dateString: String?
-    
-    init?(map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        name        <- map["name"]
-        email       <- map["email"]
-        dateString  <- map["date"]
-    }
-}
-
-struct CommitInfo: Mappable {
-    var author: CommitUser?
-    var committer: CommitUser?
-    var message: String?
-    
-    init?(map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        author      <- map["author"]
-        committer   <- map["committer"]
-        message     <- map["message"]
-    }
-}
-
-
+/** single commit **/
 struct Commit: Mappable {
-    var sha: String?
-//    var author: User?
-    var committer: User?
-    var URLString: String?
-    var htmlURLString: String?
-//    var commentsURLString: String?
-    var parents = [ParentCommit]()
-//    var comment_count: Int?
     var files = [CommitFile]()
-    var commitInfo: CommitInfo?
     
     init?(map: Map) {
         
     }
     
     mutating func mapping(map: Map) {
-        sha                 <- map["sha"]
-        URLString           <- map["url"]
-        htmlURLString       <- map["html_url"]
-        commitInfo          <- map["commit"]
-//        author              <- map["author"]
-        committer           <- map["committer"]
-//        comment_count       <- map["commit"]["comment_count"]
-//        commentsURLString   <- map["comments_url"]
-        parents             <- map["parents"]
-        files               <- map["files"]
+        files <- map["files"]
     }
 }

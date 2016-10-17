@@ -11,13 +11,12 @@ import SwiftDate
 import RxSwift
 import RxCocoa
 
-class BranchListViewController: UITableViewController {
+class BranchListViewController: BaseTableViewController {
     var viewModel: BranchListViewModel!
     var ownerName: String!
     var repoName: String!
 
     let BranchCellIdentifier = "BranchCell"
-    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +27,6 @@ class BranchListViewController: UITableViewController {
         tableView.rowHeight = 70
         
         bindViewModel()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,71 +36,50 @@ class BranchListViewController: UITableViewController {
     
     func bindViewModel() {
         viewModel = BranchListViewModel(ownerName: ownerName, repoName: repoName)
-
-            
-            
         viewModel.branches.asDriver()
             .drive(tableView.rx.items(cellIdentifier: BranchCellIdentifier, cellType: BranchCell.self)) {[unowned self] (row, branch, cell) in
                 cell.branchLabel.text = branch.name
                 cell.branchLabel.layer.cornerRadius = 3
                 cell.branchLabel.layer.masksToBounds = true
                 cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
+                cell.updateInfoLabel.alpha = 0
+                cell.messageLabel.alpha = 0
                 self.viewModel.loadLatestCommit(urlString: branch.latestCommitURLString!).subscribe(onNext: { (commit) in
-                    cell.messageLabel.text = commit.commitInfo?.message
+                    
                     if let dateString = commit.commitInfo?.committer?.dateString {
                         let date = try! DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime))
                         let (colloquial, _) = try! date.colloquialSinceNow()
                         cell.updateInfoLabel.text = colloquial
+                        cell.messageLabel.text = commit.commitInfo?.message
+                        UIView.animate(withDuration: 0.3, animations: { 
+                            cell.updateInfoLabel.alpha = 1
+                            cell.messageLabel.alpha = 1
+                        })
                     }
                 }).addDisposableTo(self.disposeBag)
         }.addDisposableTo(disposeBag)
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return viewModel.branches.value.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: BranchCellIdentifier, for: indexPath) as! BranchCell
-//
-//        let branch = viewModel.branches[(indexPath as NSIndexPath).section]
-//        // Configure the cell...
-//        cell.branchLabel.text = branch.name
-//        cell.branchLabel.layer.cornerRadius = 3
-//        cell.branchLabel.layer.masksToBounds = true
-//        cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
-//        
-//        viewModel.loadLatestCommit(branch.latestCommitURLString!, completion: { (commit) in
-//            if let dateString = commit.commitInfo?.committer?.dateString {
-//                if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
-////                    let localRegion = Region(calendarName: .autoUpdatingCurrent, timeZoneName: nil, localeName: nil)
-//                    cell.updateLabel.alpha = 0
-//                    
-//                    let updateString = date.string()
-////                        date.toNaturalString(Date(), inRegion: localRegion, style: FormatterStyle.init(style: .full, units: nil, max: 1))!
-////                        + " ago by " + (commit.committer?.loginName)!
-//                    cell.updateLabel.text = updateString
-//                    UIView.animate(withDuration: 0.3, animations: {
-//                        cell.updateLabel.alpha = 1
-//                    })
-//                }
-//            }
-//        })
-//
-//        return cell
-//    }
-
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Section \(section)"
+        label.backgroundColor = UIColor.lightGray
+        return label
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -115,6 +87,7 @@ class BranchListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        log.info("Select index path:\(indexPath.section, indexPath.row)")
         let branch = viewModel.branches.value[indexPath.section]
         performSegue(withIdentifier: "ShowCommitList", sender: branch.name)
     }
@@ -123,10 +96,12 @@ class BranchListViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCommitList" {
-            let commitListVC = segue.destination as! CommitListViewController
-            if let branchName = sender as? String {
-                let url = "https://api.github.com/repos/\(viewModel.ownerName)/\(viewModel.repoName)/commits?sha=\(branchName)"
-                commitListVC.apiURLString = url
+           
+            if let branchName = sender as? String,
+                let commitListVC = segue.destination as? CommitListViewController{
+                let url = "https://api.github.com/repos/\(viewModel.ownerName!)/\(viewModel.repoName!)/commits?sha=\(branchName)"
+                let commitListViewModel = CommitListViewModel(apiURLString: url)
+                commitListVC.viewModel = commitListViewModel
             }
         }
     }

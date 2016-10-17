@@ -13,11 +13,9 @@ import Kingfisher
 import SwiftDate
 import EZLoadingActivity
 
-class CommitListViewController: UITableViewController {
+class CommitListViewController: BaseTableViewController {
     let CommitCellIdentifier = "CommitCell"
-    var commits = [Commit]()
-    var apiURLString: String?
-    var viewModel = CommitListViewModel()
+    var viewModel: CommitListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +25,11 @@ class CommitListViewController: UITableViewController {
         tableView.register(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
         tableView.rowHeight = 70
         
-        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let api = apiURLString {
-            fetchFileList(api)
-        }
+        bindViewModel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,104 +39,66 @@ class CommitListViewController: UITableViewController {
     
     // MARK: Private methods
     func bindViewModel() {
+        viewModel.commits.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: CommitCellIdentifier, cellType: CommitCell.self)) { (row, commit, cell) in
+                cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
+                if let message = commit.commitInfo?.message,
+                    let committerName = commit.committer?.loginName,
+                    let dateString = commit.commitInfo?.committer?.dateString,
+                    let sha = commit.sha {
+                    
+                    if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
+                        let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
+                        cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
+                    } else {
+                        cell.committerLabel.text = "\(committerName) committed on \(dateString)"
+                    }
+                    cell.messageLabel.text = message
+                    cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
+                }
+        }.addDisposableTo(disposeBag)
+        
+        viewModel.loadCommitList().subscribe(onNext: {[unowned self] (commits) in
+            self.viewModel.commits.value = commits
+            }
+        ).addDisposableTo(disposeBag)
     }
     
-    func fetchFileList(_ urlString: String) {
-        EZLoadingActivity.show("loading files", disableUI: true)
-        Alamofire.request(urlString)
-            .responseArray(completionHandler: { (response: DataResponse<[Commit]>) in
-                if let items = response.result.value {
-                    self.commits = items
-                    self.tableView.reloadData()
-                }
-                EZLoadingActivity.hide()
-            })
-//            .responseJSON { (response) in
-//                switch response.result{
-//                case .success:
-//                    if let items = Mapper<Commit>().mapArray(response.result.value) {
-//                        self.commits = items
-//                        self.tableView.reloadData()
-//                    }
-//                case .failure(let error):
-//                    print(error)
-//                }
-
-//        }
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return commits.count
+        return viewModel.commits.value.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommitCellIdentifier, for: indexPath) as! CommitCell
-
-        // Configure the cell...
-        let commit = commits[(indexPath as NSIndexPath).row]
-        cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
-        if let message = commit.commitInfo?.message,
-            let committerName = commit.committer?.loginName,
-            let dateString = commit.commitInfo?.committer?.dateString,
-            let sha = commit.sha {
-            
-            if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
-                let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
-                cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
-            } else {
-                cell.committerLabel.text = "\(committerName) committed on \(dateString)"
-            }
-            cell.messageLabel.text = message
-            cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
-        }
-
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: CommitCellIdentifier, for: indexPath) as! CommitCell
+//
+//        // Configure the cell...
+//        let commit = commits[(indexPath as NSIndexPath).row]
+//        cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
+//        if let message = commit.commitInfo?.message,
+//            let committerName = commit.committer?.loginName,
+//            let dateString = commit.commitInfo?.committer?.dateString,
+//            let sha = commit.sha {
+//            
+//            if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
+//                let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
+//                cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
+//            } else {
+//                cell.committerLabel.text = "\(committerName) committed on \(dateString)"
+//            }
+//            cell.messageLabel.text = message
+//            cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
+//        }
+//
+//        return cell
+//    }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

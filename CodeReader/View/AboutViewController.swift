@@ -28,10 +28,10 @@ class AboutViewController: UIViewController {
         if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
             changeStateToPurchased()
         } else {
-            EZLoadingActivity.show("loading...", disableUI: true)
+            _ = EZLoadingActivity.show("loading...", disableUI: true)
             DonationProduct.store.requestProducts { (success, products) in
                 if success {
-                    EZLoadingActivity.hide()
+                    _ = EZLoadingActivity.hide()
                     self.products = products!
                     if let buyMeACoffee = self.products.first {
                         if DonationProduct.store.isProductPurchased(buyMeACoffee.productIdentifier) {

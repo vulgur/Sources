@@ -34,11 +34,10 @@ class BranchListViewModel {
     }
     
     
-    func loadLatestCommit(urlString: String) -> Observable<Commit> {
+    func loadLatestCommit(urlString: String) -> Observable<CommitItem> {
         return Observable.create({ (observer) -> Disposable in
-            let request = Alamofire.request(urlString).responseObject { (response: DataResponse<Commit>) in
+            let request = Alamofire.request(urlString).responseObject { (response: DataResponse<CommitItem>) in
                 if let commit = response.result.value {
-                    log.info("Last commit: \(commit)")
                     observer.onNext(commit)
                     observer.onCompleted()
                 } else if let error = response.result.error {
@@ -58,7 +57,6 @@ class BranchListViewModel {
             let request = Alamofire.request(url)
                 .responseArray(completionHandler: { (response: DataResponse<[Branch]>) in
                     if let branches = response.result.value {
-                        log.info(branches)
                         observer.onNext(branches)
                         observer.onCompleted()
                     } else if let error = response.result.error{

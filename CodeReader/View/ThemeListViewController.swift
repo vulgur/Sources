@@ -59,7 +59,7 @@ class ThemeListViewController: UITableViewController {
         } else {
             let alertController = UIAlertController(title: "", message: "Please buy me a coffee to unlock all themes", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             })
             alertController.addAction(alertAction)
             self.present(alertController, animated: true, completion: nil)

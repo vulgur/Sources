@@ -76,11 +76,11 @@ class CodeViewController: UIViewController {
             
             let url = URL(string: downloadURLString)!
             
-            EZLoadingActivity.show("loading source", disableUI: true)
+            _ = EZLoadingActivity.show("loading source", disableUI: true)
             
             Alamofire.request(url)
                 .responseData(completionHandler: { (response) in
-                    EZLoadingActivity.hide()
+                    _ = EZLoadingActivity.hide()
                     self.setFavoriteButton()
                     if let htmlData = response.data {
                         if let dataString = String(data: htmlData, encoding: String.Encoding.utf8) {

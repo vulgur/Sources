@@ -130,8 +130,8 @@
 		D2C60FF91DACB99F00D27446 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DA1CF8245A00244357 /* FileCell.swift */; };
 		D2C60FFA1DACB99F00D27446 /* FileCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D20A10DB1CF8245A00244357 /* FileCell.xib */; };
 		D2C60FFB1DACBA8200D27446 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29443431D0BE2FD00D4AA2C /* Theme.swift */; };
-		D2C60FFC1DACBA8200D27446 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* Commit.swift */; };
-		D2C60FFD1DACBA8200D27446 /* CommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */; };
+		D2C60FFC1DACBA8200D27446 /* CommitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */; };
+		D2C60FFD1DACBA8200D27446 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E051D788C2A00AAAF8A /* Commit.swift */; };
 		D2C60FFE1DACBA8200D27446 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891641D7DB30000FC5191 /* Branch.swift */; };
 		D2C60FFF1DACBA8C00D27446 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434B1D0BEC2F00D4AA2C /* ThemeFactory.swift */; };
 		D2C610001DACBAB400D27446 /* SearchRepoCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4321CE2266300D6143D /* SearchRepoCell.xib */; };
@@ -153,6 +153,7 @@
 		D2C610101DACBAC400D27446 /* BranchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */; };
 		D2C610121DAE58CA00D27446 /* EZLoadingActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */; };
 		D2C610131DAE58CA00D27446 /* EZLoadingActivity.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2C610161DB4E86100D27446 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C610151DB4E86100D27446 /* BaseTableViewController.swift */; };
 		D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE2E091D79C3E500AAAF8A /* User.swift */; };
 		D2CE2E0E1D79E7A500AAAF8A /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */; };
 		D2DC098C1D964A1E00AF3EE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098A1D964A1E00AF3EE7 /* RxSwift.framework */; };
@@ -316,8 +317,9 @@
 		D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		D29443541D0BFC6D00D4AA2C /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZLoadingActivity.framework; path = Carthage/Build/iOS/EZLoadingActivity.framework; sourceTree = "<group>"; };
-		D2CE2E031D787E8A00AAAF8A /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
-		D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFile.swift; sourceTree = "<group>"; };
+		D2C610151DB4E86100D27446 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitItem.swift; sourceTree = "<group>"; };
+		D2CE2E051D788C2A00AAAF8A /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		D2CE2E091D79C3E500AAAF8A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
 		D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
@@ -515,8 +517,8 @@
 				D29443431D0BE2FD00D4AA2C /* Theme.swift */,
 				D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */,
 				D26CA59E1D1B33A10073FB53 /* Recent.swift */,
-				D2CE2E031D787E8A00AAAF8A /* Commit.swift */,
-				D2CE2E051D788C2A00AAAF8A /* CommitFile.swift */,
+				D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */,
+				D2CE2E051D788C2A00AAAF8A /* Commit.swift */,
 				D2CE2E091D79C3E500AAAF8A /* User.swift */,
 				D27891641D7DB30000FC5191 /* Branch.swift */,
 			);
@@ -548,6 +550,7 @@
 				D263B3B11D8653F90050CB27 /* BranchCell.swift */,
 				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
 				D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */,
+				D2C610151DB4E86100D27446 /* BaseTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -600,8 +603,8 @@
 				D23EE4011CDF56B100D6143D /* Frameworks */,
 				D23EE4021CDF56B100D6143D /* Resources */,
 				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
-				D27FECA41D1E354000E3D366 /* ShellScript */,
 				D27FECAD1D1E733F00E3D366 /* ShellScript */,
+				D27FECA41D1E354000E3D366 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -619,7 +622,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = MAD;
 				TargetAttributes = {
 					D23EE4031CDF56B100D6143D = {
@@ -791,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2C6100E1DACBAC400D27446 /* ThemeViewModel.swift in Sources */,
+				D2C610161DB4E86100D27446 /* BaseTableViewController.swift in Sources */,
 				D2C6100F1DACBAC400D27446 /* CommitListViewModel.swift in Sources */,
 				D2C610101DACBAC400D27446 /* BranchListViewModel.swift in Sources */,
 				D2C610001DACBAB400D27446 /* SearchRepoCell.xib in Sources */,
@@ -809,8 +813,8 @@
 				D2C6100D1DACBAB400D27446 /* BranchCell.xib in Sources */,
 				D2C60FFF1DACBA8C00D27446 /* ThemeFactory.swift in Sources */,
 				D2C60FFB1DACBA8200D27446 /* Theme.swift in Sources */,
-				D2C60FFC1DACBA8200D27446 /* Commit.swift in Sources */,
-				D2C60FFD1DACBA8200D27446 /* CommitFile.swift in Sources */,
+				D2C60FFC1DACBA8200D27446 /* CommitItem.swift in Sources */,
+				D2C60FFD1DACBA8200D27446 /* Commit.swift in Sources */,
 				D2C60FFE1DACBA8200D27446 /* Branch.swift in Sources */,
 				D2C60FF81DACB99F00D27446 /* FileListViewController.swift in Sources */,
 				D2C60FF91DACB99F00D27446 /* FileCell.swift in Sources */,
@@ -871,8 +875,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -896,7 +902,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -916,8 +922,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -937,6 +945,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

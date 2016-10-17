@@ -33,21 +33,8 @@ class SearchViewController: BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-
-//        errorHandler =  { [unowned self] msg in
-//            EZLoadingActivity.hide()
-//            
-//            let alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-//            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-//            alertController.addAction(action)
-//            self.present(alertController, animated: true, completion: nil)
-//        }
-        
         // bind 
         bindViewModel()
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

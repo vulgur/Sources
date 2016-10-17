@@ -48,14 +48,14 @@ class FileListViewController: UITableViewController {
     }
     
     func fetchFileList(_ path: String) {
-        EZLoadingActivity.show("loading files", disableUI: true)
+        _ = EZLoadingActivity.show("loading files", disableUI: true)
         Alamofire.request(path)
             .responseArray(completionHandler: { (response: DataResponse<[RepoFile]>) in
                 if let items = response.result.value {
                     self.fileList = items
                     self.tableView.reloadData()
                 }
-                EZLoadingActivity.hide()
+                _ = EZLoadingActivity.hide()
             })
 //            .responseJSON { (response) in
 //                switch response.result{
