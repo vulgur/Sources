@@ -12,10 +12,25 @@ import ObjectMapper
 import AlamofireObjectMapper
 import RxSwift
 import RxCocoa
+import RxDataSources
+
+struct BranchSection {
+    var items: [Branch]
+}
+
+extension BranchSection: SectionModelType {
+    typealias Item = Branch
+    init(original: BranchSection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
 
 class BranchListViewModel {
     
-    var branches = Variable<[Branch]>([])
+    let dataSource = RxTableViewSectionedReloadDataSource<BranchSection>()
+    
+//    var branches = Variable<[Branch]>([])
     var ownerName: String!
     var repoName: String!
     let disposeBag = DisposeBag()
@@ -25,12 +40,12 @@ class BranchListViewModel {
         self.ownerName = ownerName
         self.repoName = repoName
         
-        loadBranches().subscribe(onNext: { (branches) in
-            self.branches.value = branches
-            }, onError: { error in
-                log.error("Error in loading branches: \(error)")
-            })
-        .addDisposableTo(disposeBag)
+//        loadBranches().subscribe(onNext: { (branches) in
+//            self.branches.value = branches
+//            }, onError: { error in
+//                log.error("Error in loading branches: \(error)")
+//            })
+//        .addDisposableTo(disposeBag)
     }
     
     

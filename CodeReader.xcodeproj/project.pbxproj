@@ -89,6 +89,8 @@
 		D20A117E1CFD41C000244357 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A117D1CFD41C000244357 /* template.html */; };
 		D20A11821CFDF1AD00244357 /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = D20A11811CFDF1AD00244357 /* github-markdown.css */; };
 		D20A11841CFDF31500244357 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A11831CFDF31500244357 /* readme.html */; };
+		D2204DC61DB5E87400F44A6E /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2204DC51DB5E87400F44A6E /* RxDataSources.framework */; };
+		D2204DC71DB5E87400F44A6E /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2204DC51DB5E87400F44A6E /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -176,6 +178,7 @@
 				D2DC098F1D964A1E00AF3EE7 /* RxCocoa.framework in Embed Frameworks */,
 				D2C610131DAE58CA00D27446 /* EZLoadingActivity.framework in Embed Frameworks */,
 				D23EE4201CE0C1DB00D6143D /* Alamofire.framework in Embed Frameworks */,
+				D2204DC71DB5E87400F44A6E /* RxDataSources.framework in Embed Frameworks */,
 				D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */,
 				D278915E1D7C7AB700FC5191 /* SwiftDate.framework in Embed Frameworks */,
 			);
@@ -271,6 +274,7 @@
 		D20A117F1CFD427A00244357 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		D20A11811CFDF1AD00244357 /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown.css"; sourceTree = "<group>"; };
 		D20A11831CFDF31500244357 /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
+		D2204DC51DB5E87400F44A6E /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				D29202DD1D15B78E002F1FE7 /* StoreKit.framework in Frameworks */,
 				D23EE4221CE1C0E300D6143D /* ObjectMapper.framework in Frameworks */,
 				D2C610121DAE58CA00D27446 /* EZLoadingActivity.framework in Frameworks */,
+				D2204DC61DB5E87400F44A6E /* RxDataSources.framework in Frameworks */,
 				D27FECAB1D1E3ABF00E3D366 /* Fabric.framework in Frameworks */,
 				D27891601D7D55A900FC5191 /* SwiftyBeaver.framework in Frameworks */,
 				D23EE41F1CE0C1DB00D6143D /* Alamofire.framework in Frameworks */,
@@ -454,6 +459,7 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
+				D2204DC51DB5E87400F44A6E /* RxDataSources.framework */,
 				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
