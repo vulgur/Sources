@@ -73,41 +73,19 @@ class CommitListViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.commits.value.count
     }
+    
+    // MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowCommitFileList", sender: nil)
+    }
 
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: CommitCellIdentifier, for: indexPath) as! CommitCell
-//
-//        // Configure the cell...
-//        let commit = commits[(indexPath as NSIndexPath).row]
-//        cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
-//        if let message = commit.commitInfo?.message,
-//            let committerName = commit.committer?.loginName,
-//            let dateString = commit.commitInfo?.committer?.dateString,
-//            let sha = commit.sha {
-//            
-//            if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
-//                let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
-//                cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
-//            } else {
-//                cell.committerLabel.text = "\(committerName) committed on \(dateString)"
-//            }
-//            cell.messageLabel.text = message
-//            cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
-//        }
-//
-//        return cell
-//    }
-    
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
-
+    
 }

@@ -91,6 +91,8 @@
 		D20A11841CFDF31500244357 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = D20A11831CFDF31500244357 /* readme.html */; };
 		D2204DC61DB5E87400F44A6E /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2204DC51DB5E87400F44A6E /* RxDataSources.framework */; };
 		D2204DC71DB5E87400F44A6E /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2204DC51DB5E87400F44A6E /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2204DC91DB7624100F44A6E /* CommitFileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */; };
+		D2204DCB1DB794D300F44A6E /* CommitFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -275,6 +277,8 @@
 		D20A11811CFDF1AD00244357 /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown.css"; sourceTree = "<group>"; };
 		D20A11831CFDF31500244357 /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
 		D2204DC51DB5E87400F44A6E /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileListViewController.swift; sourceTree = "<group>"; };
+		D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileCell.swift; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -557,6 +561,8 @@
 				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
 				D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */,
 				D2C610151DB4E86100D27446 /* BaseTableViewController.swift */,
+				D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */,
+				D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -806,6 +812,7 @@
 				D2C610001DACBAB400D27446 /* SearchRepoCell.xib in Sources */,
 				D2C610011DACBAB400D27446 /* CodeViewController.swift in Sources */,
 				D2C610021DACBAB400D27446 /* ThemeCell.swift in Sources */,
+				D2204DCB1DB794D300F44A6E /* CommitFileCell.swift in Sources */,
 				D2C610031DACBAB400D27446 /* ThemeCell.xib in Sources */,
 				D2C610041DACBAB400D27446 /* ThemeListViewController.swift in Sources */,
 				D2C610051DACBAB400D27446 /* HistoryViewController.swift in Sources */,
@@ -840,6 +847,7 @@
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
+				D2204DC91DB7624100F44A6E /* CommitFileListViewController.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
 				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);

@@ -66,52 +66,11 @@ class BranchListViewController: BaseTableViewController {
             }
         }.bindTo(tableView.rx.items(dataSource: viewModel.dataSource))
         .addDisposableTo(disposeBag)
-        
-//        viewModel.branches.asDriver()
-//            .drive(tableView.rx.items(cellIdentifier: BranchCellIdentifier, cellType: BranchCell.self)) {[unowned self] (row, branch, cell) in
-//                cell.branchLabel.text = branch.name
-//                cell.branchLabel.layer.cornerRadius = 3
-//                cell.branchLabel.layer.masksToBounds = true
-//                cell.branchLabel.insets = UIEdgeInsetsMake(0, 5, 0, 5)
-//                cell.updateInfoLabel.alpha = 0
-//                cell.messageLabel.alpha = 0
-//                self.viewModel.loadLatestCommit(urlString: branch.latestCommitURLString!).subscribe(onNext: { (commit) in
-//                    
-//                    if let dateString = commit.commitInfo?.committer?.dateString {
-//                        let date = try! DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime))
-//                        let (colloquial, _) = try! date.colloquialSinceNow()
-//                        cell.updateInfoLabel.text = colloquial
-//                        cell.messageLabel.text = commit.commitInfo?.message
-//                        UIView.animate(withDuration: 0.3, animations: { 
-//                            cell.updateInfoLabel.alpha = 1
-//                            cell.messageLabel.alpha = 1
-//                        })
-//                    }
-//                }).addDisposableTo(self.disposeBag)
-//        }.addDisposableTo(disposeBag)
-        
     }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return viewModel.branches.value.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        label.text = "Section \(section)"
-//        label.backgroundColor = UIColor.lightGray
-//        return label
-//    }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
