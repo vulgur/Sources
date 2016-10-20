@@ -41,7 +41,14 @@ class CommitListViewController: BaseTableViewController {
     func bindViewModel() {
         viewModel.commits.asDriver()
             .drive(tableView.rx.items(cellIdentifier: CommitCellIdentifier, cellType: CommitCell.self)) { (row, commit, cell) in
-                cell.avatarImageView.kf.setImage(with: URL(string: commit.committer!.avatarURLString!)!)
+                
+                if let avatarURLString = commit.committer?.avatarURLString,
+                    let avatarURL = URL(string: avatarURLString) {
+                    cell.avatarImageView.kf.setImage(with: avatarURL, placeholder: UIImage(named: "user_avatar"))
+                } else {
+                    cell.avatarImageView.image = UIImage(named: "user_avatar")
+                }
+                
                 if let message = commit.commitInfo?.message,
                     let committerName = commit.committer?.loginName,
                     let dateString = commit.commitInfo?.committer?.dateString,

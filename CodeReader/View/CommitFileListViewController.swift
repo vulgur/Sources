@@ -11,11 +11,11 @@ import UIKit
 class CommitFileListViewController: UITableViewController {
 
     let commitFileCellIdentifier = "CommitFileCell"
-    let dataSource = [("file1", 100, 200),
-                      ("file2222", 3, 43),
-                      ("file4333", 2,232),
-                      ("text22342", 9323,121),
-                      ("lspg", 234,1)]
+    let dataSource = [("CodeReader.xcodeproj/project.pbxproj", 100, 200, 1),
+                      ("CodeReader.xcodeproj/xcuserdata/wangshudao.xcuserdatad/xcschemes/CodeReader.xcscheme", 3, 43, 2),
+                      ("CodeReader/View/CommitListViewController.swift", 2,232, 1),
+                      ("CodeReader/View/RepoViewController.swift", 9323,121, 3),
+                      ("CodeReader/View/BranchCell.xib", 234,1, 2)]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +52,14 @@ class CommitFileListViewController: UITableViewController {
         cell.filenameLabel.text = item.0
         cell.additionsLabel.text = "+\(item.1)"
         cell.deletionsLabel.text = "-\(item.2)"
+        switch item.3 {
+        case 1:
+            cell.statusImageView.image = UIImage(named: "file_addition")
+        case 2:
+            cell.statusImageView.image = UIImage(named: "file_deletion")
+        default:
+            cell.statusImageView.image = UIImage(named: "file_modification")
+        }
 
         return cell
     }

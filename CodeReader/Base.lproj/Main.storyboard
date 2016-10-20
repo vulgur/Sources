@@ -586,10 +586,10 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcR-6q-SId" id="IZ7-2T-UNH">
-                                    <frame key="frameInset" width="375" height="69.5"/>
+                                    <frame key="frameInset" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-88-FXj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file_modification" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-88-FXj">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Cwk-UW-cSm"/>
                                                 <constraint firstAttribute="width" constant="40" id="NDn-gY-d8X"/>
@@ -935,6 +935,7 @@
         <image name="buy_coffee" width="256" height="364"/>
         <image name="coffee_highlight" width="25" height="25"/>
         <image name="explore_highlight" width="25" height="25"/>
+        <image name="file_modification" width="40" height="40"/>
         <image name="fork" width="50" height="50"/>
         <image name="recents_highlight" width="25" height="25"/>
         <image name="star" width="50" height="50"/>
