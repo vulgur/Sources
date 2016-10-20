@@ -50,8 +50,8 @@ class CommitFileListViewController: UITableViewController {
         // Configure the cell...
         let item = dataSource[indexPath.row]
         cell.filenameLabel.text = item.0
-        cell.additionsLabel.text = "\(item.1)"
-        cell.deletionsLabel.text = "\(item.2)"
+        cell.additionsLabel.text = "+\(item.1)"
+        cell.deletionsLabel.text = "-\(item.2)"
 
         return cell
     }

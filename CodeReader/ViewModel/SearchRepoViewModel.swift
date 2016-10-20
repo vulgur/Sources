@@ -14,6 +14,9 @@ import RxSwift
 import RxCocoa
 
 class SearchRepoViewModel {
+    enum SearchError: Error {
+        case Error404
+    }
     
     enum SortType: String {
         case Best = ""
@@ -98,8 +101,11 @@ class SearchRepoViewModel {
             self.searchInProgress.value = true
             let request = Alamofire.request("https://api.github.com/search/repositories", parameters: urlParams)
                         .responseObject { (response: DataResponse<SearchRepoResponse>) in
-                            if response.response!.statusCode > 299 {
+                            guard let statusCode = response.response?.statusCode,
+                                statusCode < 300 else {
+                                observer.onError(SearchError.Error404)
                                 log.error(response.result.description)
+                                return
                             }
                 
                             if let searchResult = response.result.value, let items = searchResult.items {

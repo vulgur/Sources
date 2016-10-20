@@ -74,16 +74,25 @@ class SearchViewController: BaseViewController {
         
         _ = self.searchBar.rx.text
             .asDriver()
-            .throttle(0.3)
+            .throttle(0.5)
             .distinctUntilChanged()
             .flatMapLatest { [unowned self] (keyword) in
                 if keyword.isEmpty {
                     return .just([])
                 }
                 self.viewModel.searchKeyword.value = keyword
-                return self.viewModel.searchRepos().asDriver(onErrorJustReturn: [])
-            }.asObservable().bindTo(viewModel.repos)
-        
+                return self.viewModel.searchRepos().asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, [Repo]> in
+                    log.error("EEEEEERROR")
+                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    let alert = UIAlertController(title: "Error", message: "Bad connection", preferredStyle: .alert)
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return SharedSequence.empty()
+                })
+            }
+       
+            .asObservable()
+            .bindTo(viewModel.repos)
         
         
         viewModel.repos.asDriver()
