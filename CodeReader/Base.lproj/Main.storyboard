@@ -555,7 +555,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oEg-QN-udw" id="qWF-Pp-2wU">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -586,7 +586,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcR-6q-SId" id="IZ7-2T-UNH">
-                                    <frame key="frameInset" width="375" height="69"/>
+                                    <frame key="frameInset" width="375" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-88-FXj">
@@ -600,31 +600,32 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-T0-JbT">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-T0-JbT" customClass="InsetsLabel" customModule="CodeReader" customModuleProvider="target">
+                                            <color key="backgroundColor" red="0.74189156293869019" green="0.17522108554840088" blue="0.0013588606379926205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.74189156293869019" green="0.17522108554840088" blue="0.0013588606379926205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92q-Gy-5wK">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92q-Gy-5wK" customClass="InsetsLabel" customModule="CodeReader" customModuleProvider="target">
+                                            <color key="backgroundColor" red="0.33212330937385559" green="0.64793729782104492" blue="0.19532573223114014" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.33212330937385559" green="0.64793729782104492" blue="0.19532573223114014" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="92q-Gy-5wK" firstAttribute="centerY" secondItem="8D5-T0-JbT" secondAttribute="centerY" id="6la-eJ-6Fn"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="TIl-88-FXj" secondAttribute="leading" id="EJ5-s9-1Q7"/>
                                         <constraint firstItem="hBa-JJ-JDE" firstAttribute="top" secondItem="TIl-88-FXj" secondAttribute="top" id="FCe-pv-GOk"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="8D5-T0-JbT" secondAttribute="trailing" id="Hy3-bd-wHu"/>
                                         <constraint firstItem="8D5-T0-JbT" firstAttribute="leading" secondItem="92q-Gy-5wK" secondAttribute="trailing" constant="8" id="VQN-5Y-FOj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8D5-T0-JbT" secondAttribute="bottom" id="hK0-xr-iWG"/>
                                         <constraint firstItem="TIl-88-FXj" firstAttribute="centerY" secondItem="IZ7-2T-UNH" secondAttribute="centerY" id="m2H-qa-AEa"/>
                                         <constraint firstItem="92q-Gy-5wK" firstAttribute="top" secondItem="8D5-T0-JbT" secondAttribute="top" id="spi-Db-ERQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hBa-JJ-JDE" secondAttribute="trailing" constant="8" id="uoK-C3-U8c"/>
                                         <constraint firstItem="hBa-JJ-JDE" firstAttribute="leading" secondItem="TIl-88-FXj" secondAttribute="trailing" constant="8" id="yPi-df-3B3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8D5-T0-JbT" secondAttribute="trailing" constant="8" id="zsX-E1-Iwc"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="8D5-T0-JbT" secondAttribute="bottom" id="WXa-50-pZA"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="additionsLabel" destination="92q-Gy-5wK" id="wcy-IM-MJW"/>
                                     <outlet property="deletionsLabel" destination="8D5-T0-JbT" id="DH2-uE-JCy"/>
@@ -807,7 +808,7 @@
             <objects>
                 <tableViewController id="006-5j-sbs" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="18" id="y8g-ip-Ht7">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="300.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>

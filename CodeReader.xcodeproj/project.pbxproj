@@ -93,6 +93,7 @@
 		D2204DC71DB5E87400F44A6E /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2204DC51DB5E87400F44A6E /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2204DC91DB7624100F44A6E /* CommitFileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */; };
 		D2204DCB1DB794D300F44A6E /* CommitFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */; };
+		D2204DCD1DB9137400F44A6E /* InsetsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -279,6 +280,7 @@
 		D2204DC51DB5E87400F44A6E /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileListViewController.swift; sourceTree = "<group>"; };
 		D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileCell.swift; sourceTree = "<group>"; };
+		D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetsLabel.swift; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -463,7 +465,6 @@
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
-				D2204DC51DB5E87400F44A6E /* RxDataSources.framework */,
 				D23EE41D1CDF62B900D6143D /* Frameworks */,
 				D23EE4061CDF56B100D6143D /* CodeReader */,
 				D23EE4051CDF56B100D6143D /* Products */,
@@ -502,6 +503,7 @@
 		D23EE41D1CDF62B900D6143D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2204DC51DB5E87400F44A6E /* RxDataSources.framework */,
 				D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */,
 				D23EE41E1CE0C1DB00D6143D /* Alamofire.framework */,
 				D27FECAA1D1E3ABF00E3D366 /* Crashlytics.framework */,
@@ -563,6 +565,7 @@
 				D2C610151DB4E86100D27446 /* BaseTableViewController.swift */,
 				D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */,
 				D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */,
+				D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				D2C610011DACBAB400D27446 /* CodeViewController.swift in Sources */,
 				D2C610021DACBAB400D27446 /* ThemeCell.swift in Sources */,
 				D2204DCB1DB794D300F44A6E /* CommitFileCell.swift in Sources */,
+				D2204DCD1DB9137400F44A6E /* InsetsLabel.swift in Sources */,
 				D2C610031DACBAB400D27446 /* ThemeCell.xib in Sources */,
 				D2C610041DACBAB400D27446 /* ThemeListViewController.swift in Sources */,
 				D2C610051DACBAB400D27446 /* HistoryViewController.swift in Sources */,
