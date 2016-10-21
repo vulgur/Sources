@@ -586,13 +586,13 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcR-6q-SId" id="IZ7-2T-UNH">
-                                    <frame key="frameInset" width="375" height="70"/>
+                                    <frame key="frameInset" width="375" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file_modification" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-88-FXj">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="Cwk-UW-cSm"/>
-                                                <constraint firstAttribute="width" constant="40" id="NDn-gY-d8X"/>
+                                                <constraint firstAttribute="height" constant="20" id="Cwk-UW-cSm"/>
+                                                <constraint firstAttribute="width" constant="20" id="NDn-gY-d8X"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="filename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBa-JJ-JDE">
@@ -614,12 +614,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="TIl-88-FXj" firstAttribute="top" secondItem="IZ7-2T-UNH" secondAttribute="topMargin" constant="8" id="3rm-Em-5jT"/>
                                         <constraint firstItem="92q-Gy-5wK" firstAttribute="centerY" secondItem="8D5-T0-JbT" secondAttribute="centerY" id="6la-eJ-6Fn"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="TIl-88-FXj" secondAttribute="leading" id="EJ5-s9-1Q7"/>
                                         <constraint firstItem="hBa-JJ-JDE" firstAttribute="top" secondItem="TIl-88-FXj" secondAttribute="top" id="FCe-pv-GOk"/>
                                         <constraint firstItem="8D5-T0-JbT" firstAttribute="leading" secondItem="92q-Gy-5wK" secondAttribute="trailing" constant="8" id="VQN-5Y-FOj"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8D5-T0-JbT" secondAttribute="bottom" id="hK0-xr-iWG"/>
-                                        <constraint firstItem="TIl-88-FXj" firstAttribute="centerY" secondItem="IZ7-2T-UNH" secondAttribute="centerY" id="m2H-qa-AEa"/>
                                         <constraint firstItem="92q-Gy-5wK" firstAttribute="top" secondItem="8D5-T0-JbT" secondAttribute="top" id="spi-Db-ERQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hBa-JJ-JDE" secondAttribute="trailing" constant="8" id="uoK-C3-U8c"/>
                                         <constraint firstItem="hBa-JJ-JDE" firstAttribute="leading" secondItem="TIl-88-FXj" secondAttribute="trailing" constant="8" id="yPi-df-3B3"/>
