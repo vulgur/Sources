@@ -49,7 +49,7 @@ class CommitFileListViewController: UITableViewController {
 
         // Configure the cell...
         let item = dataSource[indexPath.row]
-        cell.filenameLabel.text = item.0
+        cell.filenameLabel.text = shortenFilename(filename: item.0)
         cell.additionsLabel.text = "+\(item.1)"
         cell.deletionsLabel.text = "-\(item.2)"
         switch item.3 {
@@ -64,6 +64,13 @@ class CommitFileListViewController: UITableViewController {
         return cell
     }
     
+    private func shortenFilename(filename: String) -> String {
+        let paths = filename.components(separatedBy: "/")
+        if paths.count > 2 {
+            return ".../".appending(paths[paths.count-2]).appending("/").appending(paths.last!)
+        }
+        return filename
+    }
 
     /*
     // Override to support conditional editing of the table view.

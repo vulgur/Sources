@@ -56,9 +56,9 @@ class CommitListViewController: BaseTableViewController {
                     
                     if let date = try? DateInRegion(string: dateString, format: .iso8601(options: .withInternetDateTime)) {
                         let dateToShow = date.string(dateStyle: .medium, timeStyle: .none)
-                        cell.committerLabel.text = "\(committerName) committed on \(dateToShow)"
+                        cell.committerLabel.text = "\(dateToShow)"
                     } else {
-                        cell.committerLabel.text = "\(committerName) committed on \(dateString)"
+                        cell.committerLabel.text = "\(dateString)"
                     }
                     cell.messageLabel.text = message
                     cell.shaLabel.text = sha.substring(to: sha.characters.index(sha.startIndex, offsetBy: 7))
