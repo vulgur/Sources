@@ -8,27 +8,57 @@
 
 import UIKit
 
-class CommitFileListViewController: UITableViewController {
+class CommitFileListViewController: BaseTableViewController {
 
-    let commitFileCellIdentifier = "CommitFileCell"
-    let dataSource = [("CodeReader.xcodeproj/project.pbxproj", 100, 200, 1),
-                      ("CodeReader.xcodeproj/xcuserdata/wangshudao.xcuserdatad/xcschemes/CodeReader.xcscheme", 3, 43, 2),
-                      ("CodeReader/View/CommitListViewController.swift", 2,232, 1),
-                      ("CodeReader/View/RepoViewController.swift", 9323,121, 3),
-                      ("CodeReader/View/BranchCell.xib", 234,1, 2)]
+    var viewModel: CommitFileListViewModel!
+    let CommitFileCellIdentifier = "CommitFileCell"
+//    let dataSource = [("CodeReader.xcodeproj/project.pbxproj", 100, 200, 1),
+//                      ("CodeReader.xcodeproj/xcuserdata/wangshudao.xcuserdatad/xcschemes/CodeReader.xcscheme", 3, 43, 2),
+//                      ("CodeReader/View/CommitListViewController.swift", 2,232, 1),
+//                      ("CodeReader/View/RepoViewController.swift", 9323,121, 3),
+//                      ("CodeReader/View/BranchCell.xib", 234,1, 2)]
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.title = "Commit Files"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bindViewModel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Private methods
+    private func bindViewModel() {
+        viewModel.commitFiles.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: CommitFileCellIdentifier, cellType: CommitFileCell.self)) { (row, commitFile, cell) in
+                if let filename = commitFile.filename {
+                    cell.filenameLabel.text = self.shortenFilename(filename: filename)
+                }
+                if let additions = commitFile.additions {
+                    cell.additionsLabel.text = "+\(additions)"
+                }
+                if let deletions = commitFile.deletions {
+                    cell.deletionsLabel.text = "-\(deletions)"
+                }
+                
+                switch commitFile.status! {
+                    case "added": cell.statusImageView.image = #imageLiteral(resourceName: "file_addition")
+                    case "modified": cell.statusImageView.image = #imageLiteral(resourceName: "file_modification")
+                    case "deleted": cell.statusImageView.image = #imageLiteral(resourceName: "file_deletion")
+                    default: cell.statusImageView.image = #imageLiteral(resourceName: "file_addition")
+                }
+            
+        }.addDisposableTo(disposeBag)
+        
+        viewModel.loadCommitFileList().subscribe(onNext: { [unowned self] (commitFiles) in
+            self.viewModel.commitFiles.value = commitFiles
+        }).addDisposableTo(disposeBag)
     }
 
     // MARK: - Table view data source
@@ -40,29 +70,9 @@ class CommitFileListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource.count
+        return viewModel.commitFiles.value.count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: commitFileCellIdentifier, for: indexPath) as! CommitFileCell
-
-        // Configure the cell...
-        let item = dataSource[indexPath.row]
-        cell.filenameLabel.text = shortenFilename(filename: item.0)
-        cell.additionsLabel.text = "+\(item.1)"
-        cell.deletionsLabel.text = "-\(item.2)"
-        switch item.3 {
-        case 1:
-            cell.statusImageView.image = UIImage(named: "file_addition")
-        case 2:
-            cell.statusImageView.image = UIImage(named: "file_deletion")
-        default:
-            cell.statusImageView.image = UIImage(named: "file_modification")
-        }
-
-        return cell
-    }
     
     private func shortenFilename(filename: String) -> String {
         let paths = filename.components(separatedBy: "/")

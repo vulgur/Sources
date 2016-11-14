@@ -125,6 +125,7 @@
 		D29443521D0BEC4E00D4AA2C /* SearchRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */; };
 		D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; };
 		D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2BB08B41DD9D5E00050AA0D /* CommitFileListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB08B31DD9D5E00050AA0D /* CommitFileListViewModel.swift */; };
 		D2C60FEF1DA88A4900D27446 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
 		D2C60FF01DA88A4900D27446 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434E1D0BEC4E00D4AA2C /* RepoViewModel.swift */; };
 		D2C60FF11DA88F3B00D27446 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
@@ -340,6 +341,7 @@
 		D294434F1D0BEC4E00D4AA2C /* SearchRepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepoViewModel.swift; sourceTree = "<group>"; };
 		D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		D29443541D0BFC6D00D4AA2C /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
+		D2BB08B31DD9D5E00050AA0D /* CommitFileListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileListViewModel.swift; sourceTree = "<group>"; };
 		D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZLoadingActivity.framework; path = Carthage/Build/iOS/EZLoadingActivity.framework; sourceTree = "<group>"; };
 		D2C610151DB4E86100D27446 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitItem.swift; sourceTree = "<group>"; };
@@ -573,32 +575,32 @@
 		D23EE42C1CE1CC6200D6143D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */,
-				D23EE4311CE2266300D6143D /* SearchRepoCell.swift */,
-				D23EE4321CE2266300D6143D /* SearchRepoCell.xib */,
-				D23EE43B1CE479B700D6143D /* RepoViewController.swift */,
-				D20A10D81CF823F600244357 /* FileListViewController.swift */,
+				D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */,
+				D2C610151DB4E86100D27446 /* BaseTableViewController.swift */,
+				D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */,
+				D263B3B11D8653F90050CB27 /* BranchCell.swift */,
+				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
+				D27891681D7F048300FC5191 /* BranchListViewController.swift */,
+				D20A117F1CFD427A00244357 /* CodeViewController.swift */,
+				D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */,
+				D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */,
+				D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */,
+				D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */,
+				D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */,
 				D20A10DA1CF8245A00244357 /* FileCell.swift */,
 				D20A10DB1CF8245A00244357 /* FileCell.xib */,
-				D20A117F1CFD427A00244357 /* CodeViewController.swift */,
+				D20A10D81CF823F600244357 /* FileListViewController.swift */,
+				D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */,
+				D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */,
+				D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */,
+				D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */,
+				D23EE43B1CE479B700D6143D /* RepoViewController.swift */,
+				D23EE4311CE2266300D6143D /* SearchRepoCell.swift */,
+				D23EE4321CE2266300D6143D /* SearchRepoCell.xib */,
+				D23EE42D1CE1CC7600D6143D /* SearchViewController.swift */,
 				D29443471D0BE80F00D4AA2C /* ThemeCell.swift */,
 				D29443481D0BE80F00D4AA2C /* ThemeCell.xib */,
 				D28D50781D0C07E300779D30 /* ThemeListViewController.swift */,
-				D29202DA1D1311F9002F1FE7 /* AboutViewController.swift */,
-				D26CA5A01D1C20110073FB53 /* HistoryViewController.swift */,
-				D26CA5A21D1C31A20073FB53 /* RecentFileCell.swift */,
-				D26CA5A31D1C31A20073FB53 /* RecentFileCell.xib */,
-				D2CE2E0B1D79E7A500AAAF8A /* CommitCell.swift */,
-				D2CE2E0C1D79E7A500AAAF8A /* CommitCell.xib */,
-				D278915A1D7B2B2100FC5191 /* CommitListViewController.swift */,
-				D27891681D7F048300FC5191 /* BranchListViewController.swift */,
-				D263B3B11D8653F90050CB27 /* BranchCell.swift */,
-				D263B3B21D8653F90050CB27 /* BranchCell.xib */,
-				D20483CA1D9A18E900A33CD5 /* BaseViewController.swift */,
-				D2C610151DB4E86100D27446 /* BaseTableViewController.swift */,
-				D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */,
-				D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */,
-				D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -636,6 +638,7 @@
 				D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */,
 				D27891621D7D5BCB00FC5191 /* CommitListViewModel.swift */,
 				D27891661D7EBD4900FC5191 /* BranchListViewModel.swift */,
+				D2BB08B31DD9D5E00050AA0D /* CommitFileListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				D20483CB1D9A18E900A33CD5 /* BaseViewController.swift in Sources */,
 				D2CE2E0A1D79C3E500AAAF8A /* User.swift in Sources */,
 				D23EE4261CE1C1A300D6143D /* Repo.swift in Sources */,
+				D2BB08B41DD9D5E00050AA0D /* CommitFileListViewModel.swift in Sources */,
 				D23EE4301CE1D6DE00D6143D /* SearchRepoResponse.swift in Sources */,
 				D23EE42E1CE1CC7600D6143D /* SearchViewController.swift in Sources */,
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,

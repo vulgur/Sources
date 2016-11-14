@@ -24,7 +24,6 @@ class CommitListViewController: BaseTableViewController {
         
         tableView.register(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
         tableView.rowHeight = 70
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +49,7 @@ class CommitListViewController: BaseTableViewController {
                 }
                 
                 if let message = commit.commitInfo?.message,
-                    let committerName = commit.committer?.loginName,
+//                    let committerName = commit.committer?.loginName,
                     let dateString = commit.commitInfo?.committer?.dateString,
                     let sha = commit.sha {
                     
@@ -83,16 +82,21 @@ class CommitListViewController: BaseTableViewController {
     
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowCommitFileList", sender: nil)
+        performSegue(withIdentifier: "ShowCommitFileList", sender: indexPath)
     }
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCommitFileList" {
+            if let destinationVC = segue.destination as? CommitFileListViewController,
+                let indexPath = sender as? IndexPath{
+                let commit = self.viewModel.commits.value[indexPath.row]
+                destinationVC.viewModel = CommitFileListViewModel(apiURLString: commit.URLString!)
+            }
+        }
     }
     
 }
