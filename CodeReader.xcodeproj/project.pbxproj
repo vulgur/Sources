@@ -94,6 +94,7 @@
 		D2204DC91DB7624100F44A6E /* CommitFileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */; };
 		D2204DCB1DB794D300F44A6E /* CommitFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */; };
 		D2204DCD1DB9137400F44A6E /* InsetsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */; };
+		D2204DD51DBB9A4700F44A6E /* SourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2204DD41DBB9A4700F44A6E /* SourcesTests.swift */; };
 		D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE4071CDF56B100D6143D /* AppDelegate.swift */; };
 		D23EE40D1CDF56B100D6143D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40B1CDF56B100D6143D /* Main.storyboard */; };
 		D23EE40F1CDF56B100D6143D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EE40E1CDF56B100D6143D /* Assets.xcassets */; };
@@ -166,6 +167,16 @@
 		D2DC098E1D964A1E00AF3EE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098B1D964A1E00AF3EE7 /* RxCocoa.framework */; };
 		D2DC098F1D964A1E00AF3EE7 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC098B1D964A1E00AF3EE7 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2204DD71DBB9A4700F44A6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D23EE3FC1CDF56B100D6143D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D23EE4031CDF56B100D6143D;
+			remoteInfo = CodeReader;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D23EE41C1CDF62A500D6143D /* Embed Frameworks */ = {
@@ -281,6 +292,9 @@
 		D2204DC81DB7624100F44A6E /* CommitFileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileListViewController.swift; sourceTree = "<group>"; };
 		D2204DCA1DB794D300F44A6E /* CommitFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileCell.swift; sourceTree = "<group>"; };
 		D2204DCC1DB9137400F44A6E /* InsetsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetsLabel.swift; sourceTree = "<group>"; };
+		D2204DD21DBB9A4700F44A6E /* SourcesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourcesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2204DD41DBB9A4700F44A6E /* SourcesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTests.swift; sourceTree = "<group>"; };
+		D2204DD61DBB9A4700F44A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D23EE4041CDF56B100D6143D /* CodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EE4071CDF56B100D6143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EE40C1CDF56B100D6143D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -338,6 +352,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D2204DCF1DBB9A4700F44A6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D23EE4011CDF56B100D6143D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +483,16 @@
 			path = HTML;
 			sourceTree = "<group>";
 		};
+		D2204DD31DBB9A4700F44A6E /* SourcesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2204DD41DBB9A4700F44A6E /* SourcesTests.swift */,
+				D2204DD61DBB9A4700F44A6E /* Info.plist */,
+			);
+			name = SourcesTests;
+			path = ../../SourcesTests;
+			sourceTree = "<group>";
+		};
 		D23EE3FB1CDF56B100D6143D = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				D23EE4041CDF56B100D6143D /* CodeReader.app */,
+				D2204DD21DBB9A4700F44A6E /* SourcesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -532,6 +564,7 @@
 				D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */,
 				D2CE2E051D788C2A00AAAF8A /* Commit.swift */,
 				D2CE2E091D79C3E500AAAF8A /* User.swift */,
+				D2204DD31DBB9A4700F44A6E /* SourcesTests */,
 				D27891641D7DB30000FC5191 /* Branch.swift */,
 			);
 			path = Model;
@@ -610,6 +643,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D2204DD11DBB9A4700F44A6E /* SourcesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2204DD91DBB9A4700F44A6E /* Build configuration list for PBXNativeTarget "SourcesTests" */;
+			buildPhases = (
+				D2204DCE1DBB9A4700F44A6E /* Sources */,
+				D2204DCF1DBB9A4700F44A6E /* Frameworks */,
+				D2204DD01DBB9A4700F44A6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2204DD81DBB9A4700F44A6E /* PBXTargetDependency */,
+			);
+			name = SourcesTests;
+			productName = SourcesTests;
+			productReference = D2204DD21DBB9A4700F44A6E /* SourcesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D23EE4031CDF56B100D6143D /* CodeReader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D23EE4161CDF56B100D6143D /* Build configuration list for PBXNativeTarget "CodeReader" */;
@@ -636,10 +687,16 @@
 		D23EE3FC1CDF56B100D6143D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = MAD;
 				TargetAttributes = {
+					D2204DD11DBB9A4700F44A6E = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = GZLZV8E4BV;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D23EE4031CDF56B100D6143D;
+					};
 					D23EE4031CDF56B100D6143D = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GZLZV8E4BV;
@@ -666,11 +723,19 @@
 			projectRoot = "";
 			targets = (
 				D23EE4031CDF56B100D6143D /* CodeReader */,
+				D2204DD11DBB9A4700F44A6E /* SourcesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D2204DD01DBB9A4700F44A6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D23EE4021CDF56B100D6143D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,6 +869,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D2204DCE1DBB9A4700F44A6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2204DD51DBB9A4700F44A6E /* SourcesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D23EE4001CDF56B100D6143D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -859,6 +932,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D2204DD81DBB9A4700F44A6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D23EE4031CDF56B100D6143D /* CodeReader */;
+			targetProxy = D2204DD71DBB9A4700F44A6E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D23EE40B1CDF56B100D6143D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -879,6 +960,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D2204DDA1DBB9A4700F44A6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = GZLZV8E4BV;
+				INFOPLIST_FILE = SourcesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mad.SourcesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeReader.app/CodeReader";
+			};
+			name = Debug;
+		};
+		D2204DDB1DBB9A4700F44A6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = GZLZV8E4BV;
+				INFOPLIST_FILE = SourcesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mad.SourcesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeReader.app/CodeReader";
+			};
+			name = Release;
+		};
 		D23EE4141CDF56B100D6143D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1015,6 +1131,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D2204DD91DBB9A4700F44A6E /* Build configuration list for PBXNativeTarget "SourcesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2204DDA1DBB9A4700F44A6E /* Debug */,
+				D2204DDB1DBB9A4700F44A6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D23EE3FF1CDF56B100D6143D /* Build configuration list for PBXProject "CodeReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
