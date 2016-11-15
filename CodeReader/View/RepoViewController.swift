@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import Alamofire
 import EZLoadingActivity
+import Crashlytics
 
 class RepoViewController: BaseViewController {
     
@@ -43,6 +44,8 @@ class RepoViewController: BaseViewController {
         bindViewModel()
         viewModel.fetchWatchers()
         setupWebView()
+        
+        Answers.logCustomEvent(withName: "Show Repo", customAttributes: nil)
     }
     
     override func didReceiveMemoryWarning() {

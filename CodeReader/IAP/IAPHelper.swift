@@ -115,7 +115,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
         
         deliverPurchasedNotificationForIdentifier(transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
-        Answers.logContentView(withName: "Purchase completed", contentType: "IAP", contentId: Date().dateString, customAttributes: nil)
+//        Answers.logContentView(withName: "Purchase completed", contentType: "IAP", contentId: Date().dateString, customAttributes: nil)
+        Answers.logPurchase(withPrice: 18, currency: "CNY", success: true, itemName: "buy me a coffee", itemType: nil, itemId: nil, customAttributes: nil)
     }
     
     fileprivate func restoreTransaction(_ transaction: SKPaymentTransaction) {
@@ -126,7 +127,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
         log.warning("restoreTransaction... \(productIdentifier)")
         deliverPurchasedNotificationForIdentifier(productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
-        Answers.logContentView(withName: "Purchase restored", contentType: "IAP", contentId: Date().dateString, customAttributes: nil)
     }
     
     fileprivate func failedTransaction(_ transaction: SKPaymentTransaction) {
@@ -136,10 +136,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
             if transactionError.code != SKError.paymentCancelled {
                 log.warning("Transaction Error: \(transaction.error?.localizedDescription)")
                 if let desc = transaction.error?.localizedDescription {
-                    Answers.logContentView(withName: "Purchase failed",
-                                                   contentType: "IAP",
-                                                   contentId: Date().dateString,
-                                                   customAttributes: ["Error": desc])
+                    Answers.logCustomEvent(withName: "Purchase failed", customAttributes: ["description": desc])
                 }
             }
         }

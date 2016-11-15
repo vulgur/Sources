@@ -12,6 +12,7 @@ import ObjectMapper
 import Kingfisher
 import SwiftDate
 import EZLoadingActivity
+import Crashlytics
 
 class CommitListViewController: BaseTableViewController {
     let CommitCellIdentifier = "CommitCell"
@@ -24,6 +25,8 @@ class CommitListViewController: BaseTableViewController {
         
         tableView.register(UINib.init(nibName: "CommitCell", bundle: nil), forCellReuseIdentifier: CommitCellIdentifier)
         tableView.rowHeight = 70
+        
+        Answers.logCustomEvent(withName: "Show Commit List", customAttributes: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

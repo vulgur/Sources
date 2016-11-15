@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class FileChangeViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class FileChangeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Answers.logCustomEvent(withName: "Show File Change", customAttributes: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

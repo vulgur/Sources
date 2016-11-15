@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import Alamofire
 import EZLoadingActivity
+import Crashlytics
 
 class CodeViewController: UIViewController {
     
@@ -34,6 +35,7 @@ class CodeViewController: UIViewController {
         downloadSourceCode()
         
         favoriteButton.isHidden = true
+        Answers.logCustomEvent(withName: "Show Code", customAttributes: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

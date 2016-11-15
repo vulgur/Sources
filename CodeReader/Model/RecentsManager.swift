@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 class RecentsManager {
     
@@ -83,6 +84,7 @@ class RecentsManager {
             }
         }
         favorites.insert(recent, at: 0)
+        Answers.logCustomEvent(withName: "favorite", customAttributes: ["from": "file"])
     }
     
     func addFavoriteByRecent(_ recent: Recent) {
@@ -93,6 +95,7 @@ class RecentsManager {
             }
         }
         favorites.insert(favorite, at: 0)
+        Answers.logCustomEvent(withName: "favorite", customAttributes: ["from": "recent"])
     }
     
     func removeFavoriteByRecent(_ recent: Recent) {

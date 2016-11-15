@@ -57,6 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 RecentsManager.sharedManager.recents = NSKeyedUnarchiver.unarchiveObject(with: recentsData as! Data) as! [Recent]
                 log.info("Recents loaded")
             }
+            Answers.logCustomEvent(withName: "Purchased", customAttributes: nil)
+        } else {
+            Answers.logCustomEvent(withName: "Not Purchased", customAttributes: nil)
         }
     }
 

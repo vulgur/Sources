@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ThemeListViewController: UITableViewController {
     let viewModel = ThemeViewModel()
@@ -17,6 +18,7 @@ class ThemeListViewController: UITableViewController {
 
         tableView.register(UINib.init(nibName: "ThemeCell", bundle: nil), forCellReuseIdentifier: "Theme")
         tableView.reloadData()
+        Answers.logCustomEvent(withName: "Show Theme List", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +73,7 @@ class ThemeListViewController: UITableViewController {
             if let indexPath = sender as? IndexPath{
                 selectedTheme = viewModel.themes[(indexPath as NSIndexPath).section]
                 UserDefaults.standard.set(selectedTheme?.name, forKey: "default_theme")
+                Answers.logCustomEvent(withName: "Change Theme", customAttributes: ["theme": selectedTheme?.name ?? "error"])
             }
         }
     }

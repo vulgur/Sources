@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class CommitFileListViewController: BaseTableViewController {
 
@@ -18,6 +19,7 @@ class CommitFileListViewController: BaseTableViewController {
 
         self.navigationItem.title = "Commit Files"
         self.tableView.hideEmptyCells()
+        Answers.logCustomEvent(withName: "Show Commit File List", customAttributes: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

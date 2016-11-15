@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class HistoryViewController: UIViewController {
     
@@ -46,6 +47,7 @@ class HistoryViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             recentList = RecentsManager.sharedManager.recents
+            Answers.logCustomEvent(withName: "Show Recents", customAttributes: nil)
         case 1:
             if DonationProduct.store.isProductPurchased(DonationProduct.BuyMeACoffee) {
                 recentList = RecentsManager.sharedManager.favorites
@@ -58,6 +60,7 @@ class HistoryViewController: UIViewController {
                     self.segmentedControl.didChangeValue(forKey: "selectedSegmentIndex")
                 })
             }
+            Answers.logCustomEvent(withName: "Show Favorites", customAttributes: nil)
         default:
             recentList = RecentsManager.sharedManager.recents
         }

@@ -12,6 +12,7 @@ import ObjectMapper
 import AlamofireObjectMapper
 import RxSwift
 import RxCocoa
+import Crashlytics
 
 class SearchRepoViewModel {
     enum SearchError: Error {
@@ -111,6 +112,7 @@ class SearchRepoViewModel {
                             if let searchResult = response.result.value, let items = searchResult.items {
                                 observer.onNext(items)
                                 observer.onCompleted()
+                                Answers.logSearch(withQuery: self.searchKeyword.value, customAttributes: nil)
                             } else if let error = response.result.error {
                                 log.error(error)
                                 observer.onError(error)
