@@ -678,7 +678,7 @@
 				D23EE4011CDF56B100D6143D /* Frameworks */,
 				D23EE4021CDF56B100D6143D /* Resources */,
 				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
-				D27FECAD1D1E733F00E3D366 /* ShellScript */,
+				D27FECAD1D1E733F00E3D366 /* Carthage */,
 				D27FECA41D1E354000E3D366 /* ShellScript */,
 				D2BB08BA1DDB1C150050AA0D /* Set build number */,
 			);
@@ -860,7 +860,7 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run f88d269e9ebddfa5288c332293c76d498259c44c 6693f3cd2650d84a773743917ee96147f79bf22b8f57aab8792365eadad42a97";
 		};
-		D27FECAD1D1E733F00E3D366 /* ShellScript */ = {
+		D27FECAD1D1E733F00E3D366 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -872,6 +872,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
