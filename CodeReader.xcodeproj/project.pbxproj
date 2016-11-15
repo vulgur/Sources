@@ -126,6 +126,8 @@
 		D29443551D0BFC6D00D4AA2C /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; };
 		D29443561D0BFC6D00D4AA2C /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D29443541D0BFC6D00D4AA2C /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2BB08B41DD9D5E00050AA0D /* CommitFileListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB08B31DD9D5E00050AA0D /* CommitFileListViewModel.swift */; };
+		D2BB08B71DDAC4BE0050AA0D /* FileChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB08B61DDAC4BE0050AA0D /* FileChangeViewController.swift */; };
+		D2BB08B91DDAC65F0050AA0D /* file_change.html in Resources */ = {isa = PBXBuildFile; fileRef = D2BB08B81DDAC65F0050AA0D /* file_change.html */; };
 		D2C60FEF1DA88A4900D27446 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EE43B1CE479B700D6143D /* RepoViewController.swift */; };
 		D2C60FF01DA88A4900D27446 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294434E1D0BEC4E00D4AA2C /* RepoViewModel.swift */; };
 		D2C60FF11DA88F3B00D27446 /* RecentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26CA59C1D1B31AD0073FB53 /* RecentsManager.swift */; };
@@ -342,6 +344,8 @@
 		D29443501D0BEC4E00D4AA2C /* ThemeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		D29443541D0BFC6D00D4AA2C /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		D2BB08B31DD9D5E00050AA0D /* CommitFileListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitFileListViewModel.swift; sourceTree = "<group>"; };
+		D2BB08B61DDAC4BE0050AA0D /* FileChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileChangeViewController.swift; sourceTree = "<group>"; };
+		D2BB08B81DDAC65F0050AA0D /* file_change.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = file_change.html; sourceTree = "<group>"; };
 		D2C610111DAE58CA00D27446 /* EZLoadingActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZLoadingActivity.framework; path = Carthage/Build/iOS/EZLoadingActivity.framework; sourceTree = "<group>"; };
 		D2C610151DB4E86100D27446 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		D2CE2E031D787E8A00AAAF8A /* CommitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitItem.swift; sourceTree = "<group>"; };
@@ -481,6 +485,7 @@
 				D20A11831CFDF31500244357 /* readme.html */,
 				D20A117D1CFD41C000244357 /* template.html */,
 				D20A11811CFDF1AD00244357 /* github-markdown.css */,
+				D2BB08B81DDAC65F0050AA0D /* file_change.html */,
 			);
 			path = HTML;
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 				D29443471D0BE80F00D4AA2C /* ThemeCell.swift */,
 				D29443481D0BE80F00D4AA2C /* ThemeCell.xib */,
 				D28D50781D0C07E300779D30 /* ThemeListViewController.swift */,
+				D2BB08B61DDAC4BE0050AA0D /* FileChangeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 				D20A11781CFD417C00244357 /* vs.css in Resources */,
 				D20A11661CFD417C00244357 /* paraiso-light.css in Resources */,
 				D20A115D1CFD417C00244357 /* ir-black.css in Resources */,
+				D2BB08B91DDAC65F0050AA0D /* file_change.html in Resources */,
 				D294434A1D0BE80F00D4AA2C /* ThemeCell.xib in Resources */,
 				D20A11391CFD417C00244357 /* atelier-estuary-dark.css in Resources */,
 				D20A11621CFD417C00244357 /* monokai-sublime.css in Resources */,
@@ -930,6 +937,7 @@
 				D23EE4081CDF56B100D6143D /* AppDelegate.swift in Sources */,
 				D2204DC91DB7624100F44A6E /* CommitFileListViewController.swift in Sources */,
 				D23EE4331CE2266300D6143D /* SearchRepoCell.swift in Sources */,
+				D2BB08B71DDAC4BE0050AA0D /* FileChangeViewController.swift in Sources */,
 				D23EE43A1CE3653E00D6143D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,3 +51,10 @@ extension String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
     }
 }
+
+extension String {
+    var fileBaseName: String {
+        let parts = self.components(separatedBy: "/")
+        return parts.last ?? self
+    }
+}

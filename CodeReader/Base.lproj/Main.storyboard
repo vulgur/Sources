@@ -670,6 +670,7 @@
                                     <outlet property="deletionsLabel" destination="8D5-T0-JbT" id="DH2-uE-JCy"/>
                                     <outlet property="filenameLabel" destination="hBa-JJ-JDE" id="YAK-kq-Ql3"/>
                                     <outlet property="statusImageView" destination="TIl-88-FXj" id="Wf5-9p-kGZ"/>
+                                    <segue destination="hWz-hs-C1Q" kind="show" identifier="ShowFileChange" id="QOG-p0-wHB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -682,6 +683,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7m-nk-xNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6081" y="1278"/>
+        </scene>
+        <!--File Change View Controller-->
+        <scene sceneID="xmf-mG-YZL">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="hWz-hs-C1Q" customClass="FileChangeViewController" customModule="CodeReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cJu-qi-4s5"/>
+                        <viewControllerLayoutGuide type="bottom" id="TwV-m8-jMz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r2w-hN-XHU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="loading..." translatesAutoresizingMaskIntoConstraints="NO" id="aaC-HP-Yuo">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aaC-HP-Yuo" firstAttribute="leading" secondItem="r2w-hN-XHU" secondAttribute="leadingMargin" id="2sw-Lz-MHv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aaC-HP-Yuo" secondAttribute="trailing" id="DlS-rC-BkE"/>
+                            <constraint firstItem="TwV-m8-jMz" firstAttribute="top" secondItem="aaC-HP-Yuo" secondAttribute="bottom" id="OIR-7f-km9"/>
+                            <constraint firstItem="aaC-HP-Yuo" firstAttribute="top" secondItem="cJu-qi-4s5" secondAttribute="bottom" id="gPO-Gk-SG8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="aaC-HP-Yuo" id="cf6-En-jYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0h-eE-6qG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6916" y="1276.9115442278862"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="ve1-GG-awN">
