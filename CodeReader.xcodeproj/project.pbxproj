@@ -680,6 +680,7 @@
 				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
 				D27FECAD1D1E733F00E3D366 /* ShellScript */,
 				D27FECA41D1E354000E3D366 /* ShellScript */,
+				D2BB08BA1DDB1C150050AA0D /* Set build number */,
 			);
 			buildRules = (
 			);
@@ -875,6 +876,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		D2BB08BA1DDB1C150050AA0D /* Set build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set build number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $SRCROOT/scripts/set_build_number.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
