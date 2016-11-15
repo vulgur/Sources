@@ -12,11 +12,7 @@ class CommitFileListViewController: BaseTableViewController {
 
     var viewModel: CommitFileListViewModel!
     let CommitFileCellIdentifier = "CommitFileCell"
-//    let dataSource = [("CodeReader.xcodeproj/project.pbxproj", 100, 200, 1),
-//                      ("CodeReader.xcodeproj/xcuserdata/wangshudao.xcuserdatad/xcschemes/CodeReader.xcscheme", 3, 43, 2),
-//                      ("CodeReader/View/CommitListViewController.swift", 2,232, 1),
-//                      ("CodeReader/View/RepoViewController.swift", 9323,121, 3),
-//                      ("CodeReader/View/BranchCell.xib", 234,1, 2)]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

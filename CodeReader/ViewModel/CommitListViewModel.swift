@@ -15,7 +15,6 @@ import RxCocoa
 class CommitListViewModel {
     
     var commits = Variable<[CommitItem]>([])
-    var isLoading = Variable<Bool>(false)
     let apiURLString: String?
     
     var page = 1
