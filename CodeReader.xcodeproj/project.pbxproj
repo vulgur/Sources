@@ -665,7 +665,7 @@
 				D23EE4021CDF56B100D6143D /* Resources */,
 				D23EE41C1CDF62A500D6143D /* Embed Frameworks */,
 				D27FECAD1D1E733F00E3D366 /* Carthage */,
-				D27FECA41D1E354000E3D366 /* ShellScript */,
+				D27FECA41D1E354000E3D366 /* Fabric */,
 				D2BB08BA1DDB1C150050AA0D /* Set build number */,
 			);
 			buildRules = (
@@ -833,13 +833,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D27FECA41D1E354000E3D366 /* ShellScript */ = {
+		D27FECA41D1E354000E3D366 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -857,6 +858,12 @@
 				"$(SRCROOT)/Carthage/Build/iOS/HEXColor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EZLoadingActivity.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
 			name = Carthage;
 			outputPaths = (
