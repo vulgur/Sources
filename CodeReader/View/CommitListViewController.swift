@@ -38,6 +38,7 @@ class CommitListViewController: BaseTableViewController {
     
     // MARK: Private methods
     func bindViewModel() {
+        viewModel.page = 1
         viewModel.commits.asDriver()
             .drive(tableView.rx.items(cellIdentifier: CommitCellIdentifier, cellType: CommitCell.self)) { (row, commit, cell) in
                 
@@ -99,4 +100,14 @@ class CommitListViewController: BaseTableViewController {
         }
     }
     
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height)
+        if (offset >= 0 && offset < 10) {
+            let loadMore = viewModel.loadCommitList().asDriver(onErrorJustReturn: [])
+            _ = loadMore.asObservable().subscribe(onNext: { (more) in
+                self.viewModel.commits.value.append(contentsOf: more)
+            })
+        }
+    }
 }

@@ -18,10 +18,11 @@ class CommitListViewModel {
     var isLoading = Variable<Bool>(false)
     let apiURLString: String?
     
-    var nextPageUrl: String = ""
+    var page = 1
     
     init(apiURLString: String) {
         self.apiURLString = apiURLString
+        self.page = 1
     }
     
     func loadCommitList() -> Observable<[CommitItem]> {
@@ -31,11 +32,13 @@ class CommitListViewModel {
                     log.error("wrong url")
                 }
             }
-            let request = Alamofire.request(url)
+            let apiURL = url + "&page=" + "\(self.page)"
+            let request = Alamofire.request(apiURL)
                 .responseArray(completionHandler: { (response: DataResponse<[CommitItem]>) in
                     if let items = response.result.value {
                         observer.onNext(items)
                         observer.onCompleted()
+                        self.page += 1
                     } else if let error = response.result.error {
                         observer.onError(error)
                     }
