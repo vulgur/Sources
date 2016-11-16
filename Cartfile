@@ -1,10 +1,10 @@
 github "Alamofire/Alamofire" ~> 4.0
 github "Hearst-DD/ObjectMapper" ~> 2.0.0
 github "onevcat/Kingfisher" ~> 3.0
-github "yeahdongcn/UIColor-Hex-Swift" "Swift-3.0"
+github "yeahdongcn/UIColor-Hex-Swift" >= 3.0.2
 github "malcommac/SwiftDate" ~> 4.0
 github "SwiftyBeaver/SwiftyBeaver"
 github "tristanhimmelman/AlamofireObjectMapper" ~> 4.0
-github "ReactiveX/RxSwift" "3.0.0-rc.1"
+github "ReactiveX/RxSwift" ~> 3.0
 github "goktugyil/EZLoadingActivity"
-github "RxSwiftCommunity/RxDataSources" "1.0.0-rc.1"
+github "RxSwiftCommunity/RxDataSources" ~> 1.0

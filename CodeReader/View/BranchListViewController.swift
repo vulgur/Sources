@@ -78,7 +78,7 @@ class BranchListViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         log.info("Select index path:\(indexPath.section, indexPath.row)")
-        if let branch = try! viewModel.dataSource.model(indexPath) as? Branch {
+        if let branch = try! viewModel.dataSource.model(at: indexPath) as? Branch {
             performSegue(withIdentifier: "ShowCommitList", sender: branch.name)
         }
     }

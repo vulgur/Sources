@@ -72,7 +72,7 @@ class SearchViewController: BaseViewController {
             self.maskView.isHidden = true
             })
         
-        _ = self.searchBar.rx.text
+        _ = self.searchBar.rx.text.orEmpty
             .asDriver()
             .throttle(0.5)
             .distinctUntilChanged()
@@ -116,7 +116,7 @@ class SearchViewController: BaseViewController {
                 }
             }.addDisposableTo(disposeBag)
         
-        viewModel.searchInProgress.asObservable().map{!$0}.bindTo(maskView.rx.hidden).addDisposableTo(disposeBag)
+        viewModel.searchInProgress.asObservable().map{!$0}.bindTo(maskView.rx.isHidden).addDisposableTo(disposeBag)
 
     }
 }
