@@ -3,6 +3,10 @@
 ![Logo](logo.png)
 
 App Store: [http://itunes.apple.com/app/id1125732186](http://itunes.apple.com/app/id1125732186)
+### What's New in version 1.2.1
+1. Support viewing commits(branches, file changes, patches)
+2. Use RxSwift
+3. Bugfix and UI improvement
 
 ### What's New in Version 1.1
 1. New icon
@@ -24,7 +28,6 @@ Plus, Sources offers several paid features, such as saving the recent items when
 In addition to the paid feature mentioned, you can unlock all the paid features in the future versions which will include:
 
 - change fonts
-- view commits
 - download repos or single files
 - show line numbers
 - and more stunning features
