@@ -26,7 +26,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        searchBar.delegate = self
+        searchBar.delegate = self
         tableView.delegate = self
 //        tableView.dataSource = self
         tableView.register(UINib.init(nibName: "SearchRepoCell", bundle: nil), forCellReuseIdentifier: SearchRepoCellIdentifier)
@@ -63,36 +63,38 @@ class SearchViewController: BaseViewController {
             })
         // bind search bar
         _ = self.searchBar.rx.searchButtonClicked.subscribe(onNext: { (_) in
+            
             self.searchBar.endEditing(true)
             })
+        
         _ = self.searchBar.rx.textDidBeginEditing.subscribe(onNext: {
             self.maskView.isHidden = false
             })
+        
         _ = self.searchBar.rx.textDidEndEditing.subscribe(onNext: {
             self.maskView.isHidden = true
             })
         
-        _ = self.searchBar.rx.text.orEmpty
-            .asDriver()
-            .throttle(0.5)
-            .distinctUntilChanged()
-            .flatMapLatest { [unowned self] (keyword) in
-                if keyword.isEmpty {
-                    return .just([])
-                }
-                self.viewModel.searchKeyword.value = keyword
-                return self.viewModel.searchRepos().asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, [Repo]> in
-                    log.error("EEEEEERROR")
-                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    let alert = UIAlertController(title: "Error", message: "Bad connection", preferredStyle: .alert)
-                    alert.addAction(alertAction)
-                    self.present(alert, animated: true, completion: nil)
-                    return SharedSequence.empty()
-                })
-            }
-       
-            .asObservable()
-            .bindTo(viewModel.repos)
+//        _ = self.searchBar.rx.text.orEmpty
+//            .asDriver()
+//            .throttle(1)
+//            .distinctUntilChanged()
+//            .flatMapLatest { [unowned self] (keyword) in
+//                if keyword.isEmpty {
+//                    return .just([])
+//                }
+//                self.viewModel.searchKeyword.value = keyword
+//                return self.viewModel.searchRepos().asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, [Repo]> in
+//                    log.error("EEEEEERROR")
+//                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                    let alert = UIAlertController(title: "Error", message: "Bad connection", preferredStyle: .alert)
+//                    alert.addAction(alertAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                    return SharedSequence.empty()
+//                })
+//            }
+//            .asObservable()
+//            .bindTo(viewModel.repos)
         
         
         viewModel.repos.asDriver()
@@ -165,21 +167,17 @@ extension SearchViewController: UIScrollViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.endEditing(true)
-//        
-//        viewModel.searchKeyword.value = searchBar.text!
-//        
-//        EZLoadingActivity.show("searching...", disableUI: true)
-//        
-//        viewModel.searchRepos(completion: {
-//            self.tableView.reloadDataWithAutoSizingCells()
-//            EZLoadingActivity.hide()
-//            }, errorHandler: self.errorHandler)
-//    }
-//    
-//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        viewModel.searchInProgress.value = true
-//        return true
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchKeyword = searchBar.text else { return }
+        searchBar.endEditing(true)
+        
+        viewModel.searchKeyword.value = searchKeyword
+        _ = viewModel.searchRepos().bindTo(viewModel.repos).addDisposableTo(disposeBag)
+        
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        viewModel.searchInProgress.value = true
+        return true
+    }
 }

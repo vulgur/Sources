@@ -87,7 +87,7 @@ class SearchRepoViewModel {
     
     func searchRepos() -> Observable<[Repo]> {
         
-        searchKeyword.value = searchKeyword.value.URLEscaped
+//        searchKeyword.value = searchKeyword.value.URLEscaped
         guard !searchKeyword.value.isEmpty else {
             return Observable.empty()
         }
